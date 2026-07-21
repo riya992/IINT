@@ -2371,6 +2371,7 @@ const COURSES: CourseItem[] = [
       "Interactive Business Dashboards in Power BI & Tableau Desktop.",
       "Data Visualization, Business Intelligence & Capstone Client Datasets."
     ],
+    syllabus: [
       "Advanced Excel Data Analytics & Power Query",
       "SQL Querying & Database Normalization",
       "Python Data Science Stack (NumPy, Pandas)",
