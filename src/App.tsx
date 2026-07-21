@@ -2641,17 +2641,6 @@ export default function App() {
           <Facebook size={22} className="group-hover:scale-110 transition-transform" />
         </a>
 
-        {/* WhatsApp Direct Admission Support */}
-        <a 
-          href="https://wa.me/919812543111" 
-          target="_blank" 
-          rel="noreferrer"
-          title="WhatsApp Admission Desk"
-          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-emerald-400 hover:bg-[#25D366] text-emerald-400 hover:text-white flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:scale-110 group cursor-pointer backdrop-blur-md animate-bounce"
-        >
-          <MessageCircle size={22} className="group-hover:scale-110 transition-transform" />
-        </a>
-
       </div>
 
       {/* FLOATING AI CHATBOT BUTTON (BOTTOM RIGHT) */}
@@ -2822,7 +2811,7 @@ export default function App() {
                       setIsApplyModalOpen(true);
                       setApplySubmitted(false);
                     }}
-                    className="px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-white font-bold text-sm transition-all shadow-[0_0_25px_rgba(59,130,246,0.4)] active:scale-95 cursor-pointer flex items-center justify-center gap-2 border border-blue-500/40"
+                    className="px-8 py-3.5 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-sm transition-all shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-95 cursor-pointer flex items-center justify-center gap-2 border border-emerald-400/60"
                   >
                     Apply Now
                     <GraduationCap size={16} />
@@ -3104,7 +3093,7 @@ export default function App() {
                     </button>
                     <button 
                       onClick={() => handleSelectProgramFromCourses(activeCourseDetailView.title)}
-                      className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-white font-black text-xs uppercase tracking-widest shadow-lg cursor-pointer flex items-center gap-2 border border-blue-500/40"
+                      className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs uppercase tracking-widest shadow-[0_0_25px_rgba(16,185,129,0.5)] cursor-pointer flex items-center gap-2 border border-emerald-400/60"
                     >
                       Apply Online Now 🪄
                     </button>
@@ -3788,7 +3777,7 @@ export default function App() {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-white font-black text-xs uppercase tracking-widest rounded-xl transition-all shadow-[0_0_25px_rgba(59,130,246,0.4)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 border border-blue-500/40"
+                      className="w-full py-3.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs uppercase tracking-widest rounded-xl transition-all shadow-[0_0_25px_rgba(16,185,129,0.5)] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 border border-emerald-400/60"
                     >
                       SUBMIT ENQUIRY NOW 🪄
                     </button>

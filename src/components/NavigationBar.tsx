@@ -80,10 +80,10 @@ export default function NavigationBar({
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <button
             onClick={onApplyNow}
-            className="flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-emerald-500/30 transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-95 cursor-pointer shrink-0"
+            className="flex items-center gap-1 sm:gap-1.5 text-[11px] sm:text-xs bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold px-3 sm:px-4 py-1.5 rounded-full border border-emerald-400/60 transition-all shadow-[0_0_20px_rgba(16,185,129,0.5)] active:scale-95 cursor-pointer shrink-0"
           >
             <span>Apply Now</span>
-            <GraduationCap size={12} />
+            <GraduationCap size={13} />
           </button>
         </div>
       </div>
