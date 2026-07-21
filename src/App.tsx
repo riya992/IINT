@@ -12,6 +12,8 @@ import {
   Users,
   Building,
   Instagram,
+  Facebook,
+  Linkedin,
   User,
   Megaphone,
   BarChart3,
@@ -24,7 +26,11 @@ import {
   BookOpen,
   Sparkles,
   Wrench,
-  X
+  X,
+  Bot,
+  Send,
+  MessageSquare,
+  MessageCircle
 } from "lucide-react";
 import ParticleCanvas from "./components/ParticleCanvas";
 import NavigationBar, { PageTab } from "./components/NavigationBar";
@@ -69,7 +75,7 @@ const INDIAN_STATES = [
   "Other State / Region"
 ];
 
-// Complete Course Catalog with 5 ChatGPT Tailored "What You Will Learn" Points
+// Complete Course Catalog with Rich ChatGPT "About The Course" Descriptions & 5 Learning Points
 const COURSES: CourseItem[] = [
   // =========================================================================
   // 1. DIPLOMA COURSES (ENGINEERING, TECHNICAL ITI, PHARMACY, NURSING)
@@ -88,7 +94,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
     tagline: '"MASTERING CORE COMPUTING, OFFICE AUTOMATION AND DIGITAL ADMINISTRATION."',
     description: "Professional-grade computer applications diploma tailored for beginners to master OS, office packages, internet security, and spreadsheet automation.",
-    longAbout: "To provide a high-quality academic pathway in Diploma in Computer Applications (DCA). The curriculum combines IT theory with practical sandbox labs, developing advanced digital skillsets for administrative roles.",
+    longAbout: "The Diploma in Computer Applications (DCA) is a foundational 6-month technical program designed to build core computer literacy, administrative office automation skills, and digital workflow mastery. Students get 100% hands-on laboratory practice in Windows/Linux operating environments, MS Office Suite (Word, Excel, PowerPoint, Access), internet security protocols, and business correspondence drafting. It provides the essential digital foundation required for government jobs, private office administration, data entry operations, and commercial software usage.",
     whatYouWillLearn: [
       "Master Computer Fundamentals, Operating Systems (Windows/Linux) & Hardware Setup.",
       "Professional Document Drafting, Office Automation & Executive Correspondence in MS Word.",
@@ -125,7 +131,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
     tagline: '"AIRCRAFT DESIGN, AERODYNAMICS AND FLIGHT PROPULSION SYSTEMS."',
     description: "Specialized 3-year technical diploma focusing on aircraft aerodynamics, structural mechanics, jet propulsion systems, and wind tunnel testing.",
-    longAbout: "To train skilled technicians in flight dynamics, CFD simulation tools, aircraft fuselage maintenance, and turbine propulsion systems.",
+    longAbout: "The Diploma in Aeronautical Engineering is an intensive 3-year technical curriculum engineered to produce skilled aviation technicians capable of designing, analyzing, and maintaining commercial aircraft structures, supersonic flight dynamics, and jet turbine propulsion systems. Students undergo practical wind tunnel testing, CFD computational modeling, fuselage stress analysis, and hangar-level maintenance procedures. This diploma serves as a direct gateway to aerospace defense manufacturing, HAL, ISRO technician cadres, and airline technical divisions.",
     whatYouWillLearn: [
       "Principles of Aerodynamics, Wind Tunnel Testing & Supersonic Flight Dynamics.",
       "Structural Mechanics of Aircraft Airframes, Fuselage Materials & Stress Testing.",
@@ -162,7 +168,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80",
     tagline: '"COMMERCIAL JET MAINTENANCE, TURBINES AND FLIGHT SAFETY."',
     description: "DGCA-oriented maintenance engineering diploma covering jet engines, avionics, flight controls, radar, and structural aircraft overhauls.",
-    longAbout: "To train aviation engineers capable of servicing commercial airliners, turbine jet engines, flight instruments, and aircraft radar systems under DGCA norms.",
+    longAbout: "Aircraft Maintenance Engineering (AME) is a prestigious 3-year technical program aligned with Director General of Civil Aviation (DGCA) flight safety norms. It focuses on the inspection, servicing, overhaul, and flight safety certification of commercial passenger jetliners, turbine engines, avionics radar systems, and hydraulic flight controls. Students get real aircraft hangar exposure, learning to diagnose complex turbine faults, repair airframe composites, and certify commercial airliners for safe flight operations.",
     whatYouWillLearn: [
       "Commercial Airline Maintenance Procedures under DGCA & EASA Regulations.",
       "Jet Turbine Engine Assembly, Dismantling, Fuel Systems & Overhaul Diagnostics.",
@@ -199,7 +205,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1436491865332-7a61a389cc05?auto=format&fit=crop&w=1200&q=80",
     tagline: '"GLOBAL AVIATION CERTIFICATION AND EUROPEAN EASA MODULE TRAINING."',
     description: "International aviation engineering diploma integrated with European Union Aviation Safety Agency (EASA) Part-66 module preparation.",
-    longAbout: "To qualify aircraft technicians for international airline fleets across Europe, Gulf countries, and global MRO maintenance hangars.",
+    longAbout: "The AME + EASA Modules program is an international aviation qualification integrated with European Union Aviation Safety Agency (EASA Part-66) examination training. It prepares technicians for lucrative global careers across European airlines, Middle East Gulf MRO hangars, and international commercial fleets. The curriculum provides specialized training in jet turbine airworthiness standards, fly-by-wire flight control computers, and composite structural repairs recognized worldwide.",
     whatYouWillLearn: [
       "European Aviation Safety Agency (EASA Part-66) Modules 1 through 17 Exam Mastery.",
       "International Commercial Fleet Airworthiness Codes & Global Airline MRO Standards.",
@@ -236,7 +242,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
     tagline: '"NEURAL NETWORKS, ALGORITHMIC INTELLIGENCE AND AUTOMATION."',
     description: "Future-ready engineering diploma covering Python computational basics, neural network foundations, and machine learning models.",
-    longAbout: "To equip students with cutting-edge expertise in artificial intelligence and algorithmic computing with real-world computer vision projects.",
+    longAbout: "The Diploma in Artificial Intelligence & Machine Learning is a cutting-edge 3-year technical program crafted for the next generation of software developers. Students build deep practical knowledge in Python scientific programming (NumPy, Pandas), machine learning algorithms (Supervised/Unsupervised), computer vision, natural language processing (NLP), and neural network training with TensorFlow. Graduates are prepared for rapid growth in IT automation, intelligent software design, and data science teams.",
     whatYouWillLearn: [
       "Python Scientific Computing & Data Processing with NumPy, Pandas & Matplotlib.",
       "Statistical Analysis, Probability Models & Data Preprocessing Pipelines.",
@@ -273,7 +279,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80",
     tagline: '"ELECTRIC VEHICLES, IC ENGINES AND AUTOMOTIVE DESIGN."',
     description: "3-Year technical diploma covering Electric Vehicles (EV), IC engines, transmission systems, automotive chassis design, and vehicle diagnostics.",
-    longAbout: "To train automotive technicians in EV battery management systems, internal combustion engines, transmission, and CAD vehicle chassis design.",
+    longAbout: "The Diploma in Automobile Engineering is a 3-year practical engineering program focused on modern automotive design, internal combustion (IC) engine overhauling, and Electric Vehicle (EV) technology. Students learn EV battery management systems, motor controllers, 3D CAD chassis drafting, and computerized engine diagnostic scanners. It prepares technical specialists for top auto manufacturing giants (Tata Motors, Maruti Suzuki, Mahindra, EV Startups) and service networks.",
     whatYouWillLearn: [
       "Internal Combustion (IC) Engine Operation, Multi-Point Fuel Injection (MPFI) & Testing.",
       "Electric Vehicle (EV) Powertrain, Lithium Battery Management Systems (BMS) & Motors.",
@@ -310,7 +316,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     tagline: '"STRUCTURAL DESIGN, LAND SURVEYING AND INFRASTRUCTURE MANAGEMENT."',
     description: "Practical civil engineering diploma covering structural engineering, land surveying, concrete technology, AutoCAD civil drafting, and construction management.",
-    longAbout: "To prepare civil technicians capable of carrying out total station surveying, structural drawing inspections, and site supervision for infrastructure projects.",
+    longAbout: "The Diploma in Civil Engineering is a comprehensive 3-year program designed for infrastructure design and construction site execution. Students master electronic Total Station land surveying, structural concrete testing, AutoCAD 2D/3D architectural floor plans, and PWD quantity estimation. Graduates gain direct employment in public sector PWD, Indian Railways, national highway projects, and real estate development companies.",
     whatYouWillLearn: [
       "Total Station Electronic Land Surveying, Contour Mapping & Levelling.",
       "Structural Concrete Technology, Testing & Building Construction Materials.",
@@ -347,7 +353,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
     tagline: '"HARDWARE ARCHITECTURES, SOFTWARE ENGINEERING AND NETWORKS."',
     description: "3-Year technical engineering diploma focusing on computing hardware architectures, C/C++ programming, RDBMS, and software engineering.",
-    longAbout: "To provide a technical foundation in Computer Science & Engineering. Students engage in practical C++ programming, network setups, and web design modules for 2nd-year lateral B.Tech entry.",
+    longAbout: "The Diploma in Computer Science & Engineering (CSE) provides robust training in software development, computer networking, and system administration over 3 years. The curriculum covers object-oriented programming (C, C++, Java), relational database management (SQL), operating systems, and web technologies. It prepares students for junior developer roles in IT firms or direct 2nd-year lateral entry into B.Tech CSE degrees.",
     whatYouWillLearn: [
       "Object-Oriented Programming Logic in C, C++ & Data Structures Algorithms.",
       "Computer Architecture, Processor Organization & Digital Electronics.",
@@ -384,7 +390,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
     tagline: '"POWER GENERATION, SUBSTATIONS AND PLC INDUSTRIAL AUTOMATION."',
     description: "Technical diploma focusing on electrical power generation, transmission networks, motor controls, PLC/SCADA automation, and wiring systems.",
-    longAbout: "To train electrical engineers skilled in motor controls, high-voltage substations, renewable energy solar arrays, and PLC industrial automation.",
+    longAbout: "The Diploma in Electrical Engineering is a 3-year practical program centered around power generation, high-voltage substation maintenance, and PLC industrial automation. Students gain hands-on expertise in AC/DC motors, transformers, solar power systems, and factory control panel wiring. It opens high-demand opportunities in State Electricity Grids, NTPC, BHEL, and industrial automation companies.",
     whatYouWillLearn: [
       "Electrical Circuit Theory, Electromagnetism & AC/DC Power Fundamentals.",
       "Operation, Testing & Maintenance of Transformers, Motors & Generators.",
@@ -421,7 +427,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=80",
     tagline: '"SEMICONDUCTORS, EMBEDDED SYSTEMS AND TELECOM NETWORKS."',
     description: "Technical engineering diploma covering microprocessors, IoT hardware, VLSI circuits, satellite communications, and mobile networks.",
-    longAbout: "To build expertise in electronic circuit design, embedded Python microcontrollers, wireless communication systems, and cellular tower infrastructure.",
+    longAbout: "The Diploma in Electronics & Communication Engineering (ECE) covers semiconductor circuit design, microcontrollers (Arduino, STM32), cellular mobile networks (5G), and embedded IoT hardware over 3 years. Students learn PCB layout drafting, RF signal testing, and optical fiber communications, preparing them for mobile manufacturing plants, telecom networks, and embedded systems firms.",
     whatYouWillLearn: [
       "Analog & Digital Electronic Circuit Design, PCB Layout Drafting & Soldering.",
       "Microprocessors (8085/8086) & Embedded Microcontrollers (Arduino/Raspberry Pi).",
@@ -458,7 +464,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
     tagline: '"INDUSTRIAL SAFETY AUDITS, FIRE HYDRANTS AND DISASTER MANAGEMENT."',
     description: "Specialized safety diploma covering industrial fire prevention, hazard risk audits, fire protection hydraulics, and emergency disaster management.",
-    longAbout: "To train certified safety officers for industrial plants, construction projects, oil refineries, and municipal fire departments.",
+    longAbout: "The Diploma in Fire Technology & Safety is a mandatory safety engineering program for industrial factories, oil refineries, and municipal fire services. Students learn fire hydraulics, sprinkler installation, EHS environmental hazard risk audits, and industrial first aid. Real-world mock fire drills and disaster rescue training qualify graduates as certified Safety Officers.",
     whatYouWillLearn: [
       "Industrial Fire Prevention, Fire Hydraulics & Sprinkler System Operation.",
       "Hazard Identification, Environmental Risk Auditing (EHS) & Safety Regulations.",
@@ -495,7 +501,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
     tagline: '"MACHINE DESIGN, MANUFACTURING PROCESSES AND CNC CAD/CAM."',
     description: "Core technical engineering diploma covering machine design, thermal engineering, manufacturing processes, CNC machining, and CAD/CAM modeling.",
-    longAbout: "To build strong foundational skills in mechanical drafting, thermodynamics, production technology, and industrial robotics for manufacturing plants.",
+    longAbout: "The Diploma in Mechanical Engineering is a core 3-year technical program covering machine design, thermodynamics, manufacturing processes, and CNC machining. Students practice SolidWorks 3D drafting, finite element analysis (FEA), and industrial robotics. Graduates secure technical positions in manufacturing plants, Indian Railways, ISRO workshops, and heavy machinery companies.",
     whatYouWillLearn: [
       "Engineering Mechanics, Thermodynamics & Heat Transfer Fundamentals.",
       "Manufacturing Technology: Lathe, Milling, Welding & CNC Machining Operations.",
@@ -532,7 +538,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80",
     tagline: '"CLINICAL PATHOLOGY, BIOCHEMISTRY AND DIAGNOSTIC LABS."',
     description: "Paramedical diploma training students in blood analysis, clinical biochemistry, microbiology tests, and pathology lab operation.",
-    longAbout: "To train healthcare lab technicians capable of operating automated blood analyzers, conducting histology tests, and managing diagnostic pathology centers.",
+    longAbout: "The Medical Lab Technician (DMLT) diploma is a 2-year paramedical program training healthcare diagnostic professionals. Students learn clinical biochemistry, hematology blood testing, medical microbiology, and histopathology tissue staining. Practical hospital internship rotations prepare technicians to operate automated blood analyzers in hospitals and private pathology chains.",
     whatYouWillLearn: [
       "Clinical Hematology, Complete Blood Count (CBC) & Coagulation Testing.",
       "Diagnostic Biochemistry: Blood Sugar, Liver & Kidney Function Tests.",
@@ -569,7 +575,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
     tagline: '"DIRECT 2ND YEAR ADMISSION FOR ITI & 12TH SCIENCE STUDENTS."',
     description: "Direct 2nd-year lateral entry pathway for 12th Science / ITI passed students into any 3-year engineering diploma program.",
-    longAbout: "Save 1 complete year! Directly join the 3rd semester of Aeronautical, CSE, Civil, Mechanical, Automobile, or Electrical engineering diplomas.",
+    longAbout: "The Diploma Lateral Entry scheme enables 12th Science (PCM) and 2-Year ITI passed students to gain direct admission into the 2nd year (3rd semester) of any engineering diploma. Students save 1 full academic year while covering advanced engineering subjects, laboratory practicals, and CAD drafting for technical industry jobs.",
     whatYouWillLearn: [
       "Advanced 2nd-Year Engineering Curriculum in Specialization Branch.",
       "Practical Laboratory Testing & Advanced Industrial Hangar/Workshop Labs.",
@@ -605,7 +611,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     tagline: '"ARCHITECTURAL BLUEPRINT DRAFTING AND AUTOCAD DRAWINGS."',
     description: "NCVT government approved ITI technical trade teaching architectural building drawings, AutoCAD 2D drafting, structural layouts, and site surveying.",
-    longAbout: "To prepare skilled civil draughtsmen capable of drawing building floor plans, structural elevation blueprints, and CAD designs for real estate projects.",
+    longAbout: "The Draughtsman Civil ITI trade is an NCVT government-approved 2-year vocational program. Students learn architectural drawing standards, AutoCAD 2D/3D building floor plans, structural blueprint detailing, and land surveying. It qualifies draughtsmen for architectural firms, government PWD drawing branches, and construction drafting desks.",
     whatYouWillLearn: [
       "Architectural Floor Plan Blueprint Drafting & Building Elevation Standards.",
       "Computer-Aided Design (AutoCAD 2D & 3D) for Real Estate Construction.",
@@ -642,7 +648,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
     tagline: '"INDUSTRIAL ELECTRIC WIRING, TRANSFORMERS AND MOTORS."',
     description: "NCVT approved ITI trade training students in industrial electrical wiring, transformer maintenance, AC/DC motor winding, and power safety.",
-    longAbout: "To produce licensed electrician technicians capable of executing building electrical wiring, motor repairs, substation maintenance, and factory power setups.",
+    longAbout: "The ITI Electrician trade is an NCVT-certified 2-year program designed to produce licensed electrical wiremen. Students master residential conduit wiring, industrial panel setups, motor rewinding, transformer testing, and solar PV inverter wiring. Graduates qualify for Government Electrical Contractor licenses and power grid jobs.",
     whatYouWillLearn: [
       "Electrical Safety Rules, Protective Equipment & NCVT Trade Standards.",
       "Residential, Commercial & Heavy Factory Electrical Conduit Wiring.",
@@ -679,7 +685,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
     tagline: '"HEAVY DIESEL ENGINES, GENERATORS AND TRUCK REPAIRS."',
     description: "NCVT trade certificate program focusing on heavy diesel engine overhauling, fuel injection pumps, diesel generators, and commercial vehicles.",
-    longAbout: "To train mechanics in repairing heavy commercial trucks, diesel generators, earthmoving JCB equipment, and marine diesel engines.",
+    longAbout: "The Mechanic Diesel Engine ITI program is a 1-year fast-track NCVT trade course specializing in heavy diesel engines. Students learn cylinder block reboring, high-pressure fuel injection pump (FIP) calibration, turbocharger overhauling, and commercial truck troubleshooting. It offers fast placement in Indian Railways workshops, defense units, and automobile service chains.",
     whatYouWillLearn: [
       "Diesel Engine Working Cycles, Cylinder Block Reboring & Engine Dismantling.",
       "High-Pressure Fuel Injection Pump (FIP) Testing, Injector Calibration.",
@@ -716,7 +722,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=1200&q=80",
     tagline: '"PHARMACEUTICS, DRUG DISPENSING AND COMMUNITY HEALTHCARE."',
     description: "2-year professional medical diploma preparing students for registered pharmacist licensure, retail medical stores, pharmaceutical sales, and hospital pharmacies.",
-    longAbout: "To prepare licensed pharmacists capable of compounding, dispensing medicines, managing retail drug stores, and supporting hospital healthcare units.",
+    longAbout: "Diploma in Pharmacy (D.Pharm) is a 2-year medical professional qualification approved by the Pharmacy Council of India (PCI). The course covers drug formulation, pharmaceutics, pharmacology, human anatomy, and hospital dispensing protocols. It grants the official legal qualification required to obtain a Drug License for opening retail/wholesale medical stores or working as a Registered Hospital Pharmacist.",
     whatYouWillLearn: [
       "Pharmaceutics: Compounding, Formulation & Dispensing of Medicines.",
       "Pharmaceutical Chemistry: Organic Drug Molecules & Quality Testing.",
@@ -753,7 +759,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
     tagline: '"PATIENT CARE, CLINICAL NURSING AND MATERNAL MIDWIFERY."',
     description: "Professional nursing diploma approved by Indian Nursing Council (INC) training students in hospital patient care, ICU nursing, and midwifery.",
-    longAbout: "To train compassionate registered nurses capable of assisting surgeons, operating ICU monitors, dispensing clinical medication, and administering emergency care.",
+    longAbout: "General Nursing & Midwifery (GNM) is a 3-year healthcare diploma approved by the Indian Nursing Council (INC). It equips students with comprehensive clinical nursing skills, ICU patient care protocols, maternal midwifery, surgical assistance, and community health administration. GNM graduates earn official state nursing council registration for hospital positions in India and overseas.",
     whatYouWillLearn: [
       "Fundamentals of Nursing Science, Vital Sign Monitoring & Patient Care.",
       "Anatomy, Physiology, Clinical Microbiology & Hygiene Standards.",
@@ -794,7 +800,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
     tagline: '"SPACE ORBITAL MECHANICS, SATELLITE PROPULSION AND ROCKETRY."',
     description: "High-level 4-year engineering program covering space orbital mechanics, rocket propulsion systems, satellite design, and supersonic aerodynamics.",
-    longAbout: "To prepare aerospace engineers for space research agencies (ISRO, NASA), satellite defense organizations (DRDO), and commercial rocket manufacturers.",
+    longAbout: "B.Tech in Aerospace Engineering is an elite 4-year undergraduate degree program focusing on atmospheric supersonic flight and space vehicle engineering. Students study orbital spaceflight mechanics, liquid/solid rocket engines, satellite payload guidance, and computational fluid dynamics (CFD). It creates high-tier research engineers for ISRO, DRDO, NASA, Boeing, and commercial rocket startups.",
     whatYouWillLearn: [
       "Compressible Supersonic Aerodynamics & Hypersonic Wind Tunnel Testing.",
       "Spaceflight Orbital Mechanics, Satellite Trajectory & Rocket Dynamics.",
@@ -831,7 +837,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80",
     tagline: '"AIRCRAFT FUSELAGE STRUCTURES, JET TURBINES AND FLIGHT TESTING."',
     description: "4-year aeronautical degree focusing on commercial airliner design, jet engine thermodynamics, wind tunnel testing, and aircraft airworthiness.",
-    longAbout: "To build flight systems engineers skilled in CAD aircraft drafting, jet engine performance optimization, and structural flight dynamics.",
+    longAbout: "B.Tech in Aeronautical Engineering is a 4-year engineering program dedicated to aircraft structural design, airworthiness engineering, and jet propulsion systems. Students engage in aerodynamic airfoil modeling, gas turbine thermodynamics, and flight control avionics. Graduates take up key engineering roles in Boeing, Airbus, HAL, Air Force technical cadres, and global airlines.",
     whatYouWillLearn: [
       "Aircraft Aerodynamic Airfoil Design, Lift/Drag Ratio Optimization.",
       "Fuselage Airframe Structural Stress Analysis & Lightweight Alloy Materials.",
@@ -868,7 +874,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1436491865332-7a61a389cc05?auto=format&fit=crop&w=1200&q=80",
     tagline: '"ADVANCED FLEET MAINTENANCE, AVIONICS AND AIRLINE MRO OVERHAULS."',
     description: "Comprehensive 4-year degree combining B.Tech engineering with commercial airline aircraft maintenance, jet engine overhauls, and avionics diagnostics.",
-    longAbout: "To produce chief aircraft maintenance engineers capable of certifying commercial airline fleets, managing MRO hangars, and leading aviation maintenance units.",
+    longAbout: "B.Tech in Aircraft Maintenance Engineering is a specialized 4-year degree blending engineering degree status with commercial aircraft fleet maintenance. Students master jet turbine overhauls, radar avionics, hydraulic controls, and DGCA airworthiness codes. It qualifies engineers for high-paying positions as Chief Maintenance Engineers and MRO Hangar Technical Directors.",
     whatYouWillLearn: [
       "Commercial Airline Fleet Maintenance Management under DGCA Norms.",
       "Jet Turbine Engine Complete Overhaul, Blade Inspection & Diagnostic Scans.",
@@ -905,7 +911,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     tagline: '"BRIDGES, HIGHWAYS, STRUCTURAL DESIGN AND SMART CITIES."',
     description: "4-Year civil engineering degree covering structural design, earthquake engineering, geotechnical analysis, highway construction, and smart city infrastructure.",
-    longAbout: "To train civil engineers skilled in STAAD Pro structural modeling, Revit 3D, Total Station surveying, and megastructure construction management.",
+    longAbout: "B.Tech in Civil Engineering is a core 4-year professional engineering degree covering structural dynamics, earthquake-resistant design, highway engineering, and smart city planning. Students practice STAAD Pro 3D modeling, Revit, and Total Station land surveying. Graduates qualify for Indian Engineering Services (IES), GATE, PSU recruitments, and global infrastructure development.",
     whatYouWillLearn: [
       "Advanced Structural Analysis & Reinforced Concrete / Steel Design.",
       "Geotechnical Soil Mechanics, Deep Foundation Engineering & Retaining Walls.",
@@ -942,7 +948,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
     tagline: '"ADVANCED ALGORITHMIC ARCHITECTURES, CLOUD COMPUTE AND CYBERSECURITY."',
     description: "Premier 4-year engineering program covering computer algorithms, systems architecture, cloud computing, full stack development, and network security.",
-    longAbout: "To deliver top-tier engineering education in Computer Science. Students master algorithm design, Linux kernels, cloud virtualization, and full-stack software development with industrial internship modules.",
+    longAbout: "B.Tech in Computer Science & Engineering (CSE) is the flagship 4-year degree for tech aspirants. It delivers deep academic and practical training in data structures, operating systems, cloud virtualization, full-stack software development, and cybersecurity. Students work on real client software projects, preparing for high-paying product engineering placements in global software MNCs.",
     whatYouWillLearn: [
       "Advanced Data Structures, Algorithm Optimization & Computational Complexity.",
       "Operating System Kernels, Computer Architecture & Distributed Systems.",
@@ -979,7 +985,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=80",
     tagline: '"DEEP LEARNING, NEURAL NETWORKS AND MLOPS AUTOMATION."',
     description: "Cutting-edge computer engineering degree focusing on neural networks, deep learning models, natural language processing, computer vision, and AI systems.",
-    longAbout: "To train machine learning engineers skilled in PyTorch, TensorFlow, large language model fine-tuning, computer vision, and autonomous system architecture.",
+    longAbout: "B.Tech in CSE (AI & Machine Learning) is a specialized 4-year engineering program focusing on artificial neural networks, deep learning, computer vision, and NLP transformer models. Students master PyTorch, TensorFlow, and MLOps deployment pipelines. It qualifies engineers for high-demand AI developer and data scientist roles.",
     whatYouWillLearn: [
       "Artificial Intelligence Foundations, Knowledge Representation & Heuristics.",
       "Python Data Science Stack: NumPy, Pandas, Scikit-Learn & Matplotlib.",
@@ -988,7 +994,8 @@ const COURSES: CourseItem[] = [
       "MLOps Pipeline Automation, Model Deployment & Cloud AI Microservices."
     ],
     syllabus: [
-      "Python Data Science & Computing",
+      "Python Scientific Computing (NumPy, Pandas)",
+      "Applied Statistics & Probability for Data",
       "Supervised & Unsupervised Machine Learning",
       "Deep Learning with TensorFlow & Keras",
       "Natural Language Processing (NLP) & Computer Vision",
@@ -1016,7 +1023,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
     tagline: '"ETHICAL HACKING, BLOCKCHAIN SMART CONTRACTS AND IOT HARDWARE."',
     description: "Specialized B.Tech track focusing on network penetration testing, ethical hacking, IoT embedded sensors, cryptography, and Ethereum smart contract blockchain development.",
-    longAbout: "To build cybersecurity defense experts and blockchain architects capable of protecting cloud infrastructure, auditing smart contracts, and securing IoT hardware networks.",
+    longAbout: "B.Tech in CSE (IoT, Cyber Security & Blockchain) is a future-proof 4-year degree engineered to secure digital ecosystems. Students learn network penetration testing, ethical hacking, Ethereum smart contracts (Solidity), and IoT sensor security. It prepares cybersecurity architects and web3 developers for banking, defense, and cloud security MNCs.",
     whatYouWillLearn: [
       "Network Penetration Testing, Vulnerability Audits & Ethical Hacking.",
       "IoT Embedded Hardware Security, Sensor Microcontrollers & Wireless Protocols.",
@@ -1053,7 +1060,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
     tagline: '"SMART GRIDS, RENEWABLE ENERGY AND AUTOMATION CONTROLS."',
     description: "4-Year electrical degree covering smart power grids, high voltage transformers, renewable solar/wind energy systems, and PLC industrial automation.",
-    longAbout: "To build power electrical engineers skilled in grid distribution, renewable power plant engineering, industrial drive controls, and power electronics.",
+    longAbout: "B.Tech in Electrical Engineering is a 4-year degree covering smart power distribution, high-voltage substations, renewable solar energy systems, and PLC industrial drives. Students learn digital relay protection, power electronics, and SCADA automation, qualifying for Power Grid Corp, NTPC, BHEL, and green energy companies.",
     whatYouWillLearn: [
       "High-Voltage Power Systems Engineering, Grid Distribution & Load Analysis.",
       "Electrical Machine Design: Synchronous Motors, Transformers & Drives.",
@@ -1090,7 +1097,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
     tagline: '"ROBOTICS, THERMAL TURBINES, CAD 3D AND ADVANCED MANUFACTURING."',
     description: "4-year core mechanical engineering degree focusing on industrial robotics, finite element analysis (FEA), SolidWorks 3D design, thermal power plants, and CNC automation.",
-    longAbout: "To prepare mechanical engineers skilled in 3D CAD modeling, ANSYS simulations, robotics automation, and thermal power plant engineering.",
+    longAbout: "B.Tech in Mechanical Engineering is a core 4-year degree in machine kinematics, thermodynamics, industrial robotics, and CAD 3D modeling (SolidWorks, ANSYS). Students master CNC manufacturing, thermal power plant design, and mechatronics. It opens career paths in Indian Railways, Defense R&D, and automotive manufacturing.",
     whatYouWillLearn: [
       "Advanced Strength of Materials, Machine Component Design & Kinematics.",
       "Thermal Engineering, Power Plant Engineering & Heat Exchanger Design.",
@@ -1127,7 +1134,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=80",
     tagline: '"VLSI CHIP DESIGN, 5G TELECOM AND EMBEDDED SYSTEMS."',
     description: "4-year ECE degree covering semiconductor VLSI chip design, 5G cellular communication networks, embedded IoT systems, and signal processing.",
-    longAbout: "To train electronics engineers in VLSI microchip architecture, 5G wireless networks, embedded Python microcontrollers, and optical communications.",
+    longAbout: "B.Tech in Electronics & Communication Engineering (ECE) is a 4-year program covering semiconductor VLSI chip architecture, 5G mobile communications, and embedded microcontrollers (ARM, STM32). Students gain hands-on expertise in PCB layout design, signal processing, and RF wireless networks for top semiconductor MNCs.",
     whatYouWillLearn: [
       "VLSI Semiconductor Circuit Architecture & CMOS Digital/Analog Design.",
       "5G Cellular Mobile Communication Networks & Satellite Transceivers.",
@@ -1164,7 +1171,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
     tagline: '"DUAL QUALIFICATION: DGCA AME LICENSE + FULL B.TECH AEROSPACE DEGREE."',
     description: "Unique integrated 4-year dual qualification combining DGCA Aircraft Maintenance Engineer license modules with a full B.Tech Aerospace Engineering degree.",
-    longAbout: "To offer students dual advantage: official DGCA commercial aircraft maintenance licensing along with B.Tech Aerospace engineering degree status.",
+    longAbout: "The Integrated AME + Aerospace B.Tech program offers dual certification: DGCA Aircraft Maintenance licensing modules combined with an AICTE-approved B.Tech Aerospace degree over 4 years. Students gain complete dual competence in commercial fleet maintenance and supersonic spacecraft design.",
     whatYouWillLearn: [
       "Dual Mastery of DGCA Aircraft Maintenance Modules & B.Tech Aerospace Degree.",
       "Supersonic Aircraft Aerodynamics & Jet Propulsion Engine Diagnostics.",
@@ -1201,7 +1208,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80",
     tagline: '"PILOT FLIGHT GROUND SUBJECTS + B.TECH AERONAUTICAL DEGREE."',
     description: "Dual integrated program combining DGCA Commercial Pilot License (CPL) ground navigation/meteorology training with B.Tech Aeronautical Engineering.",
-    longAbout: "To prepare aspiring commercial airline pilots with dual technical engineering degrees, covering flight navigation, air regulations, and aeronautical design.",
+    longAbout: "The Integrated CPL + Aeronautical B.Tech combines Commercial Pilot License (CPL) ground school subjects with a 4-year B.Tech Aeronautical degree. Aspiring commercial pilots master air navigation, meteorology, air law, and flight simulator flying while earning a full engineering degree.",
     whatYouWillLearn: [
       "DGCA Commercial Pilot Ground School: Air Navigation & Aviation Meteorology.",
       "Aeronautical Aircraft Structural Engineering & Jet Engine Dynamics.",
@@ -1238,7 +1245,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1436491865332-7a61a389cc05?auto=format&fit=crop&w=1200&q=80",
     tagline: '"AIR NAVIGATION, METEOROLOGY AND COCKPIT FLIGHT SIMULATION."',
     description: "Dedicated DGCA Commercial Pilot License (CPL) ground school training covering Air Navigation, Aviation Meteorology, Air Regulations, and Radio Telephony.",
-    longAbout: "To clear all DGCA CPL theory examinations and prepare students for 200 hours of flying training at authorized flying clubs for commercial pilot licensure.",
+    longAbout: "Commercial Pilot License (CPL) Ground School is an intensive 1-year preparatory program for clearing all DGCA pilot examinations. Students cover Air Navigation, Aviation Meteorology, Air Regulations, Aircraft Technical General, and Radio Telephony (RTR-A) with flight simulator practice.",
     whatYouWillLearn: [
       "DGCA Air Navigation Theory: Maps, Dead Reckoning & Flight Instruments.",
       "Aviation Meteorology: Atmospheric Phenomena, Synoptic Charts & Radar.",
@@ -1275,7 +1282,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
     tagline: '"COMMERCIAL DRONE FLYING, GIS MAPPING AND AERIAL SURVEYING."',
     description: "DGCA authorized Remote Pilot Certificate (RPC) training for commercial micro & small category drone operations, agricultural spraying, and GIS mapping.",
-    longAbout: "To train certified commercial drone pilots in simulator flying, GIS spatial mapping, aerial videography, and DGCA drone airspace regulations.",
+    longAbout: "The Drone Pilot License Training Course is a DGCA-authorized 1-month program granting the official Remote Pilot Certificate (RPC). Students practice drone simulator flying, GIS spatial photogrammetry, agricultural spraying, and commercial video surveying.",
     whatYouWillLearn: [
       "DGCA Digital Sky Drone Airspace Rules & Commercial Flying Regulations.",
       "Flight Simulator Training for Micro & Small Category Rotary Drones.",
@@ -1312,7 +1319,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
     tagline: '"AIRPORT TERMINAL OPERATIONS, AIRLINE LOGISTICS AND CARGO."',
     description: "Professional management degree specializing in airport terminal management, airline passenger handling, aviation security, and flight logistics.",
-    longAbout: "To build airport managers skilled in airline ground operations, ticketing, airport security protocols, baggage handling, and air cargo administration.",
+    longAbout: "BBA in Aviation Management is a 3-year professional management degree focused on airport terminal operations, airline ticketing, cargo supply chain logistics, and aviation security. Students gain direct placement in commercial airlines (IndiGo, Air India, Emirates) and airport management companies.",
     whatYouWillLearn: [
       "Airport Terminal Operations, Passenger Gate Management & Ticketing.",
       "Airline Logistics, Cargo Freight Handling & Supply Chain Systems.",
@@ -1349,7 +1356,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80",
     tagline: '"SOFTWARE ENGINEERING, FULL STACK WEB DEVS AND ENTERPRISE SYSTEMS."',
     description: "Comprehensive 3-year undergraduate computer degree covering software development, web applications, database management, and object-oriented programming.",
-    longAbout: "To provide a comprehensive academic pathway in Bachelor of Computer Application (BCA). The curriculum combines computer science theory with practical coding labs, developing software skills for top MNC placements.",
+    longAbout: "Bachelor of Computer Application (BCA) is a premier 3-year undergraduate degree designed to transform students into full-stack software developers. The course covers C++, Java, Python, web development, SQL databases, and software engineering principles. It opens direct placement pathways into top IT firms and higher MCA studies.",
     whatYouWillLearn: [
       "Object-Oriented Software Design in C++, Java & Python Programming.",
       "Web Application Engineering: HTML5, CSS3, JavaScript, React & Node.js.",
@@ -1386,7 +1393,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
     tagline: '"CONSTITUTIONAL LAW, CRIMINAL JURISPRUDENCE AND MOOT COURTS."',
     description: "3-year professional law degree approved by Bar Council of India (BCI) covering constitutional law, criminal jurisprudence, corporate law, and moot courts.",
-    longAbout: "To prepare legal advocates capable of practicing in District Courts, High Courts, Supreme Court, corporate law firms, and judicial service examinations.",
+    longAbout: "LLB (Hons.) is a 3-year professional law degree approved by the Bar Council of India (BCI). Students study constitutional law, criminal jurisprudence (IPC), corporate contracts, and civil procedure. Moot court practice and law firm internships prepare advocates for High Court practice and judicial service exams.",
     whatYouWillLearn: [
       "Indian Constitutional Law, Fundamental Rights & Administrative Principles.",
       "Criminal Jurisprudence, Indian Penal Code (IPC) & Code of Criminal Procedure.",
@@ -1423,7 +1430,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?auto=format&fit=crop&w=1200&q=80",
     tagline: '"INTEGRATED HUMANITIES & PROFESSIONAL LAW DEGREE."',
     description: "5-year integrated undergraduate law degree combining Bachelor of Arts (Political Science, Sociology) with BCI approved professional law modules.",
-    longAbout: "To build legal professionals with strong background in political science, corporate law, cyber law, international treaties, and moot court litigation.",
+    longAbout: "BA LLB (Hons.) is a 5-year integrated dual degree program combining Bachelor of Arts (Political Science, Sociology) with BCI-approved professional law modules. It saves 1 complete academic year while delivering deep training in corporate law, cyber law, and court litigation.",
     whatYouWillLearn: [
       "Integrated Humanities Foundation: Political Science, Sociology & Legal History.",
       "Constitutional & Administrative Law Frameworks of India.",
@@ -1460,7 +1467,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=1200&q=80",
     tagline: '"PHARMACEUTICAL R&D, DRUG FORMULATION AND REGULATORY AFFAIRS."',
     description: "4-year medical degree in drug formulation, pharmacology, clinical trials, pharmaceutical chemistry, and drug regulatory affairs.",
-    longAbout: "To produce pharmaceutical research scientists, drug inspectors, quality control chemists, and retail pharma business owners.",
+    longAbout: "Bachelor of Pharmacy (B.Pharm) is a 4-year degree approved by PCI. Students study medicinal chemistry, drug formulation, pharmacology, and quality control (QA/QC). It qualifies graduates for Drug Inspector examinations, pharma R&D labs, and wholesale/retail drug licensing.",
     whatYouWillLearn: [
       "Pharmaceutical Chemistry: Synthesis, Structure & Chemical Drug Action.",
       "Pharmacology: Mechanism of Drug Action, Therapeutics & Side Effects.",
@@ -1497,7 +1504,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
     tagline: '"CLINICAL NURSING SCIENCE, PATIENT HEALTHCARE AND ICU CARE."',
     description: "4-year bachelor degree in nursing science training healthcare professionals in ICU care, surgical nursing, maternal health, and hospital administration.",
-    longAbout: "To prepare graduate registered nurses eligible for AIIMS NORCET exams, international hospital recruitment, and senior nursing officer positions.",
+    longAbout: "B.Sc Nursing is a 4-year degree approved by the Indian Nursing Council (INC). It equips students with advanced clinical nursing skills, critical ICU care, maternal health, and hospital administration. Graduates qualify for AIIMS NORCET exams and international hospital recruitment (UK, US, Gulf).",
     whatYouWillLearn: [
       "Clinical Nursing Science, Human Anatomy, Physiology & Biochemistry.",
       "Medical-Surgical Nursing, Critical Care & Emergency Room Protocols.",
@@ -1538,7 +1545,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80",
     tagline: '"COMPRESSIBLE AERODYNAMICS, ROCKET PROPULSION AND SPACECRAFT DESIGN."',
     description: "2-year research post-graduate degree in hypersonic aerodynamics, space propulsion, satellite orbital guidance, and composite aerospace structures.",
-    longAbout: "To prepare aerospace scientists for research positions in ISRO, DRDO, Boeing R&D labs, and Assistant Professorships in engineering universities.",
+    longAbout: "M.Tech in Aerospace Engineering is an advanced 2-year research program focusing on hypersonic flight dynamics, rocket propulsion instability, and CFD algorithms. It prepares senior research scientists for ISRO, DRDO, and engineering college professorships.",
     whatYouWillLearn: [
       "Advanced Hypersonic Aerodynamics, Shock Wave Theory & High-Speed Flow.",
       "Spacecraft Rocket Propulsion Systems & Combustion Instability R&D.",
@@ -1574,7 +1581,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
     tagline: '"ADVANCED STRUCTURAL DYNAMICS, EARTHQUAKE RESISTANT DESIGN."',
     description: "2-year post-graduate master program in earthquake-resistant structural dynamics, tall building design, advanced foundation engineering, and smart transportation.",
-    longAbout: "To train chief structural engineers and infrastructure consultants capable of auditing megastructures, high-rise towers, and metro railway bridges.",
+    longAbout: "M.Tech in Civil Engineering is a 2-year master degree in earthquake-resistant structural dynamics, mega-bridge foundation engineering, and FEA modeling. Graduates serve as Chief Structural Consultants and PWD Chief Engineers.",
     whatYouWillLearn: [
       "Earthquake Engineering & Seismic Structural Dynamics of High-Rises.",
       "Advanced Finite Element Modeling for Mega Infrastructure & Bridges.",
@@ -1610,7 +1617,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
     tagline: '"HIGH PERFORMANCE COMPUTING, R&D AND DISTRIBUTED ALGORITHMS."',
     description: "2-year research-driven post-graduate engineering program for advanced software architecture, structural modeling, or academic research roles.",
-    longAbout: "To prepare engineering researchers capable of publishing papers, building high-throughput distributed algorithms, and teaching in engineering colleges.",
+    longAbout: "M.Tech in Computer Science & Engineering is a 2-year research degree covering high-performance parallel computing, cloud virtualization, and advanced algorithms. It leads to Senior R&D software architect roles and University Assistant Professorships.",
     whatYouWillLearn: [
       "Advanced Algorithm Design, Graph Theory & NP-Completeness Analysis.",
       "High-Performance Parallel Computing & Distributed System Architectures.",
@@ -1647,7 +1654,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=80",
     tagline: '"NANO-ELECTRONICS, VLSI CHIP ARCHITECTURE AND SIGNAL PROCESSING."',
     description: "Post-graduate master program in nano-electronics, microchip VLSI fabrication, 6G communication research, and embedded system design.",
-    longAbout: "To produce senior semiconductor architects and wireless research engineers for global microchip companies (Intel, Qualcomm, TSMC).",
+    longAbout: "M.Tech in ECE is a 2-year post-graduate degree specializing in deep sub-micron CMOS VLSI microchip architecture, 6G wireless networks, and RTOS embedded systems. It opens high-level R&D roles in Intel, Qualcomm, and TSMC.",
     whatYouWillLearn: [
       "Nano-Electronics & Deep Sub-Micron CMOS VLSI Circuit Architecture.",
       "5G/6G Wireless Sensor Network Protocols & Information Theory.",
@@ -1683,7 +1690,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
     tagline: '"COMPUTATIONAL FLUID DYNAMICS, ADVANCED THERMAL & CAD MANUFACTURING."',
     description: "2-year post-graduate master degree in computational fluid dynamics (CFD), advanced thermal power engineering, FEA stress analysis, and industrial robotics.",
-    longAbout: "To prepare chief mechanical designers, thermal plant consultants, and engineering college faculty members.",
+    longAbout: "M.Tech in Mechanical Engineering is a 2-year master program focused on computational fluid dynamics (CFD), finite element stress simulations (FEA), and industrial robotics. It qualifies mechanical engineers for Chief Design Consultant and R&D roles.",
     whatYouWillLearn: [
       "Advanced Computational Fluid Dynamics (CFD) & Heat Transfer Numerical Methods.",
       "Nonlinear Finite Element Analysis (FEA) Stress & Vibration Simulations.",
@@ -1719,7 +1726,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
     tagline: '"AIRLINE FLEET MANAGEMENT, INTERNATIONAL AIRPORT GOVERNANCE."',
     description: "Premier 2-year executive post-graduate degree fostering airline fleet planning, airport revenue governance, air cargo supply chains, and aviation safety.",
-    longAbout: "To prepare senior executives for commercial airlines (IndiGo, Air India, Emirates) and airport management companies (GMR, Adani Airports).",
+    longAbout: "MBA in Aviation Management is an executive 2-year master degree fostering airline fleet planning, airport revenue governance, and global air cargo supply chains. It prepares senior managers for commercial airlines and airport groups (Adani, GMR).",
     whatYouWillLearn: [
       "Executive Airline Fleet Planning, Network Strategy & Aircraft Leasing.",
       "International Airport Infrastructure Development & Revenue Governance.",
@@ -1756,7 +1763,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     tagline: '"INVESTMENT BANKING, PORTFOLIO ANALYTICS AND CORPORATE FINANCE."',
     description: "Executive master degree specializing in investment banking, corporate financial risk management, stock market portfolio analytics, and mergers & acquisitions.",
-    longAbout: "To build chief financial officers, investment analysts, and corporate treasury managers for global banks and financial MNCs.",
+    longAbout: "MBA in Financial Management is a 2-year post-graduate program covering investment banking, stock portfolio analytics, corporate mergers & acquisitions, and financial derivatives. Graduates become Chief Financial Officers and Investment Analysts.",
     whatYouWillLearn: [
       "Corporate Financial Management, Capital Structure & Dividend Policy.",
       "Investment Banking, Security Analysis & Stock Portfolio Optimization.",
@@ -1793,7 +1800,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
     tagline: '"TALENT ACQUISITION, LABOR LAWS AND ORGANIZATIONAL CHANGE."',
     description: "Post-graduate master degree focusing on strategic talent acquisition, corporate labor laws, employee engagement, and organizational development.",
-    longAbout: "To prepare HR Directors capable of managing corporate talent acquisition, industrial labor relations, compensation structures, and leadership training.",
+    longAbout: "MBA in Human Resource Management is a 2-year master program focused on strategic talent acquisition, corporate labor codes, and employee leadership development. It prepares HR Directors and HR Business Partners (HRBP) for top MNCs.",
     whatYouWillLearn: [
       "Strategic Human Resource Management & Organizational Behavior.",
       "Industrial Relations, Labor Code Compliance & Trade Union Negotiations.",
@@ -1830,7 +1837,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     tagline: '"BRAND STRATEGY, DIGITAL GROWTH MARKETING AND CONSUMER BEHAVIOR."',
     description: "Executive master program covering corporate brand positioning, digital growth funnels, market research analytics, product management, and sales strategy.",
-    longAbout: "To build Chief Marketing Officers (CMOs) and Brand Directors skilled in digital performance marketing, consumer insights, and national sales management.",
+    longAbout: "MBA in Marketing Management is a 2-year executive program covering brand positioning, consumer insights, digital growth funnels, and sales strategy. Graduates take up Chief Marketing Officer (CMO) and Brand Manager roles.",
     whatYouWillLearn: [
       "Strategic Brand Positioning, Equity Building & Integrated Marketing.",
       "Consumer Psychology, Market Research Surveys & Predictive Analytics.",
@@ -1867,7 +1874,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
     tagline: '"SUPPLY CHAIN LOGISTICS, LEAN SIX SIGMA AND PLANT MANAGEMENT."',
     description: "Post-graduate master degree specializing in global supply chain logistics, Lean Six Sigma quality management, inventory control, and factory operations.",
-    longAbout: "To prepare Chief Operations Officers (COOs) and Supply Chain Directors skilled in inventory optimization, factory automation, and warehouse logistics.",
+    longAbout: "MBA in Operations Management is a 2-year master degree in global supply chain logistics, Lean Six Sigma quality management, and automated warehouse control. It prepares Chief Operations Officers for Amazon, Flipkart, and manufacturing leaders.",
     whatYouWillLearn: [
       "Global Supply Chain Management, Logistics Network & Procurement.",
       "Lean Six Sigma Certification, Total Quality Management (TQM) & Kaizen.",
@@ -1908,7 +1915,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=80",
     tagline: '"FOSTERING ANALYTICAL THINKING, LEGAL FRAMEWORKS, AND PUBLIC POLICY."',
     description: "A flexible undergraduate degree in humanities offering foundation tracks in History, Political Science, Economics, and Literature.",
-    longAbout: "To provide a high-quality academic pathway in Distance BA. The curriculum combines rigorous theory with practical sandbox labs, developing advanced skillsets. Students learn to handle real-world challenges, preparing them for top-tier careers.",
+    longAbout: "Distance BA is a 3-year UGC-approved flexible undergraduate degree in humanities covering History, Political Science, Economics, and Literature. It is 100% valid for UPSC Civil Services, State PCS, SSC CGL, Bank PO, and government exams.",
     whatYouWillLearn: [
       "World History, Ancient Indian Civilization & Cultural Heritage.",
       "Political Science Concepts, Indian Constitution & Governance Systems.",
@@ -1945,7 +1952,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
     tagline: '"SELF-PACED COMPUTING LOGIC, DATABASE SETUPS AND WEB PROGRAMMING."',
     description: "Self-paced distance computer degree covering programming logic, database setups, web development, and software engineering principles.",
-    longAbout: "To deliver flexible computer education supported by online learning resources, practical assignments, and flexible exam schedules.",
+    longAbout: "Distance BCA is a 3-year UGC-approved self-paced degree for computer software aspirants. Students master C, Java, SQL database querying, and web development with flexible online exam schedules.",
     whatYouWillLearn: [
       "Computer Logic Fundamentals & C/Java Programming Syntaxes.",
       "Database Management Systems (SQL) & Data Normalization Concepts.",
@@ -1982,7 +1989,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     tagline: '"BUSINESS ADMINISTRATION, DIGITAL MARKETING AND FINANCE."',
     description: "Flexible distance management degree training students in enterprise administration, digital marketing, corporate finance, and business operations.",
-    longAbout: "To offer flexible business management education for working individuals seeking degree validation in marketing, finance, and enterprise operations.",
+    longAbout: "Distance BBA is a 3-year NAAC A Grade university distance degree covering business administration, marketing strategy, financial bookkeeping, and HR management. Perfect for working professionals seeking degree acceleration.",
     whatYouWillLearn: [
       "Business Organization Principles & Management Process Functions.",
       "Financial Accounting, Cost Bookkeeping & Business Economics.",
@@ -2019,7 +2026,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
     tagline: '"CORPORATE ACCOUNTING, AUDITING AND TAXATION LAWS."',
     description: "Flexible undergraduate commerce program covering corporate accounting, income tax laws, auditing, business economics, and banking.",
-    longAbout: "To provide flexible commerce degree education focused on corporate accounting, direct/indirect taxation, and financial auditing.",
+    longAbout: "Distance B.Com is a 3-year UGC-approved commerce degree covering financial accounting, corporate tax planning, auditing, and GST laws. Valid for CA/CS foundation entries and bank exam eligibility.",
     whatYouWillLearn: [
       "Financial Accounting, Corporate Accounting & Cost Accounting.",
       "Direct Income Tax Laws, GST Tax Returns & Tax Planning Rules.",
@@ -2056,7 +2063,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80",
     tagline: '"EDUCATIONAL PEDAGOGY, CURRICULUM DESIGN AND SCHOOL ADMIN."',
     description: "Post-graduate degree in educational pedagogy, curriculum designing, school administration, and psychological foundations of learning.",
-    longAbout: "To train educators in advanced learning psychology, educational measurement, school administration, and modern curriculum construction.",
+    longAbout: "Distance MA in Education is a 2-year master degree in learning psychology, school administration, and curriculum design. It qualifies educators for PGT School Teacher exams and Educational Officer roles.",
     whatYouWillLearn: [
       "Philosophical, Sociological & Psychological Foundations of Education.",
       "Advanced Educational Psychology, Human Learning & Development.",
@@ -2093,7 +2100,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80",
     tagline: '"BRITISH, AMERICAN & INDIAN ENGLISH LITERATURE AND LINGUISTICS."',
     description: "Comprehensive study of British, American, Indian English literature, literary criticism, linguistics, and post-colonial studies.",
-    longAbout: "To master English literary history, critical theories, phonetics, and creative copywriting for academia and corporate media.",
+    longAbout: "Distance MA in English is a 2-year post-graduate degree in British literature, American fiction, Indian writing, and critical literary theory. Essential for clearing UGC NET/SET exams for College Professorships.",
     whatYouWillLearn: [
       "British Poetry, Drama & Prose from Chaucer to Modernist Era.",
       "American Literature, Fiction, Poetry & Cultural Movement Studies.",
@@ -2130,7 +2137,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=80",
     tagline: '"हिंदी साहित्य का इतिहास, काव्यशास्त्र एवं राजभाषा अध्ययन।"',
     description: "हिंदी साहित्य का इतिहास, प्राचीन एवं आधुनिक काव्य, कथा साहित्य, नाटक एवं भाषा विज्ञान में स्नातकोत्तर डिग्री।",
-    longAbout: "हिंदी भाषा एवं साहित्य में उच्च अध्ययन हेतु स्नातकोत्तर डिग्री। यह पाठ्यक्रम नेट/स्लेट परीक्षा तथा राजभाषा अधिकारी पद हेतु तैयार करता है।",
+    longAbout: "दूरस्थ एम.ए. हिंदी (Distance MA Hindi) 2 वर्षीय स्नातकोत्तर डिग्री है। इसमें हिंदी साहित्य का इतिहास (आदिकाल से आधुनिक काल), कबीर, सूर, तुलसी का काव्य, भाषा विज्ञान तथा राजभाषा हिंदी का गहन अध्ययन कराया जाता है। यह सरकारी शिक्षक (PGT) एवं राजभाषा अधिकारी पद हेतु पूर्णतः मान्य है।",
     whatYouWillLearn: [
       "हिंदी साहित्य का इतिहास: आदिकाल, भक्तिकाल, रीतिकाल एवं आधुनिक काल।",
       "प्राचीन एवं आधुनिक हिंदी काव्य (कबीर, सूर, तुलसी, छायावाद एवं प्रगतिवाद)।",
@@ -2167,7 +2174,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80",
     tagline: '"MANAGERIAL ACCOUNTING, CORPORATE TAX PLANNING AND AUDITING."',
     description: "Advanced master degree in accounting theory, corporate tax planning, international finance, and managerial auditing.",
-    longAbout: "To prepare senior accounting professionals, tax planning consultants, and commerce lecturers for UGC NET examinations.",
+    longAbout: "Distance M.Com is a 2-year post-graduate degree in managerial accounting, corporate tax planning, and global auditing. Qualifies commerce graduates for UGC NET Assistant Professorship exams.",
     whatYouWillLearn: [
       "Managerial Accounting, Financial Control & Corporate Accounting.",
       "International Business, Foreign Trade Policy & Global Finance.",
@@ -2204,7 +2211,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
     tagline: '"CLOUD VIRTUALIZATION, DATA WAREHOUSING AND NETWORK SECURITY."',
     description: "Advanced computing master degree focusing on software engineering, cloud virtualization, network security, and database design.",
-    longAbout: "To master data warehousing, information security protocols, web services APIs, and high-performance IT architecture.",
+    longAbout: "Distance M.Sc IT is an advanced 2-year master degree covering software architecture, data warehousing, cloud infrastructure, and network security. Leads to Senior IT Software Engineer positions.",
     whatYouWillLearn: [
       "Advanced Data Structures, Object-Oriented Software Design & C++.",
       "Database Architecture, Data Warehousing & SQL Query Optimization.",
@@ -2241,7 +2248,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80",
     tagline: '"COMMUNITY DEVELOPMENT, LABOR WELFARE AND NGO MANAGEMENT."',
     description: "Professional post-graduate degree in social welfare administration, community development, medical social work, and HR welfare.",
-    longAbout: "To train social welfare officers, community managers, and HR labor welfare specialists for government welfare departments and international NGOs.",
+    longAbout: "Distance MSW (Master of Social Work) is a 2-year professional degree in community development, labor welfare, and medical social work. Mandatory qualification for Government Social Welfare Officers and NGO leadership.",
     whatYouWillLearn: [
       "History, Philosophy & Professional Ethics of Social Work in India.",
       "Community Organization, Social Action & Rural/Urban Development.",
@@ -2278,7 +2285,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
     tagline: '"EXECUTIVE LEADERSHIP, DIGITAL MARKETING AND PORTFOLIO CONTROL."',
     description: "Flexible executive distance MBA program designed for working professionals seeking career acceleration in Finance, HR, Marketing, or IT Systems.",
-    longAbout: "To accelerate careers of working professionals through flexible business administration modules, strategic digital marketing, and virtual viva evaluations.",
+    longAbout: "Distance MBA is a 2-year NAAC A Grade university executive master program designed for working corporate professionals. Features flexible online assignments, domain specializations (Finance, HR, Marketing), and virtual viva evaluation.",
     whatYouWillLearn: [
       "Managerial Process, Organizational Behavior & Leadership Dynamics.",
       "Financial Management, Accounting for Managers & Costing Control.",
@@ -2317,7 +2324,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     tagline: '"GENERATIVE AI AUTOMATION, PERFORMANCE ADS AND SEARCH ENGINE DOMINANCE."',
     description: "Flagship 12-month comprehensive digital marketing training program designed to turn you into a certified growth expert using AI tools, performance ads, and SEO.",
-    longAbout: "To train growth marketers capable of leveraging ChatGPT, Midjourney, Google Ads performance max campaigns, and Meta ad funnels for exponential scaling.",
+    longAbout: "The Digital Marketing + AI Program is a 12-month job-oriented growth marketing course. Students master SEO, Google & Meta performance ad funnels, ChatGPT AI copywriting, and Midjourney visual creation. Includes 100% practical client campaigns.",
     whatYouWillLearn: [
       "Search Engine Optimization (SEO): Keyword Research, On-Page & Backlinks.",
       "Pay-Per-Click (PPC) Advertising: Google Ads, Meta Facebook/Insta Ads.",
@@ -2356,7 +2363,7 @@ const COURSES: CourseItem[] = [
     bgImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     tagline: '"PYTHON DATA SCIENCE, SQL DATABASE QUERYING AND POWER BI DASHBOARDS."',
     description: "Learn to inspect, clean, transform, and model data to discover useful information, power business decisions, and build interactive Power BI & Tableau dashboards.",
-    longAbout: "To transform aspiring analysts into business intelligence specialists through hands-on Python Pandas data cleaning, SQL query optimization, and Power BI interactive dashboard creation.",
+    longAbout: "The Data Analytics & Business Intelligence Program is a 6-month intensive training course. Students learn advanced MS Excel, complex SQL database querying, Python Pandas data processing, and Power BI interactive dashboard creation with real client datasets.",
     whatYouWillLearn: [
       "Advanced MS Excel Data Cleaning, VLOOKUP, XLOOKUP & Pivot Tables.",
       "SQL Database Querying: Joins, Aggregations, Subqueries & CTEs.",
@@ -2414,6 +2421,16 @@ export default function App() {
     course: COURSES[0].title
   });
   const [applySubmitted, setApplySubmitted] = useState(false);
+
+  // AI Chatbot State
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const [chatInput, setChatInput] = useState("");
+  const [chatMessages, setChatMessages] = useState<Array<{ sender: "bot" | "user"; text: string }>>([
+    {
+      sender: "bot",
+      text: "👋 Welcome to IINT Institute AI Assistant! How can I help you choose the right course today?"
+    }
+  ]);
 
   // AUTO POP-UP MODAL ON PAGE LOAD AFTER 2.5 SECONDS
   useEffect(() => {
@@ -2477,6 +2494,35 @@ export default function App() {
       setActiveCourseDetailView(null);
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // AI Chatbot Auto-Response Logic
+  const handleSendChatMessage = (messageText: string) => {
+    if (!messageText.trim()) return;
+
+    const newMessages = [...chatMessages, { sender: "user" as const, text: messageText }];
+    setChatMessages(newMessages);
+    setChatInput("");
+
+    // Simulate instant AI response based on query
+    setTimeout(() => {
+      const query = messageText.toLowerCase();
+      let botReply = "IINT offers Government Approved & UGC recognized Diploma, B.Tech, BCA, BBA, Law, Pharmacy, and Distance learning courses! Click 'Apply Now' to book a free counselling session.";
+
+      if (query.includes("dca") || query.includes("computer")) {
+        botReply = "DCA (Diploma in Computer Applications) is a 6-Month ISO 9001 certified diploma covering MS Office, Excel VLOOKUP, Database Access, and Digital Security. Perfect for 10th/12th pass students!";
+      } else if (query.includes("12th") || query.includes("after 12th")) {
+        botReply = "After 12th, top recommended choices are: 1) BCA / B.Tech CSE (IT Sector), 2) BBA / BBA Aviation (Management), 3) B.Pharm / D.Pharm (Medical), 4) Distance BA/B.Com for flexible study!";
+      } else if (query.includes("apply") || query.includes("admission")) {
+        botReply = "Admissions for 2026-27 are currently OPEN! You can fill the quick pop-out Admission form or call our helpline directly at +91 98125 43111 / +91 97113 75732.";
+      } else if (query.includes("ugc") || query.includes("approved") || query.includes("government")) {
+        botReply = "All Distance and Regular degrees at IINT are awarded by UGC recognized, NAAC A-Grade Indian Universities and approved by AICTE / PCI / INC / BCI / NCVT!";
+      } else if (query.includes("fee") || query.includes("scholarship")) {
+        botReply = "We offer affordable fee structures with installments and government scholarship guidance! Please submit your details in the Admission Form to check your scholarship eligibility.";
+      }
+
+      setChatMessages(prev => [...prev, { sender: "bot", text: botReply }]);
+    }, 600);
   };
 
   // Render a Single Course Card Component (Clean Title Only, No Duration on Outside Card)
@@ -2558,6 +2604,165 @@ export default function App() {
       {/* Ambient Lighting / Reading Overlays */}
       <div className="fixed inset-0 pointer-events-none z-1 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
       <div className="fixed inset-0 pointer-events-none z-1 bg-[radial-gradient(circle_at_center,transparent_30%,#000000_90%)] opacity-85" />
+
+      {/* DYNAMIC RIGHT HAND SIDE FLOATING SOCIAL MEDIA DOCK */}
+      <div className="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3.5">
+        
+        {/* Instagram Icon Box */}
+        <a 
+          href="https://instagram.com" 
+          target="_blank" 
+          rel="noreferrer"
+          title="Follow us on Instagram"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-pink-500 hover:bg-gradient-to-tr hover:from-amber-500 hover:via-rose-500 hover:to-purple-600 text-pink-400 hover:text-white flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:scale-110 group cursor-pointer backdrop-blur-md"
+        >
+          <Instagram size={22} className="group-hover:scale-110 transition-transform" />
+        </a>
+
+        {/* LinkedIn Icon Box */}
+        <a 
+          href="https://linkedin.com" 
+          target="_blank" 
+          rel="noreferrer"
+          title="Connect on LinkedIn"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-blue-400 hover:bg-[#0A66C2] text-blue-400 hover:text-white flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:scale-110 group cursor-pointer backdrop-blur-md"
+        >
+          <Linkedin size={22} className="group-hover:scale-110 transition-transform" />
+        </a>
+
+        {/* Facebook Icon Box */}
+        <a 
+          href="https://facebook.com" 
+          target="_blank" 
+          rel="noreferrer"
+          title="Visit Facebook Page"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-blue-500 hover:bg-[#1877F2] text-blue-500 hover:text-white flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:scale-110 group cursor-pointer backdrop-blur-md"
+        >
+          <Facebook size={22} className="group-hover:scale-110 transition-transform" />
+        </a>
+
+        {/* WhatsApp Direct Admission Support */}
+        <a 
+          href="https://wa.me/919812543111" 
+          target="_blank" 
+          rel="noreferrer"
+          title="WhatsApp Admission Desk"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-zinc-900/90 border border-white/15 hover:border-emerald-400 hover:bg-[#25D366] text-emerald-400 hover:text-white flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:scale-110 group cursor-pointer backdrop-blur-md animate-bounce"
+        >
+          <MessageCircle size={22} className="group-hover:scale-110 transition-transform" />
+        </a>
+
+      </div>
+
+      {/* FLOATING AI CHATBOT BUTTON (BOTTOM RIGHT) */}
+      <div className="fixed right-4 sm:right-6 bottom-6 z-40">
+        <button
+          onClick={() => setIsChatbotOpen(prev => !prev)}
+          className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:scale-110 transition-all border border-blue-400/50 cursor-pointer group"
+          title="Open IINT AI Chatbot"
+        >
+          {isChatbotOpen ? (
+            <X size={26} />
+          ) : (
+            <Bot size={28} className="group-hover:rotate-12 transition-transform" />
+          )}
+        </button>
+      </div>
+
+      {/* INTERACTIVE AI CHATBOT MODAL WIDGET */}
+      <AnimatePresence>
+        {isChatbotOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="fixed right-4 sm:right-6 bottom-24 z-50 w-[90vw] sm:w-[380px] h-[480px] bg-zinc-950/95 backdrop-blur-xl border border-blue-500/40 rounded-3xl shadow-[0_0_50px_rgba(59,130,246,0.35)] flex flex-col justify-between overflow-hidden text-white"
+          >
+            {/* Chatbot Header */}
+            <div className="p-4 bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 border-b border-blue-500/30 flex items-center justify-between text-white">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center text-white shadow-md">
+                  <Bot size={22} />
+                </div>
+                <div>
+                  <h4 className="text-sm font-black tracking-tight text-white flex items-center gap-1.5">
+                    <span>IINT AI Assistant</span>
+                    <Sparkles size={14} className="text-amber-300" />
+                  </h4>
+                  <p className="text-[10px] text-blue-200 font-mono">Online • Instant Admission Guidance</p>
+                </div>
+              </div>
+
+              <button 
+                onClick={() => setIsChatbotOpen(false)}
+                className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Chat Messages Log */}
+            <div className="flex-1 p-4 overflow-y-auto space-y-3 font-sans text-xs">
+              {chatMessages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[82%] p-3 rounded-2xl leading-relaxed shadow-sm ${
+                      msg.sender === "user"
+                        ? "bg-blue-600 text-white rounded-br-none border border-blue-400/30 font-medium"
+                        : "bg-zinc-900/90 text-zinc-200 rounded-bl-none border border-zinc-800"
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Quick Suggestion Chips */}
+            <div className="px-3 py-2 bg-zinc-900/60 border-t border-zinc-800/80 flex gap-2 overflow-x-auto text-[10px] font-medium text-blue-300 shrink-0">
+              <button
+                onClick={() => handleSendChatMessage("Which course is best for 12th pass?")}
+                className="px-2.5 py-1 rounded-full bg-blue-950/80 border border-blue-500/40 hover:bg-blue-600 hover:text-white transition-all cursor-pointer whitespace-nowrap"
+              >
+                Best course after 12th?
+              </button>
+              <button
+                onClick={() => handleSendChatMessage("Tell me about DCA diploma")}
+                className="px-2.5 py-1 rounded-full bg-blue-950/80 border border-blue-500/40 hover:bg-blue-600 hover:text-white transition-all cursor-pointer whitespace-nowrap"
+              >
+                Tell me about DCA
+              </button>
+              <button
+                onClick={() => handleSendChatMessage("Are degrees UGC approved?")}
+                className="px-2.5 py-1 rounded-full bg-blue-950/80 border border-blue-500/40 hover:bg-blue-600 hover:text-white transition-all cursor-pointer whitespace-nowrap"
+              >
+                UGC Approved?
+              </button>
+            </div>
+
+            {/* Chat Input Bar */}
+            <div className="p-3 bg-zinc-950 border-t border-blue-500/25 flex items-center gap-2">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSendChatMessage(chatInput)}
+                placeholder="Ask about courses, fees, admissions..."
+                className="flex-1 bg-zinc-900 border border-zinc-800 text-white text-xs px-3.5 py-2 rounded-xl focus:border-blue-400 outline-none placeholder-zinc-500"
+              />
+              <button
+                onClick={() => handleSendChatMessage(chatInput)}
+                className="w-9 h-9 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white flex items-center justify-center transition-all cursor-pointer shadow-md shrink-0"
+              >
+                <Send size={15} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* DYNAMIC PAGE CONTENT CONTAINER */}
       <main className="relative z-10 flex-grow pt-24 sm:pt-28 pb-12">
