@@ -49,7 +49,7 @@ interface CourseItem {
   tagline: string;
   description: string;
   longAbout: string;
-  eligibility: string[];
+  whatYouWillLearn: [string, string, string, string, string];
   syllabus: string[];
   careerRoles: [string, string, string, string];
   highlight: string;
@@ -69,7 +69,7 @@ const INDIAN_STATES = [
   "Other State / Region"
 ];
 
-// Complete Course Catalog with Short Title & Full Form
+// Complete Course Catalog with 5 ChatGPT Tailored "What You Will Learn" Points
 const COURSES: CourseItem[] = [
   // =========================================================================
   // 1. DIPLOMA COURSES (ENGINEERING, TECHNICAL ITI, PHARMACY, NURSING)
@@ -89,9 +89,12 @@ const COURSES: CourseItem[] = [
     tagline: '"MASTERING CORE COMPUTING, OFFICE AUTOMATION AND DIGITAL ADMINISTRATION."',
     description: "Professional-grade computer applications diploma tailored for beginners to master OS, office packages, internet security, and spreadsheet automation.",
     longAbout: "To provide a high-quality academic pathway in Diploma in Computer Applications (DCA). The curriculum combines IT theory with practical sandbox labs, developing advanced digital skillsets for administrative roles.",
-    eligibility: [
-      "Passed Class 10th or 12th from any recognized education board.",
-      "Basic understanding of English reading and elementary logic."
+    whatYouWillLearn: [
+      "Master Computer Fundamentals, Operating Systems (Windows/Linux) & Hardware Setup.",
+      "Professional Document Drafting, Office Automation & Executive Correspondence in MS Word.",
+      "Advanced Financial Data Analysis, Formulas, VLOOKUP & Pivot Tables in MS Excel.",
+      "Database Design, Relational Tables, Queries & Admin Reports in MS Access.",
+      "Digital Banking, Cyber Security Awareness & Internet Networking Protocols."
     ],
     syllabus: [
       "Computer Fundamentals & OS Installation",
@@ -123,9 +126,12 @@ const COURSES: CourseItem[] = [
     tagline: '"AIRCRAFT DESIGN, AERODYNAMICS AND FLIGHT PROPULSION SYSTEMS."',
     description: "Specialized 3-year technical diploma focusing on aircraft aerodynamics, structural mechanics, jet propulsion systems, and wind tunnel testing.",
     longAbout: "To train skilled technicians in flight dynamics, CFD simulation tools, aircraft fuselage maintenance, and turbine propulsion systems.",
-    eligibility: [
-      "Passed Class 10th with Mathematics & Science.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Principles of Aerodynamics, Wind Tunnel Testing & Supersonic Flight Dynamics.",
+      "Structural Mechanics of Aircraft Airframes, Fuselage Materials & Stress Testing.",
+      "Jet Engine Thermodynamics, Gas Turbines & Propulsion System Overhauls.",
+      "Flight Control Systems, Cockpit Instrumentation & Avionics Circuitry.",
+      "Hands-On Hangar Maintenance, Assembly Practicals & Technical Inspection."
     ],
     syllabus: [
       "Aerodynamics & Supersonic Flight Dynamics",
@@ -157,9 +163,12 @@ const COURSES: CourseItem[] = [
     tagline: '"COMMERCIAL JET MAINTENANCE, TURBINES AND FLIGHT SAFETY."',
     description: "DGCA-oriented maintenance engineering diploma covering jet engines, avionics, flight controls, radar, and structural aircraft overhauls.",
     longAbout: "To train aviation engineers capable of servicing commercial airliners, turbine jet engines, flight instruments, and aircraft radar systems under DGCA norms.",
-    eligibility: [
-      "Passed Class 12th with PCM or Class 10th.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Commercial Airline Maintenance Procedures under DGCA & EASA Regulations.",
+      "Jet Turbine Engine Assembly, Dismantling, Fuel Systems & Overhaul Diagnostics.",
+      "Aircraft Avionics, Radar Communication, Autopilot & Electronic Flight Instrumentation.",
+      "Hydraulic, Pneumatic & Landing Gear System Operation & Safety Testing.",
+      "Airframe Inspection, Structural Defect Detection & Airworthiness Certification."
     ],
     syllabus: [
       "Jet Turbine Engine Maintenance",
@@ -191,9 +200,12 @@ const COURSES: CourseItem[] = [
     tagline: '"GLOBAL AVIATION CERTIFICATION AND EUROPEAN EASA MODULE TRAINING."',
     description: "International aviation engineering diploma integrated with European Union Aviation Safety Agency (EASA) Part-66 module preparation.",
     longAbout: "To qualify aircraft technicians for international airline fleets across Europe, Gulf countries, and global MRO maintenance hangars.",
-    eligibility: [
-      "Passed Class 12th PCM or Class 10th Math & Science.",
-      "Good command over English language."
+    whatYouWillLearn: [
+      "European Aviation Safety Agency (EASA Part-66) Modules 1 through 17 Exam Mastery.",
+      "International Commercial Fleet Airworthiness Codes & Global Airline MRO Standards.",
+      "Modern Fly-By-Wire Digital Aircraft Controls & Composite Materials Repair.",
+      "Advanced Jet Turbine Maintenance, Gas Path Inspection & Vibration Analysis.",
+      "International Hangar Internship Protocols & Airline Quality Auditing."
     ],
     syllabus: [
       "EASA Module 1-17 Preparation & Exam Labs",
@@ -225,9 +237,12 @@ const COURSES: CourseItem[] = [
     tagline: '"NEURAL NETWORKS, ALGORITHMIC INTELLIGENCE AND AUTOMATION."',
     description: "Future-ready engineering diploma covering Python computational basics, neural network foundations, and machine learning models.",
     longAbout: "To equip students with cutting-edge expertise in artificial intelligence and algorithmic computing with real-world computer vision projects.",
-    eligibility: [
-      "Passed Class 10th or 12th with Mathematics.",
-      "Minimum 50% aggregate marks in Science and Math."
+    whatYouWillLearn: [
+      "Python Scientific Computing & Data Processing with NumPy, Pandas & Matplotlib.",
+      "Statistical Analysis, Probability Models & Data Preprocessing Pipelines.",
+      "Supervised & Unsupervised Machine Learning Algorithms (Regression, SVM, Random Forest).",
+      "Neural Network Architectures, Deep Learning Foundations with TensorFlow & Keras.",
+      "Computer Vision, Natural Language Processing (NLP) & Model Deployment."
     ],
     syllabus: [
       "Python Scientific Computing (NumPy, Pandas)",
@@ -259,9 +274,12 @@ const COURSES: CourseItem[] = [
     tagline: '"ELECTRIC VEHICLES, IC ENGINES AND AUTOMOTIVE DESIGN."',
     description: "3-Year technical diploma covering Electric Vehicles (EV), IC engines, transmission systems, automotive chassis design, and vehicle diagnostics.",
     longAbout: "To train automotive technicians in EV battery management systems, internal combustion engines, transmission, and CAD vehicle chassis design.",
-    eligibility: [
-      "Passed Class 10th with Science & Math.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Internal Combustion (IC) Engine Operation, Multi-Point Fuel Injection (MPFI) & Testing.",
+      "Electric Vehicle (EV) Powertrain, Lithium Battery Management Systems (BMS) & Motors.",
+      "Vehicle Chassis Dynamics, Braking Systems, Suspension & Steering Geometry.",
+      "AutoCAD 3D Automotive Component Drafting & Assembly Modeling.",
+      "Computerized Engine Diagnostic Scanners, Vehicle Servicing & Workshop Maintenance."
     ],
     syllabus: [
       "Automotive Engines & Fuel Injection Systems",
@@ -293,9 +311,12 @@ const COURSES: CourseItem[] = [
     tagline: '"STRUCTURAL DESIGN, LAND SURVEYING AND INFRASTRUCTURE MANAGEMENT."',
     description: "Practical civil engineering diploma covering structural engineering, land surveying, concrete technology, AutoCAD civil drafting, and construction management.",
     longAbout: "To prepare civil technicians capable of carrying out total station surveying, structural drawing inspections, and site supervision for infrastructure projects.",
-    eligibility: [
-      "Passed Class 10th with Mathematics & Science.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Total Station Electronic Land Surveying, Contour Mapping & Levelling.",
+      "Structural Concrete Technology, Testing & Building Construction Materials.",
+      "Architectural Blueprint Drafting in AutoCAD 2D/3D & Structural Detailing.",
+      "Structural Analysis of Beams, Columns, Retaining Walls & Steel Structures.",
+      "Construction Site Management, Quantity Estimation, Costing & PWD Safety Codes."
     ],
     syllabus: [
       "Surveying & Levelling with Total Station",
@@ -327,9 +348,12 @@ const COURSES: CourseItem[] = [
     tagline: '"HARDWARE ARCHITECTURES, SOFTWARE ENGINEERING AND NETWORKS."',
     description: "3-Year technical engineering diploma focusing on computing hardware architectures, C/C++ programming, RDBMS, and software engineering.",
     longAbout: "To provide a technical foundation in Computer Science & Engineering. Students engage in practical C++ programming, network setups, and web design modules for 2nd-year lateral B.Tech entry.",
-    eligibility: [
-      "Passed Class 10th examination with Mathematics & Science.",
-      "Minimum 45% aggregate marks in board exam."
+    whatYouWillLearn: [
+      "Object-Oriented Programming Logic in C, C++ & Data Structures Algorithms.",
+      "Computer Architecture, Processor Organization & Digital Electronics.",
+      "Relational Database Management Systems (RDBMS), SQL Querying & Schema Design.",
+      "Computer Network Protocols (TCP/IP, Routing, Switching) & Linux Operating Systems.",
+      "Web Development (HTML5, CSS, JS) & Software Engineering Project Lifecycle."
     ],
     syllabus: [
       "Programming in C & C++ Data Structures",
@@ -361,9 +385,12 @@ const COURSES: CourseItem[] = [
     tagline: '"POWER GENERATION, SUBSTATIONS AND PLC INDUSTRIAL AUTOMATION."',
     description: "Technical diploma focusing on electrical power generation, transmission networks, motor controls, PLC/SCADA automation, and wiring systems.",
     longAbout: "To train electrical engineers skilled in motor controls, high-voltage substations, renewable energy solar arrays, and PLC industrial automation.",
-    eligibility: [
-      "Passed Class 10th with Math & Science.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Electrical Circuit Theory, Electromagnetism & AC/DC Power Fundamentals.",
+      "Operation, Testing & Maintenance of Transformers, Motors & Generators.",
+      "Power Generation, Transmission Grids, High Voltage Substations & Switchgears.",
+      "Programmable Logic Controllers (PLC), SCADA & Industrial Automation Drives.",
+      "Solar PV Renewable Energy Systems, Domestic/Industrial Wiring & Safety Standards."
     ],
     syllabus: [
       "Electrical Circuit Theory & Electromagnetic Fields",
@@ -395,9 +422,12 @@ const COURSES: CourseItem[] = [
     tagline: '"SEMICONDUCTORS, EMBEDDED SYSTEMS AND TELECOM NETWORKS."',
     description: "Technical engineering diploma covering microprocessors, IoT hardware, VLSI circuits, satellite communications, and mobile networks.",
     longAbout: "To build expertise in electronic circuit design, embedded Python microcontrollers, wireless communication systems, and cellular tower infrastructure.",
-    eligibility: [
-      "Passed Class 10th with Science & Mathematics.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Analog & Digital Electronic Circuit Design, PCB Layout Drafting & Soldering.",
+      "Microprocessors (8085/8086) & Embedded Microcontrollers (Arduino/Raspberry Pi).",
+      "Wireless Cellular Communications (4G/5G), Optical Fiber & Satellite Transmitters.",
+      "Digital Signal Processing (DSP) & High-Frequency RF Circuit Instrumentation.",
+      "Industrial Automation, Internet of Things (IoT) Hardware & Sensor Integration."
     ],
     syllabus: [
       "Analog & Digital Electronic Circuits",
@@ -429,9 +459,12 @@ const COURSES: CourseItem[] = [
     tagline: '"INDUSTRIAL SAFETY AUDITS, FIRE HYDRANTS AND DISASTER MANAGEMENT."',
     description: "Specialized safety diploma covering industrial fire prevention, hazard risk audits, fire protection hydraulics, and emergency disaster management.",
     longAbout: "To train certified safety officers for industrial plants, construction projects, oil refineries, and municipal fire departments.",
-    eligibility: [
-      "Passed Class 10th with Science.",
-      "Physical fitness standard clearance."
+    whatYouWillLearn: [
+      "Industrial Fire Prevention, Fire Hydraulics & Sprinkler System Operation.",
+      "Hazard Identification, Environmental Risk Auditing (EHS) & Safety Regulations.",
+      "Building Fire Code Compliance, Emergency Exit Planning & Smoke Ventilation.",
+      "Industrial First Aid, Hazardous Material Handling & Chemical Spill Safety.",
+      "Real-World Mock Fire Drill Execution, Disaster Rescue & Equipment Handling."
     ],
     syllabus: [
       "Fire Prevention & Hydraulics Systems",
@@ -463,9 +496,12 @@ const COURSES: CourseItem[] = [
     tagline: '"MACHINE DESIGN, MANUFACTURING PROCESSES AND CNC CAD/CAM."',
     description: "Core technical engineering diploma covering machine design, thermal engineering, manufacturing processes, CNC machining, and CAD/CAM modeling.",
     longAbout: "To build strong foundational skills in mechanical drafting, thermodynamics, production technology, and industrial robotics for manufacturing plants.",
-    eligibility: [
-      "Passed Class 10th with Science & Mathematics.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Engineering Mechanics, Thermodynamics & Heat Transfer Fundamentals.",
+      "Manufacturing Technology: Lathe, Milling, Welding & CNC Machining Operations.",
+      "CAD/CAM 3D Machine Design & SolidWorks/AutoCAD Mechanical Drafting.",
+      "Finite Element Analysis (FEA), Fluid Mechanics & Hydraulic Machinery.",
+      "Industrial Robotics, Mechatronics Integration & Plant Quality Control."
     ],
     syllabus: [
       "Engineering Mechanics & Strength of Materials",
@@ -497,9 +533,12 @@ const COURSES: CourseItem[] = [
     tagline: '"CLINICAL PATHOLOGY, BIOCHEMISTRY AND DIAGNOSTIC LABS."',
     description: "Paramedical diploma training students in blood analysis, clinical biochemistry, microbiology tests, and pathology lab operation.",
     longAbout: "To train healthcare lab technicians capable of operating automated blood analyzers, conducting histology tests, and managing diagnostic pathology centers.",
-    eligibility: [
-      "Passed Class 12th with Science (PCB/PCM) or Class 10th.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Clinical Hematology, Complete Blood Count (CBC) & Coagulation Testing.",
+      "Diagnostic Biochemistry: Blood Sugar, Liver & Kidney Function Tests.",
+      "Medical Microbiology, Bacteriology Culture & Parasitology Examinations.",
+      "Histopathology Slide Preparation, Staining & Tissue Cytology Techniques.",
+      "Operation of Automated Analyzer Machines, Bio-Safety Protocols & Lab Management."
     ],
     syllabus: [
       "Clinical Biochemistry & Hematology",
@@ -531,9 +570,12 @@ const COURSES: CourseItem[] = [
     tagline: '"DIRECT 2ND YEAR ADMISSION FOR ITI & 12TH SCIENCE STUDENTS."',
     description: "Direct 2nd-year lateral entry pathway for 12th Science / ITI passed students into any 3-year engineering diploma program.",
     longAbout: "Save 1 complete year! Directly join the 3rd semester of Aeronautical, CSE, Civil, Mechanical, Automobile, or Electrical engineering diplomas.",
-    eligibility: [
-      "Passed 12th Science with PCM or 2-Year ITI Trade Course.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Advanced 2nd-Year Engineering Curriculum in Specialization Branch.",
+      "Practical Laboratory Testing & Advanced Industrial Hangar/Workshop Labs.",
+      "Industry-Grade CAD Drafting, Circuit Simulation & Computational Analysis.",
+      "Project Work, Technical Report Writing & Engineering Problem Solving.",
+      "Preparation for B.Tech Direct Entry & PSU Public Sector Technical Cadres."
     ],
     syllabus: [
       "Core 3rd & 4th Semester Engineering Subjects",
@@ -564,9 +606,12 @@ const COURSES: CourseItem[] = [
     tagline: '"ARCHITECTURAL BLUEPRINT DRAFTING AND AUTOCAD DRAWINGS."',
     description: "NCVT government approved ITI technical trade teaching architectural building drawings, AutoCAD 2D drafting, structural layouts, and site surveying.",
     longAbout: "To prepare skilled civil draughtsmen capable of drawing building floor plans, structural elevation blueprints, and CAD designs for real estate projects.",
-    eligibility: [
-      "Passed Class 10th (Secondary) examination.",
-      "Basic mathematical drawing aptitude."
+    whatYouWillLearn: [
+      "Architectural Floor Plan Blueprint Drafting & Building Elevation Standards.",
+      "Computer-Aided Design (AutoCAD 2D & 3D) for Real Estate Construction.",
+      "Land Surveying with Chain, Prismatic Compass, Theodolite & Levelling.",
+      "Structural Blueprint Detailing for Reinforced Concrete & Steel Frames.",
+      "Building Code Rules, Bill of Quantities (BOQ) & Construction Estimation."
     ],
     syllabus: [
       "Architectural Engineering Drawing Standards",
@@ -598,8 +643,12 @@ const COURSES: CourseItem[] = [
     tagline: '"INDUSTRIAL ELECTRIC WIRING, TRANSFORMERS AND MOTORS."',
     description: "NCVT approved ITI trade training students in industrial electrical wiring, transformer maintenance, AC/DC motor winding, and power safety.",
     longAbout: "To produce licensed electrician technicians capable of executing building electrical wiring, motor repairs, substation maintenance, and factory power setups.",
-    eligibility: [
-      "Passed Class 10th with Science & Math."
+    whatYouWillLearn: [
+      "Electrical Safety Rules, Protective Equipment & NCVT Trade Standards.",
+      "Residential, Commercial & Heavy Factory Electrical Conduit Wiring.",
+      "Repairing, Testing & Winding of AC Motors, DC Generators & Transformers.",
+      "Control Panel Assembly, Relay Switches & Substation Circuit Breakers.",
+      "Solar Inverter System Setup, Battery Bank Wiring & Electrical Contracting."
     ],
     syllabus: [
       "Electrical Safety Standards & Tools",
@@ -631,8 +680,12 @@ const COURSES: CourseItem[] = [
     tagline: '"HEAVY DIESEL ENGINES, GENERATORS AND TRUCK REPAIRS."',
     description: "NCVT trade certificate program focusing on heavy diesel engine overhauling, fuel injection pumps, diesel generators, and commercial vehicles.",
     longAbout: "To train mechanics in repairing heavy commercial trucks, diesel generators, earthmoving JCB equipment, and marine diesel engines.",
-    eligibility: [
-      "Passed Class 10th examination."
+    whatYouWillLearn: [
+      "Diesel Engine Working Cycles, Cylinder Block Reboring & Engine Dismantling.",
+      "High-Pressure Fuel Injection Pump (FIP) Testing, Injector Calibration.",
+      "Turbocharger Mechanics, Exhaust Gas Recirculation (EGR) & Cooling Systems.",
+      "Diagnostic Troubleshooting of Heavy Commercial Vehicles & Diesel Gensets.",
+      "Transmission Gearbox, Clutch Alignment & Heavy Vehicle Maintenance."
     ],
     syllabus: [
       "Diesel Engine Working Principles",
@@ -664,9 +717,12 @@ const COURSES: CourseItem[] = [
     tagline: '"PHARMACEUTICS, DRUG DISPENSING AND COMMUNITY HEALTHCARE."',
     description: "2-year professional medical diploma preparing students for registered pharmacist licensure, retail medical stores, pharmaceutical sales, and hospital pharmacies.",
     longAbout: "To prepare licensed pharmacists capable of compounding, dispensing medicines, managing retail drug stores, and supporting hospital healthcare units.",
-    eligibility: [
-      "Passed Class 12th with Physics, Chemistry & Biology/Math (PCB/PCM).",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Pharmaceutics: Compounding, Formulation & Dispensing of Medicines.",
+      "Pharmaceutical Chemistry: Organic Drug Molecules & Quality Testing.",
+      "Pharmacognosy: Extraction & Evaluation of Natural Medicinal Plant Drugs.",
+      "Human Anatomy, Physiology, Pathology & Clinical Pharmacology Actions.",
+      "Hospital & Community Pharmacy Admin, Patient Counseling & Retail Drug Laws."
     ],
     syllabus: [
       "Pharmaceutics & Pharmaceutical Chemistry",
@@ -698,9 +754,12 @@ const COURSES: CourseItem[] = [
     tagline: '"PATIENT CARE, CLINICAL NURSING AND MATERNAL MIDWIFERY."',
     description: "Professional nursing diploma approved by Indian Nursing Council (INC) training students in hospital patient care, ICU nursing, and midwifery.",
     longAbout: "To train compassionate registered nurses capable of assisting surgeons, operating ICU monitors, dispensing clinical medication, and administering emergency care.",
-    eligibility: [
-      "Passed Class 12th in any stream (Science/Arts/Commerce).",
-      "Minimum 40% aggregate marks."
+    whatYouWillLearn: [
+      "Fundamentals of Nursing Science, Vital Sign Monitoring & Patient Care.",
+      "Anatomy, Physiology, Clinical Microbiology & Hygiene Standards.",
+      "Medical-Surgical Nursing, Intensive Care Unit (ICU) Protocols & Emergency.",
+      "Maternal Midwifery, Gynecological Nursing & Pediatric Health Care.",
+      "Community Health Nursing, Vaccination Drives & Hospital Ward Management."
     ],
     syllabus: [
       "Anatomy, Physiology & Microbiology",
@@ -736,9 +795,12 @@ const COURSES: CourseItem[] = [
     tagline: '"SPACE ORBITAL MECHANICS, SATELLITE PROPULSION AND ROCKETRY."',
     description: "High-level 4-year engineering program covering space orbital mechanics, rocket propulsion systems, satellite design, and supersonic aerodynamics.",
     longAbout: "To prepare aerospace engineers for space research agencies (ISRO, NASA), satellite defense organizations (DRDO), and commercial rocket manufacturers.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "JEE Main rank."
+    whatYouWillLearn: [
+      "Compressible Supersonic Aerodynamics & Hypersonic Wind Tunnel Testing.",
+      "Spaceflight Orbital Mechanics, Satellite Trajectory & Rocket Dynamics.",
+      "Liquid & Solid Rocket Propulsion Systems, Turbo-Pumps & Jet Combustion.",
+      "Aerospace Avionics, Autopilot Flight Control & Guidance Navigation.",
+      "Computational Fluid Dynamics (CFD) & ANSYS Composite Structural Modeling."
     ],
     syllabus: [
       "Aerodynamics & Compressible Gas Dynamics",
@@ -770,9 +832,12 @@ const COURSES: CourseItem[] = [
     tagline: '"AIRCRAFT FUSELAGE STRUCTURES, JET TURBINES AND FLIGHT TESTING."',
     description: "4-year aeronautical degree focusing on commercial airliner design, jet engine thermodynamics, wind tunnel testing, and aircraft airworthiness.",
     longAbout: "To build flight systems engineers skilled in CAD aircraft drafting, jet engine performance optimization, and structural flight dynamics.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Aircraft Aerodynamic Airfoil Design, Lift/Drag Ratio Optimization.",
+      "Fuselage Airframe Structural Stress Analysis & Lightweight Alloy Materials.",
+      "Jet Engine Turbine Thermodynamics, Gas Dynamics & Thrust Engineering.",
+      "Aircraft Flight Stability, Mechanical Controls & Avionics Sensors.",
+      "Commercial Airliner Airworthiness Certification & Hangar Flight Testing."
     ],
     syllabus: [
       "Flight Aerodynamics & Compressible Flow",
@@ -804,9 +869,12 @@ const COURSES: CourseItem[] = [
     tagline: '"ADVANCED FLEET MAINTENANCE, AVIONICS AND AIRLINE MRO OVERHAULS."',
     description: "Comprehensive 4-year degree combining B.Tech engineering with commercial airline aircraft maintenance, jet engine overhauls, and avionics diagnostics.",
     longAbout: "To produce chief aircraft maintenance engineers capable of certifying commercial airline fleets, managing MRO hangars, and leading aviation maintenance units.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Commercial Airline Fleet Maintenance Management under DGCA Norms.",
+      "Jet Turbine Engine Complete Overhaul, Blade Inspection & Diagnostic Scans.",
+      "Aircraft Electrical Systems, Radio Navigation & Radar Instrument Repairs.",
+      "Hydraulic Flight Controls, Pneumatic Pressurization & Landing Gear Systems.",
+      "Aviation Safety Auditing, Maintenance Reliability & Airworthiness Logs."
     ],
     syllabus: [
       "Aircraft Gas Turbine Engine Overhaul",
@@ -838,9 +906,12 @@ const COURSES: CourseItem[] = [
     tagline: '"BRIDGES, HIGHWAYS, STRUCTURAL DESIGN AND SMART CITIES."',
     description: "4-Year civil engineering degree covering structural design, earthquake engineering, geotechnical analysis, highway construction, and smart city infrastructure.",
     longAbout: "To train civil engineers skilled in STAAD Pro structural modeling, Revit 3D, Total Station surveying, and megastructure construction management.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Advanced Structural Analysis & Reinforced Concrete / Steel Design.",
+      "Geotechnical Soil Mechanics, Deep Foundation Engineering & Retaining Walls.",
+      "Highway & Transportation Engineering, Pavement Design & Traffic Control.",
+      "STAAD Pro, Revit 3D & AutoCAD Civil Structural Infrastructure Modeling.",
+      "Hydrology, Environmental Water Engineering & Smart City Project Management."
     ],
     syllabus: [
       "Structural Analysis & Reinforced Concrete",
@@ -872,9 +943,12 @@ const COURSES: CourseItem[] = [
     tagline: '"ADVANCED ALGORITHMIC ARCHITECTURES, CLOUD COMPUTE AND CYBERSECURITY."',
     description: "Premier 4-year engineering program covering computer algorithms, systems architecture, cloud computing, full stack development, and network security.",
     longAbout: "To deliver top-tier engineering education in Computer Science. Students master algorithm design, Linux kernels, cloud virtualization, and full-stack software development with industrial internship modules.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "JEE Main rank."
+    whatYouWillLearn: [
+      "Advanced Data Structures, Algorithm Optimization & Computational Complexity.",
+      "Operating System Kernels, Computer Architecture & Distributed Systems.",
+      "Relational & NoSQL Database Administration, SQL Optimization & Big Data.",
+      "Full-Stack Software Engineering (React, Node.js, Python, Java) & Cloud Compute.",
+      "Computer Networks, Cyber Security, Cryptography & DevOps Automation."
     ],
     syllabus: [
       "Object-Oriented Software Design & Algorithms",
@@ -906,9 +980,12 @@ const COURSES: CourseItem[] = [
     tagline: '"DEEP LEARNING, NEURAL NETWORKS AND MLOPS AUTOMATION."',
     description: "Cutting-edge computer engineering degree focusing on neural networks, deep learning models, natural language processing, computer vision, and AI systems.",
     longAbout: "To train machine learning engineers skilled in PyTorch, TensorFlow, large language model fine-tuning, computer vision, and autonomous system architecture.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Artificial Intelligence Foundations, Knowledge Representation & Heuristics.",
+      "Python Data Science Stack: NumPy, Pandas, Scikit-Learn & Matplotlib.",
+      "Deep Neural Networks, Convolutional (CNN) & Recurrent (RNN) Architectures.",
+      "Computer Vision, Natural Language Processing (NLP) & Transformer Models.",
+      "MLOps Pipeline Automation, Model Deployment & Cloud AI Microservices."
     ],
     syllabus: [
       "Python Data Science & Computing",
@@ -940,9 +1017,12 @@ const COURSES: CourseItem[] = [
     tagline: '"ETHICAL HACKING, BLOCKCHAIN SMART CONTRACTS AND IOT HARDWARE."',
     description: "Specialized B.Tech track focusing on network penetration testing, ethical hacking, IoT embedded sensors, cryptography, and Ethereum smart contract blockchain development.",
     longAbout: "To build cybersecurity defense experts and blockchain architects capable of protecting cloud infrastructure, auditing smart contracts, and securing IoT hardware networks.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Network Penetration Testing, Vulnerability Audits & Ethical Hacking.",
+      "IoT Embedded Hardware Security, Sensor Microcontrollers & Wireless Protocols.",
+      "Cryptographic Algorithms, Public Key Infrastructure (PKI) & Digital Forensics.",
+      "Ethereum Smart Contract Blockchain Development with Solidity & Web3.",
+      "Cloud Infrastructure Security, Firewalls & Threat Intelligence Operations."
     ],
     syllabus: [
       "Ethical Hacking & Network Penetration Testing",
@@ -974,9 +1054,12 @@ const COURSES: CourseItem[] = [
     tagline: '"SMART GRIDS, RENEWABLE ENERGY AND AUTOMATION CONTROLS."',
     description: "4-Year electrical degree covering smart power grids, high voltage transformers, renewable solar/wind energy systems, and PLC industrial automation.",
     longAbout: "To build power electrical engineers skilled in grid distribution, renewable power plant engineering, industrial drive controls, and power electronics.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "High-Voltage Power Systems Engineering, Grid Distribution & Load Analysis.",
+      "Electrical Machine Design: Synchronous Motors, Transformers & Drives.",
+      "Power Electronics: Inverters, Converters & Renewable Energy PV Systems.",
+      "PLC, SCADA, DCS & Industrial Electrical Automation Control.",
+      "Smart Grid Protection, Digital Relay Systems & Energy Efficiency Auditing."
     ],
     syllabus: [
       "High Voltage Power Systems & Protection",
@@ -1008,9 +1091,12 @@ const COURSES: CourseItem[] = [
     tagline: '"ROBOTICS, THERMAL TURBINES, CAD 3D AND ADVANCED MANUFACTURING."',
     description: "4-year core mechanical engineering degree focusing on industrial robotics, finite element analysis (FEA), SolidWorks 3D design, thermal power plants, and CNC automation.",
     longAbout: "To prepare mechanical engineers skilled in 3D CAD modeling, ANSYS simulations, robotics automation, and thermal power plant engineering.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Advanced Strength of Materials, Machine Component Design & Kinematics.",
+      "Thermal Engineering, Power Plant Engineering & Heat Exchanger Design.",
+      "3D CAD/CAM Modeling with SolidWorks, CATIA & ANSYS FEA Simulations.",
+      "Industrial Robotics, Mechatronics, Automated Assembly Lines & CNC Programming.",
+      "Total Quality Management (TQM), Lean Manufacturing & Industrial Engineering."
     ],
     syllabus: [
       "Strength of Materials & Machine Component Design",
@@ -1042,9 +1128,12 @@ const COURSES: CourseItem[] = [
     tagline: '"VLSI CHIP DESIGN, 5G TELECOM AND EMBEDDED SYSTEMS."',
     description: "4-year ECE degree covering semiconductor VLSI chip design, 5G cellular communication networks, embedded IoT systems, and signal processing.",
     longAbout: "To train electronics engineers in VLSI microchip architecture, 5G wireless networks, embedded Python microcontrollers, and optical communications.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "VLSI Semiconductor Circuit Architecture & CMOS Digital/Analog Design.",
+      "5G Cellular Mobile Communication Networks & Satellite Transceivers.",
+      "Real-Time Embedded Firmware Development (ARM Cortex, STM32, C/C++).",
+      "Digital Signal & Image Processing Algorithms & High-Speed Microprocessors.",
+      "Optical Fiber Communications, RF Antenna Design & Microwave Systems."
     ],
     syllabus: [
       "VLSI Circuit Architecture & Semiconductor Design",
@@ -1076,9 +1165,12 @@ const COURSES: CourseItem[] = [
     tagline: '"DUAL QUALIFICATION: DGCA AME LICENSE + FULL B.TECH AEROSPACE DEGREE."',
     description: "Unique integrated 4-year dual qualification combining DGCA Aircraft Maintenance Engineer license modules with a full B.Tech Aerospace Engineering degree.",
     longAbout: "To offer students dual advantage: official DGCA commercial aircraft maintenance licensing along with B.Tech Aerospace engineering degree status.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Dual Mastery of DGCA Aircraft Maintenance Modules & B.Tech Aerospace Degree.",
+      "Supersonic Aircraft Aerodynamics & Jet Propulsion Engine Diagnostics.",
+      "Avionics, Cockpit Radar Systems & Flight Control Computer Calibration.",
+      "Composite Airframe Repair & Commercial Airline Hangar Maintenance.",
+      "Aerospace R&D Methodologies & Airline Fleet Director Protocols."
     ],
     syllabus: [
       "DGCA Aircraft Maintenance Modules 1-17",
@@ -1110,9 +1202,12 @@ const COURSES: CourseItem[] = [
     tagline: '"PILOT FLIGHT GROUND SUBJECTS + B.TECH AERONAUTICAL DEGREE."',
     description: "Dual integrated program combining DGCA Commercial Pilot License (CPL) ground navigation/meteorology training with B.Tech Aeronautical Engineering.",
     longAbout: "To prepare aspiring commercial airline pilots with dual technical engineering degrees, covering flight navigation, air regulations, and aeronautical design.",
-    eligibility: [
-      "Passed Class 12th with PCM.",
-      "Medical fitness standard clearance."
+    whatYouWillLearn: [
+      "DGCA Commercial Pilot Ground School: Air Navigation & Aviation Meteorology.",
+      "Aeronautical Aircraft Structural Engineering & Jet Engine Dynamics.",
+      "Air Regulations, Radio Telephony (RTR) & Cockpit Flight Simulation.",
+      "Flight Safety Protocols, Aerodynamic Performance & Autopilot Controls.",
+      "Commercial Airline Operations, Flight Dispatching & Pilot Readiness."
     ],
     syllabus: [
       "CPL Air Navigation & Air Meteorology",
@@ -1144,9 +1239,12 @@ const COURSES: CourseItem[] = [
     tagline: '"AIR NAVIGATION, METEOROLOGY AND COCKPIT FLIGHT SIMULATION."',
     description: "Dedicated DGCA Commercial Pilot License (CPL) ground school training covering Air Navigation, Aviation Meteorology, Air Regulations, and Radio Telephony.",
     longAbout: "To clear all DGCA CPL theory examinations and prepare students for 200 hours of flying training at authorized flying clubs for commercial pilot licensure.",
-    eligibility: [
-      "Passed Class 12th with Physics & Mathematics.",
-      "Class II Medical Fitness certificate."
+    whatYouWillLearn: [
+      "DGCA Air Navigation Theory: Maps, Dead Reckoning & Flight Instruments.",
+      "Aviation Meteorology: Atmospheric Phenomena, Synoptic Charts & Radar.",
+      "DGCA Air Regulations: Air Law, ATC Rules & Airspace Management.",
+      "Technical General Aircraft Systems, Engines, Flight Controls & Electrics.",
+      "Radio Telephony (RTR-A) Emergency Procedures & ATC Communication."
     ],
     syllabus: [
       "Air Navigation & Flight Instruments",
@@ -1178,9 +1276,12 @@ const COURSES: CourseItem[] = [
     tagline: '"COMMERCIAL DRONE FLYING, GIS MAPPING AND AERIAL SURVEYING."',
     description: "DGCA authorized Remote Pilot Certificate (RPC) training for commercial micro & small category drone operations, agricultural spraying, and GIS mapping.",
     longAbout: "To train certified commercial drone pilots in simulator flying, GIS spatial mapping, aerial videography, and DGCA drone airspace regulations.",
-    eligibility: [
-      "Passed Class 10th examination.",
-      "Age between 18 and 65 years."
+    whatYouWillLearn: [
+      "DGCA Digital Sky Drone Airspace Rules & Commercial Flying Regulations.",
+      "Flight Simulator Training for Micro & Small Category Rotary Drones.",
+      "Commercial GIS Spatial Mapping, Photogrammetry & Topographic Surveys.",
+      "Precision Agriculture Spraying, Aerial Cinematography & Thermal Inspections.",
+      "Drone Battery Care, Payload Integration, Emergency Failsafes & Maintenance."
     ],
     syllabus: [
       "DGCA Digital Sky Drone Regulations",
@@ -1212,9 +1313,12 @@ const COURSES: CourseItem[] = [
     tagline: '"AIRPORT TERMINAL OPERATIONS, AIRLINE LOGISTICS AND CARGO."',
     description: "Professional management degree specializing in airport terminal management, airline passenger handling, aviation security, and flight logistics.",
     longAbout: "To build airport managers skilled in airline ground operations, ticketing, airport security protocols, baggage handling, and air cargo administration.",
-    eligibility: [
-      "Passed Class 12th from any stream.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Airport Terminal Operations, Passenger Gate Management & Ticketing.",
+      "Airline Logistics, Cargo Freight Handling & Supply Chain Systems.",
+      "Aviation Security Regulations, Baggage Screening & Ramp Safety.",
+      "Air Traffic Management Principles & Airline Revenue Economics.",
+      "Flight Customer Relations, Ground Handling Services & Airport Admin."
     ],
     syllabus: [
       "Airport Terminal Operations & Safety",
@@ -1246,9 +1350,12 @@ const COURSES: CourseItem[] = [
     tagline: '"SOFTWARE ENGINEERING, FULL STACK WEB DEVS AND ENTERPRISE SYSTEMS."',
     description: "Comprehensive 3-year undergraduate computer degree covering software development, web applications, database management, and object-oriented programming.",
     longAbout: "To provide a comprehensive academic pathway in Bachelor of Computer Application (BCA). The curriculum combines computer science theory with practical coding labs, developing software skills for top MNC placements.",
-    eligibility: [
-      "Passed Class 12th from a recognized board in any stream.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Object-Oriented Software Design in C++, Java & Python Programming.",
+      "Web Application Engineering: HTML5, CSS3, JavaScript, React & Node.js.",
+      "Database Management Systems (MySQL, Oracle SQL & MongoDB).",
+      "Data Structures, Search/Sort Algorithm Optimization & Complexity.",
+      "Software Engineering Life Cycle, Agile Methods & Capstone App Project."
     ],
     syllabus: [
       "Programming in C, C++, Java & Python",
@@ -1280,9 +1387,12 @@ const COURSES: CourseItem[] = [
     tagline: '"CONSTITUTIONAL LAW, CRIMINAL JURISPRUDENCE AND MOOT COURTS."',
     description: "3-year professional law degree approved by Bar Council of India (BCI) covering constitutional law, criminal jurisprudence, corporate law, and moot courts.",
     longAbout: "To prepare legal advocates capable of practicing in District Courts, High Courts, Supreme Court, corporate law firms, and judicial service examinations.",
-    eligibility: [
-      "Graduation Bachelor Degree in any discipline.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Indian Constitutional Law, Fundamental Rights & Administrative Principles.",
+      "Criminal Jurisprudence, Indian Penal Code (IPC) & Code of Criminal Procedure.",
+      "Corporate Laws, Intellectual Property Rights (IPR) & Commercial Contracts.",
+      "Civil Procedure Code (CPC), Law of Evidence & Property Jurisprudence.",
+      "Moot Court Advocacy, Legal Drafting, Conveyancing & Court Litigation."
     ],
     syllabus: [
       "Constitutional Law & Jurisprudence",
@@ -1314,9 +1424,12 @@ const COURSES: CourseItem[] = [
     tagline: '"INTEGRATED HUMANITIES & PROFESSIONAL LAW DEGREE."',
     description: "5-year integrated undergraduate law degree combining Bachelor of Arts (Political Science, Sociology) with BCI approved professional law modules.",
     longAbout: "To build legal professionals with strong background in political science, corporate law, cyber law, international treaties, and moot court litigation.",
-    eligibility: [
-      "Passed Class 12th in any stream.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Integrated Humanities Foundation: Political Science, Sociology & Legal History.",
+      "Constitutional & Administrative Law Frameworks of India.",
+      "Corporate & Financial Laws, Cyber Law, Banking & Environmental Law.",
+      "Civil & Criminal Trial Court Procedures, Evidence Law & Pleading.",
+      "Moot Court Simulations, Legal Internship & Alternative Dispute Resolution."
     ],
     syllabus: [
       "Political Science, Sociology & Legal History",
@@ -1348,9 +1461,12 @@ const COURSES: CourseItem[] = [
     tagline: '"PHARMACEUTICAL R&D, DRUG FORMULATION AND REGULATORY AFFAIRS."',
     description: "4-year medical degree in drug formulation, pharmacology, clinical trials, pharmaceutical chemistry, and drug regulatory affairs.",
     longAbout: "To produce pharmaceutical research scientists, drug inspectors, quality control chemists, and retail pharma business owners.",
-    eligibility: [
-      "Passed Class 12th with Physics, Chemistry & Biology/Math (PCB/PCM).",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Pharmaceutical Chemistry: Synthesis, Structure & Chemical Drug Action.",
+      "Pharmacology: Mechanism of Drug Action, Therapeutics & Side Effects.",
+      "Industrial Pharmaceutics: Tablet, Capsule & Liquid Formulations.",
+      "Quality Assurance (QA/QC), Analytical Instrumentation & Drug Validation.",
+      "Drug Regulatory Affairs, Patent Laws & Pharmaceutical Industry Practice."
     ],
     syllabus: [
       "Pharmaceutical Organic & Medicinal Chemistry",
@@ -1382,9 +1498,12 @@ const COURSES: CourseItem[] = [
     tagline: '"CLINICAL NURSING SCIENCE, PATIENT HEALTHCARE AND ICU CARE."',
     description: "4-year bachelor degree in nursing science training healthcare professionals in ICU care, surgical nursing, maternal health, and hospital administration.",
     longAbout: "To prepare graduate registered nurses eligible for AIIMS NORCET exams, international hospital recruitment, and senior nursing officer positions.",
-    eligibility: [
-      "Passed Class 12th with Physics, Chemistry & Biology (PCB).",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Clinical Nursing Science, Human Anatomy, Physiology & Biochemistry.",
+      "Medical-Surgical Nursing, Critical Care & Emergency Room Protocols.",
+      "Obstetrics, Gynecological Nursing, Maternal & Newborn Healthcare.",
+      "Pediatric Nursing, Psychiatric Mental Health Nursing & Clinical Care.",
+      "Hospital Ward Management, Infection Control & Nursing Leadership."
     ],
     syllabus: [
       "Anatomy, Physiology & Clinical Biochemistry",
@@ -1420,9 +1539,12 @@ const COURSES: CourseItem[] = [
     tagline: '"COMPRESSIBLE AERODYNAMICS, ROCKET PROPULSION AND SPACECRAFT DESIGN."',
     description: "2-year research post-graduate degree in hypersonic aerodynamics, space propulsion, satellite orbital guidance, and composite aerospace structures.",
     longAbout: "To prepare aerospace scientists for research positions in ISRO, DRDO, Boeing R&D labs, and Assistant Professorships in engineering universities.",
-    eligibility: [
-      "B.Tech / B.E in Aerospace, Aeronautical, Mechanical or CSE.",
-      "GATE score preferred."
+    whatYouWillLearn: [
+      "Advanced Hypersonic Aerodynamics, Shock Wave Theory & High-Speed Flow.",
+      "Spacecraft Rocket Propulsion Systems & Combustion Instability R&D.",
+      "Computational Fluid Dynamics (CFD) Algorithm Code Development.",
+      "Aerospace Composite Materials Mechanics & Finite Element Analysis.",
+      "Master Research Thesis, Technical Paper Writing & Defense R&D."
     ],
     syllabus: [
       "Hypersonic Aerodynamics & Shock Waves",
@@ -1453,9 +1575,12 @@ const COURSES: CourseItem[] = [
     tagline: '"ADVANCED STRUCTURAL DYNAMICS, EARTHQUAKE RESISTANT DESIGN."',
     description: "2-year post-graduate master program in earthquake-resistant structural dynamics, tall building design, advanced foundation engineering, and smart transportation.",
     longAbout: "To train chief structural engineers and infrastructure consultants capable of auditing megastructures, high-rise towers, and metro railway bridges.",
-    eligibility: [
-      "B.Tech / B.E in Civil Engineering.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Earthquake Engineering & Seismic Structural Dynamics of High-Rises.",
+      "Advanced Finite Element Modeling for Mega Infrastructure & Bridges.",
+      "Deep Foundation Soil Engineering, Soil-Structure Interaction Analysis.",
+      "Smart Transportation Systems, Pavement Evaluation & Traffic Engineering.",
+      "Master Structural Research Thesis, Auditing & Project Consultancy."
     ],
     syllabus: [
       "Advanced Structural Dynamics & Earthquake Engg",
@@ -1486,9 +1611,12 @@ const COURSES: CourseItem[] = [
     tagline: '"HIGH PERFORMANCE COMPUTING, R&D AND DISTRIBUTED ALGORITHMS."',
     description: "2-year research-driven post-graduate engineering program for advanced software architecture, structural modeling, or academic research roles.",
     longAbout: "To prepare engineering researchers capable of publishing papers, building high-throughput distributed algorithms, and teaching in engineering colleges.",
-    eligibility: [
-      "B.Tech / B.E in CSE/IT or MCA degree.",
-      "Valid GATE score preferred."
+    whatYouWillLearn: [
+      "Advanced Algorithm Design, Graph Theory & NP-Completeness Analysis.",
+      "High-Performance Parallel Computing & Distributed System Architectures.",
+      "Cloud Infrastructure Virtualization, Containerization & Microservices.",
+      "Machine Learning Models, Big Data Analytics & Deep Neural Networks.",
+      "Research Methodology, Patent Filing & Master Software Thesis Publication."
     ],
     syllabus: [
       "Advanced Algorithm Design & Complexity",
@@ -1520,9 +1648,12 @@ const COURSES: CourseItem[] = [
     tagline: '"NANO-ELECTRONICS, VLSI CHIP ARCHITECTURE AND SIGNAL PROCESSING."',
     description: "Post-graduate master program in nano-electronics, microchip VLSI fabrication, 6G communication research, and embedded system design.",
     longAbout: "To produce senior semiconductor architects and wireless research engineers for global microchip companies (Intel, Qualcomm, TSMC).",
-    eligibility: [
-      "B.Tech / B.E in ECE, Electrical, or Instrumentation.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Nano-Electronics & Deep Sub-Micron CMOS VLSI Circuit Architecture.",
+      "5G/6G Wireless Sensor Network Protocols & Information Theory.",
+      "Embedded System Real-Time Operating Systems (RTOS) & Microcontrollers.",
+      "Advanced Digital Signal Processing (DSP) & High-Frequency RF Electronics.",
+      "Master Research Thesis, Semiconductor Microchip Design & Fabrication."
     ],
     syllabus: [
       "Advanced CMOS VLSI System Design",
@@ -1553,9 +1684,12 @@ const COURSES: CourseItem[] = [
     tagline: '"COMPUTATIONAL FLUID DYNAMICS, ADVANCED THERMAL & CAD MANUFACTURING."',
     description: "2-year post-graduate master degree in computational fluid dynamics (CFD), advanced thermal power engineering, FEA stress analysis, and industrial robotics.",
     longAbout: "To prepare chief mechanical designers, thermal plant consultants, and engineering college faculty members.",
-    eligibility: [
-      "B.Tech / B.E in Mechanical or Automobile Engg.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Advanced Computational Fluid Dynamics (CFD) & Heat Transfer Numerical Methods.",
+      "Nonlinear Finite Element Analysis (FEA) Stress & Vibration Simulations.",
+      "Advanced Power Plant Engineering, Turbomachinery & Renewable Systems.",
+      "Industrial Robotics Kinematics, Automated Mechatronics & Smart Factories.",
+      "Master Research Thesis Publication & Mechanical Design Engineering R&D."
     ],
     syllabus: [
       "Advanced Computational Fluid Dynamics (CFD)",
@@ -1586,9 +1720,12 @@ const COURSES: CourseItem[] = [
     tagline: '"AIRLINE FLEET MANAGEMENT, INTERNATIONAL AIRPORT GOVERNANCE."',
     description: "Premier 2-year executive post-graduate degree fostering airline fleet planning, airport revenue governance, air cargo supply chains, and aviation safety.",
     longAbout: "To prepare senior executives for commercial airlines (IndiGo, Air India, Emirates) and airport management companies (GMR, Adani Airports).",
-    eligibility: [
-      "Bachelor Degree in any stream.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Executive Airline Fleet Planning, Network Strategy & Aircraft Leasing.",
+      "International Airport Infrastructure Development & Revenue Governance.",
+      "Global Air Cargo Supply Chains, Cold Chain Freight & Multimodal Transport.",
+      "Aviation Safety Governance, ICAO/DGCA Air Law & Risk Management.",
+      "Executive Business Master Internship & Strategic Aviation Dissertation."
     ],
     syllabus: [
       "Airline Strategy & Fleet Management",
@@ -1620,9 +1757,12 @@ const COURSES: CourseItem[] = [
     tagline: '"INVESTMENT BANKING, PORTFOLIO ANALYTICS AND CORPORATE FINANCE."',
     description: "Executive master degree specializing in investment banking, corporate financial risk management, stock market portfolio analytics, and mergers & acquisitions.",
     longAbout: "To build chief financial officers, investment analysts, and corporate treasury managers for global banks and financial MNCs.",
-    eligibility: [
-      "Bachelor Graduation Degree in any field.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Corporate Financial Management, Capital Structure & Dividend Policy.",
+      "Investment Banking, Security Analysis & Stock Portfolio Optimization.",
+      "Financial Derivatives, Futures/Options Trading & Risk Management.",
+      "Mergers, Acquisitions, Corporate Restructuring & Business Valuation.",
+      "Corporate Treasury Management & Financial Master Dissertation."
     ],
     syllabus: [
       "Corporate Finance & Capital Structuring",
@@ -1654,9 +1794,12 @@ const COURSES: CourseItem[] = [
     tagline: '"TALENT ACQUISITION, LABOR LAWS AND ORGANIZATIONAL CHANGE."',
     description: "Post-graduate master degree focusing on strategic talent acquisition, corporate labor laws, employee engagement, and organizational development.",
     longAbout: "To prepare HR Directors capable of managing corporate talent acquisition, industrial labor relations, compensation structures, and leadership training.",
-    eligibility: [
-      "Bachelor Degree in any discipline.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Strategic Human Resource Management & Organizational Behavior.",
+      "Industrial Relations, Labor Code Compliance & Trade Union Negotiations.",
+      "Global Talent Acquisition, Headhunting & Executive Onboarding.",
+      "Compensation, Employee Benefits Structuring & Performance Appraisal.",
+      "HR Business Partner (HRBP) Leadership & Corporate HR Master Thesis."
     ],
     syllabus: [
       "Strategic Human Resource Management",
@@ -1688,9 +1831,12 @@ const COURSES: CourseItem[] = [
     tagline: '"BRAND STRATEGY, DIGITAL GROWTH MARKETING AND CONSUMER BEHAVIOR."',
     description: "Executive master program covering corporate brand positioning, digital growth funnels, market research analytics, product management, and sales strategy.",
     longAbout: "To build Chief Marketing Officers (CMOs) and Brand Directors skilled in digital performance marketing, consumer insights, and national sales management.",
-    eligibility: [
-      "Bachelor Graduation Degree in any stream.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Strategic Brand Positioning, Equity Building & Integrated Marketing.",
+      "Consumer Psychology, Market Research Surveys & Predictive Analytics.",
+      "Digital Performance Growth Marketing, SEO, Meta/Google Ads Funnels.",
+      "Sales Channel Management, Supply Distribution & B2B Strategy.",
+      "Chief Marketing Officer (CMO) Strategy & Corporate Marketing Thesis."
     ],
     syllabus: [
       "Strategic Brand Management & Positioning",
@@ -1722,9 +1868,12 @@ const COURSES: CourseItem[] = [
     tagline: '"SUPPLY CHAIN LOGISTICS, LEAN SIX SIGMA AND PLANT MANAGEMENT."',
     description: "Post-graduate master degree specializing in global supply chain logistics, Lean Six Sigma quality management, inventory control, and factory operations.",
     longAbout: "To prepare Chief Operations Officers (COOs) and Supply Chain Directors skilled in inventory optimization, factory automation, and warehouse logistics.",
-    eligibility: [
-      "Bachelor Graduation Degree in any field.",
-      "Minimum 50% aggregate marks."
+    whatYouWillLearn: [
+      "Global Supply Chain Management, Logistics Network & Procurement.",
+      "Lean Six Sigma Certification, Total Quality Management (TQM) & Kaizen.",
+      "Project Management, Operations Research & Capacity Optimization.",
+      "Automated Warehouse Logistics, Inventory Control & ERP Systems.",
+      "Factory Operations Leadership & Strategic Operations Master Project."
     ],
     syllabus: [
       "Supply Chain & Global Logistics Management",
@@ -1760,9 +1909,12 @@ const COURSES: CourseItem[] = [
     tagline: '"FOSTERING ANALYTICAL THINKING, LEGAL FRAMEWORKS, AND PUBLIC POLICY."',
     description: "A flexible undergraduate degree in humanities offering foundation tracks in History, Political Science, Economics, and Literature.",
     longAbout: "To provide a high-quality academic pathway in Distance BA. The curriculum combines rigorous theory with practical sandbox labs, developing advanced skillsets. Students learn to handle real-world challenges, preparing them for top-tier careers.",
-    eligibility: [
-      "Passed Class 12th from a recognized board in any stream.",
-      "Minimum 50% aggregate marks in qualifying exam."
+    whatYouWillLearn: [
+      "World History, Ancient Indian Civilization & Cultural Heritage.",
+      "Political Science Concepts, Indian Constitution & Governance Systems.",
+      "Microeconomics, Macroeconomics & Indian Economic Policies.",
+      "English Literature, Language Communication Skills & Creative Writing.",
+      "Public Policy Foundations, Environmental Studies & Sociology Ethics."
     ],
     syllabus: [
       "Indian History, Ancient Civilization & Medieval Era",
@@ -1794,9 +1946,12 @@ const COURSES: CourseItem[] = [
     tagline: '"SELF-PACED COMPUTING LOGIC, DATABASE SETUPS AND WEB PROGRAMMING."',
     description: "Self-paced distance computer degree covering programming logic, database setups, web development, and software engineering principles.",
     longAbout: "To deliver flexible computer education supported by online learning resources, practical assignments, and flexible exam schedules.",
-    eligibility: [
-      "Passed Class 12th from a recognized board.",
-      "Basic understanding of computer basics."
+    whatYouWillLearn: [
+      "Computer Logic Fundamentals & C/Java Programming Syntaxes.",
+      "Database Management Systems (SQL) & Data Normalization Concepts.",
+      "Web Technology Basics: HTML, CSS, JavaScript & Responsive Layouts.",
+      "Computer Networks, TCP/IP Security Principles & Operating Systems.",
+      "Software Engineering Life Cycle & Self-Paced Project Submissions."
     ],
     syllabus: [
       "Programming Logic in C & Java",
@@ -1828,9 +1983,12 @@ const COURSES: CourseItem[] = [
     tagline: '"BUSINESS ADMINISTRATION, DIGITAL MARKETING AND FINANCE."',
     description: "Flexible distance management degree training students in enterprise administration, digital marketing, corporate finance, and business operations.",
     longAbout: "To offer flexible business management education for working individuals seeking degree validation in marketing, finance, and enterprise operations.",
-    eligibility: [
-      "Passed Class 12th in any stream.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Business Organization Principles & Management Process Functions.",
+      "Financial Accounting, Cost Bookkeeping & Business Economics.",
+      "Marketing Management, E-Commerce Strategy & Sales Fundamentals.",
+      "Human Resource Management & Organizational Behavior Principles.",
+      "Enterprise Business Strategy & Flexible Online Assignment Projects."
     ],
     syllabus: [
       "Business Organization & Management",
@@ -1862,9 +2020,12 @@ const COURSES: CourseItem[] = [
     tagline: '"CORPORATE ACCOUNTING, AUDITING AND TAXATION LAWS."',
     description: "Flexible undergraduate commerce program covering corporate accounting, income tax laws, auditing, business economics, and banking.",
     longAbout: "To provide flexible commerce degree education focused on corporate accounting, direct/indirect taxation, and financial auditing.",
-    eligibility: [
-      "Passed Class 12th in Commerce or Science stream.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Financial Accounting, Corporate Accounting & Cost Accounting.",
+      "Direct Income Tax Laws, GST Tax Returns & Tax Planning Rules.",
+      "Financial Auditing Standards, Company Law & Business Statistics.",
+      "Banking Operations, Commercial Insurance & Financial Markets.",
+      "Business Communication & Managerial Economics Fundamentals."
     ],
     syllabus: [
       "Financial Accounting & Cost Accounting",
@@ -1896,9 +2057,12 @@ const COURSES: CourseItem[] = [
     tagline: '"EDUCATIONAL PEDAGOGY, CURRICULUM DESIGN AND SCHOOL ADMIN."',
     description: "Post-graduate degree in educational pedagogy, curriculum designing, school administration, and psychological foundations of learning.",
     longAbout: "To train educators in advanced learning psychology, educational measurement, school administration, and modern curriculum construction.",
-    eligibility: [
-      "Bachelor Graduation Degree in any field.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Philosophical, Sociological & Psychological Foundations of Education.",
+      "Advanced Educational Psychology, Human Learning & Development.",
+      "Modern Curriculum Construction, Instructional Design & Technology.",
+      "Educational Measurement, Testing Evaluation & Statistical Research.",
+      "School Administration, Educational Guidance & Distance Education Thesis."
     ],
     syllabus: [
       "Philosophical & Sociological Education",
@@ -1930,9 +2094,12 @@ const COURSES: CourseItem[] = [
     tagline: '"BRITISH, AMERICAN & INDIAN ENGLISH LITERATURE AND LINGUISTICS."',
     description: "Comprehensive study of British, American, Indian English literature, literary criticism, linguistics, and post-colonial studies.",
     longAbout: "To master English literary history, critical theories, phonetics, and creative copywriting for academia and corporate media.",
-    eligibility: [
-      "Graduation Degree in any stream.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "British Poetry, Drama & Prose from Chaucer to Modernist Era.",
+      "American Literature, Fiction, Poetry & Cultural Movement Studies.",
+      "Indian English Writing, Commonwealth & Post-Colonial Literature.",
+      "Classical & Contemporary Literary Theory, Structuralism & Feminism.",
+      "English Linguistics, Phonetics, Syntax & Language Teaching Principles."
     ],
     syllabus: [
       "Chaucerian to 18th Century Drama",
@@ -1964,9 +2131,12 @@ const COURSES: CourseItem[] = [
     tagline: '"हिंदी साहित्य का इतिहास, काव्यशास्त्र एवं राजभाषा अध्ययन।"',
     description: "हिंदी साहित्य का इतिहास, प्राचीन एवं आधुनिक काव्य, कथा साहित्य, नाटक एवं भाषा विज्ञान में स्नातकोत्तर डिग्री।",
     longAbout: "हिंदी भाषा एवं साहित्य में उच्च अध्ययन हेतु स्नातकोत्तर डिग्री। यह पाठ्यक्रम नेट/स्लेट परीक्षा तथा राजभाषा अधिकारी पद हेतु तैयार करता है।",
-    eligibility: [
-      "स्नातक (Graduation) पास किसी भी संकाय में।",
-      "न्यूनतम 45% अंक।"
+    whatYouWillLearn: [
+      "हिंदी साहित्य का इतिहास: आदिकाल, भक्तिकाल, रीतिकाल एवं आधुनिक काल।",
+      "प्राचीन एवं आधुनिक हिंदी काव्य (कबीर, सूर, तुलसी, छायावाद एवं प्रगतिवाद)।",
+      "हिंदी कथा साहित्य: प्रमुख उपन्यास, कहानियां एवं नाटक।",
+      "भाषा विज्ञान, हिंदी भाषा का उद्भव, विकास एवं देवनागरी लिपि।",
+      "भारतीय एवं पाश्चात्य काव्यशास्त्र, आलोचना सिद्धांत एवं राजभाषा।"
     ],
     syllabus: [
       "हिंदी साहित्य का इतिहास (आदि, भक्ति, रीति)",
@@ -1998,9 +2168,12 @@ const COURSES: CourseItem[] = [
     tagline: '"MANAGERIAL ACCOUNTING, CORPORATE TAX PLANNING AND AUDITING."',
     description: "Advanced master degree in accounting theory, corporate tax planning, international finance, and managerial auditing.",
     longAbout: "To prepare senior accounting professionals, tax planning consultants, and commerce lecturers for UGC NET examinations.",
-    eligibility: [
-      "B.Com or BBA Graduation Degree.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Managerial Accounting, Financial Control & Corporate Accounting.",
+      "International Business, Foreign Trade Policy & Global Finance.",
+      "Corporate Tax Planning, Direct/Indirect Tax Laws & Auditing.",
+      "Advanced Business Statistics, Quantitative Techniques & Research.",
+      "Corporate Financial Strategy & Master Distance Dissertation Project."
     ],
     syllabus: [
       "Managerial Accounting & Control",
@@ -2032,9 +2205,12 @@ const COURSES: CourseItem[] = [
     tagline: '"CLOUD VIRTUALIZATION, DATA WAREHOUSING AND NETWORK SECURITY."',
     description: "Advanced computing master degree focusing on software engineering, cloud virtualization, network security, and database design.",
     longAbout: "To master data warehousing, information security protocols, web services APIs, and high-performance IT architecture.",
-    eligibility: [
-      "BCA / B.Sc CS / B.Sc IT graduation.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "Advanced Data Structures, Object-Oriented Software Design & C++.",
+      "Database Architecture, Data Warehousing & SQL Query Optimization.",
+      "Web Services, REST APIs, Cloud Computing & Network Infrastructure.",
+      "Information Security Protocols, Cryptography & Network Management.",
+      "Master IT Dissertation Project, Software Design & Testing."
     ],
     syllabus: [
       "Advanced Data Structures & Analysis",
@@ -2066,9 +2242,12 @@ const COURSES: CourseItem[] = [
     tagline: '"COMMUNITY DEVELOPMENT, LABOR WELFARE AND NGO MANAGEMENT."',
     description: "Professional post-graduate degree in social welfare administration, community development, medical social work, and HR welfare.",
     longAbout: "To train social welfare officers, community managers, and HR labor welfare specialists for government welfare departments and international NGOs.",
-    eligibility: [
-      "Graduation Degree in any discipline.",
-      "Minimum 45% aggregate marks."
+    whatYouWillLearn: [
+      "History, Philosophy & Professional Ethics of Social Work in India.",
+      "Community Organization, Social Action & Rural/Urban Development.",
+      "Medical & Psychiatric Social Work, Mental Health & Rehabilitation.",
+      "Human Resource Management, Labor Welfare & Industrial Relations.",
+      "Social Work Concurrent Fieldwork Practicals & Dissertation Project."
     ],
     syllabus: [
       "Social Work History & Ethics",
@@ -2100,9 +2279,12 @@ const COURSES: CourseItem[] = [
     tagline: '"EXECUTIVE LEADERSHIP, DIGITAL MARKETING AND PORTFOLIO CONTROL."',
     description: "Flexible executive distance MBA program designed for working professionals seeking career acceleration in Finance, HR, Marketing, or IT Systems.",
     longAbout: "To accelerate careers of working professionals through flexible business administration modules, strategic digital marketing, and virtual viva evaluations.",
-    eligibility: [
-      "Graduation Bachelor Degree in any discipline.",
-      "Work experience beneficial."
+    whatYouWillLearn: [
+      "Managerial Process, Organizational Behavior & Leadership Dynamics.",
+      "Financial Management, Accounting for Managers & Costing Control.",
+      "Marketing Management, Strategic Digital Branding & Market Analytics.",
+      "Specialized Domain Electives (Finance, HR, Marketing, Operations).",
+      "Strategic Management, Flexible Executive Project & Viva Defense."
     ],
     syllabus: [
       "Management Process & Behavior",
@@ -2136,9 +2318,12 @@ const COURSES: CourseItem[] = [
     tagline: '"GENERATIVE AI AUTOMATION, PERFORMANCE ADS AND SEARCH ENGINE DOMINANCE."',
     description: "Flagship 12-month comprehensive digital marketing training program designed to turn you into a certified growth expert using AI tools, performance ads, and SEO.",
     longAbout: "To train growth marketers capable of leveraging ChatGPT, Midjourney, Google Ads performance max campaigns, and Meta ad funnels for exponential scaling.",
-    eligibility: [
-      "Passed Class 12th or pursuing Graduation.",
-      "Passion for social media and copywriting."
+    whatYouWillLearn: [
+      "Search Engine Optimization (SEO): Keyword Research, On-Page & Backlinks.",
+      "Pay-Per-Click (PPC) Advertising: Google Ads, Meta Facebook/Insta Ads.",
+      "Generative AI Automation: ChatGPT Copywriting, Midjourney Visual Assets.",
+      "Social Media Funnels, Influencer Outreach & Brand Growth Strategy.",
+      "Web Analytics, Google Tag Manager & Conversion Rate Optimization (CRO)."
     ],
     syllabus: [
       "Search Engine Optimization (SEO)",
@@ -2172,9 +2357,12 @@ const COURSES: CourseItem[] = [
     tagline: '"PYTHON DATA SCIENCE, SQL DATABASE QUERYING AND POWER BI DASHBOARDS."',
     description: "Learn to inspect, clean, transform, and model data to discover useful information, power business decisions, and build interactive Power BI & Tableau dashboards.",
     longAbout: "To transform aspiring analysts into business intelligence specialists through hands-on Python Pandas data cleaning, SQL query optimization, and Power BI interactive dashboard creation.",
-    eligibility: [
-      "Passed Class 12th or Graduation with analytical mindset.",
-      "Basic familiarity with MS Excel."
+    whatYouWillLearn: [
+      "Advanced MS Excel Data Cleaning, VLOOKUP, XLOOKUP & Pivot Tables.",
+      "SQL Database Querying: Joins, Aggregations, Subqueries & CTEs.",
+      "Python Data Science Stack: Data Processing with Pandas & NumPy.",
+      "Interactive Business Dashboards in Power BI & Tableau Desktop.",
+      "Data Visualization, Business Intelligence & Capstone Client Datasets."
     ],
     syllabus: [
       "Advanced Excel Data Analytics & Power Query",
@@ -2619,19 +2807,19 @@ export default function App() {
 
                   </div>
 
-                  {/* ELIGIBILITY CRITERIA & COURSE HIGHLIGHTS GRID */}
+                  {/* WHAT YOU WILL LEARN IN THIS COURSE & COURSE HIGHLIGHTS GRID */}
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     
-                    {/* Left: ELIGIBILITY CRITERIA */}
-                    <div className="lg:col-span-5 p-8 rounded-3xl bg-zinc-950/80 backdrop-blur-md border border-blue-500/25 shadow-xl space-y-6">
+                    {/* Left: WHAT YOU WILL LEARN IN THIS COURSE (5 TAILORED POINTS) */}
+                    <div className="lg:col-span-6 p-8 rounded-3xl bg-zinc-950/80 backdrop-blur-md border border-blue-500/25 shadow-xl space-y-6">
                       <div className="flex items-center gap-3 text-blue-400 border-b border-zinc-800 pb-4">
-                        <ShieldCheck size={24} />
-                        <h3 className="text-lg font-black tracking-wider uppercase text-white">ELIGIBILITY CRITERIA</h3>
+                        <CheckSquare size={24} />
+                        <h3 className="text-lg font-black tracking-wider uppercase text-white">WHAT YOU WILL LEARN IN THIS COURSE</h3>
                       </div>
 
                       <ul className="space-y-4">
-                        {activeCourseDetailView.eligibility.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-300 font-light">
+                        {activeCourseDetailView.whatYouWillLearn.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
                             <CheckCircle2 size={18} className="text-emerald-400 shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
@@ -2640,7 +2828,7 @@ export default function App() {
                     </div>
 
                     {/* Right: 6 COURSE HIGHLIGHTS GRID */}
-                    <div className="lg:col-span-7 p-8 rounded-3xl bg-zinc-950/80 backdrop-blur-md border border-blue-500/25 shadow-xl space-y-6">
+                    <div className="lg:col-span-6 p-8 rounded-3xl bg-zinc-950/80 backdrop-blur-md border border-blue-500/25 shadow-xl space-y-6">
                       <div className="flex items-center gap-3 text-blue-400 border-b border-zinc-800 pb-4">
                         <Sparkles size={24} />
                         <h3 className="text-lg font-black tracking-wider uppercase text-white">COURSE HIGHLIGHTS</h3>
@@ -3210,7 +3398,7 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      {/* POP-OUT ADMISSIONS FORM MODAL (ROYAL BLUE THEME) */}
+      {/* POP-OUT ADMISSIONS FORM MODAL (DARK BLUE THEME) */}
       <AnimatePresence>
         {isApplyModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
