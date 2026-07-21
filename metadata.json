@@ -1,0 +1,6 @@
+{
+  "name": "IINT - Indian Institute of Networking and Technology",
+  "description": "Interactive landing page and portal for Indian Institute of Networking and Technology (IINT), a Unit of Adarsh Welfare and Education Society, affiliated with NSDC, NDLM, MSME, NASSCOM, and ISO 9001 certified.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
