@@ -2884,8 +2884,8 @@ export default function App() {
 
               {/* 3. Experience Stats Counters */}
               <div className="w-full max-w-5xl px-4 grid grid-cols-1 sm:grid-cols-3 gap-6 my-10">
-                <div className="p-6 rounded-2xl bg-zinc-950/60 backdrop-blur-md border border-blue-500/30 text-center flex flex-col items-center transition-all shadow-[0_0_20px_rgba(59,130,246,0.1)]">
-                  <div className="p-3 bg-blue-500/15 rounded-xl text-blue-400 mb-3 border border-blue-500/30">
+                <div className="p-6 rounded-2xl bg-zinc-950/40 backdrop-blur-md text-center flex flex-col items-center transition-all">
+                  <div className="p-3 bg-blue-500/15 rounded-xl text-blue-400 mb-3 border border-blue-500/20">
                     <Building size={20} />
                   </div>
                   <span className="text-3xl font-black tracking-tight text-white">
@@ -2894,8 +2894,8 @@ export default function App() {
                   <span className="text-xs font-mono text-blue-400 uppercase tracking-widest mt-1">Institutional Leadership</span>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-zinc-950/60 backdrop-blur-md border border-blue-500/30 text-center flex flex-col items-center transition-all shadow-[0_0_20px_rgba(59,130,246,0.1)]">
-                  <div className="p-3 bg-blue-500/15 rounded-xl text-blue-400 mb-3 border border-blue-500/30">
+                <div className="p-6 rounded-2xl bg-zinc-950/40 backdrop-blur-md text-center flex flex-col items-center transition-all">
+                  <div className="p-3 bg-blue-500/15 rounded-xl text-blue-400 mb-3 border border-blue-500/20">
                     <Users size={20} />
                   </div>
                   <span className="text-3xl font-black tracking-tight text-white">
@@ -2904,8 +2904,8 @@ export default function App() {
                   <span className="text-xs font-mono text-blue-400 uppercase tracking-widest mt-1">Trained Alumni Worldwide</span>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-zinc-950/60 backdrop-blur-md border border-blue-500/30 text-center flex flex-col items-center transition-all shadow-[0_0_20px_rgba(59,130,246,0.1)]">
-                  <div className="p-3 bg-blue-500/15 rounded-xl text-blue-400 mb-3 border border-blue-500/30">
+                <div className="p-6 rounded-2xl bg-zinc-950/40 backdrop-blur-md text-center flex flex-col items-center transition-all">
+                  <div className="p-3 bg-blue-500/15 rounded-xl text-blue-400 mb-3 border border-blue-500/20">
                     <Award size={20} />
                   </div>
                   <span className="text-3xl font-black tracking-tight text-white">
