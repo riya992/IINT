@@ -2371,7 +2371,6 @@ const COURSES: CourseItem[] = [
       "Interactive Business Dashboards in Power BI & Tableau Desktop.",
       "Data Visualization, Business Intelligence & Capstone Client Datasets."
     ],
-    syllabus: [
       "Advanced Excel Data Analytics & Power Query",
       "SQL Querying & Database Normalization",
       "Python Data Science Stack (NumPy, Pandas)",
@@ -2391,6 +2390,17 @@ const COURSES: CourseItem[] = [
 export default function App() {
   const [activePage, setActivePage] = useState<PageTab>("home");
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Light Mode Theme State
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  useEffect(() => {
+    if (isLightMode) {
+      document.body.classList.add("light-mode");
+    } else {
+      document.body.classList.remove("light-mode");
+    }
+  }, [isLightMode]);
 
   // Rotating Hero Taglines (6-second interval)
   const [taglineIndex, setTaglineIndex] = useState(0);
@@ -2445,7 +2455,7 @@ export default function App() {
     const timer = setInterval(() => {
       setTaglineIndex((prev) => (prev + 1) % taglines.length);
     }, 6000);
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, [taglines.length]);
 
   useEffect(() => {
@@ -2534,7 +2544,11 @@ export default function App() {
         setActiveCourseDetailView(course);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
-      className="relative p-6 rounded-2xl bg-zinc-950/80 backdrop-blur-md border border-blue-500/30 hover:border-emerald-400 hover:bg-gradient-to-br hover:from-emerald-700/90 hover:to-teal-800/90 hover:shadow-[0_0_35px_rgba(16,185,129,0.6)] transition-all duration-300 shadow-2xl flex flex-col justify-between overflow-hidden group min-h-[210px] cursor-pointer"
+      className={`relative p-6 rounded-2xl backdrop-blur-md border hover:border-emerald-400 hover:bg-gradient-to-br hover:from-emerald-700/90 hover:to-teal-800/90 hover:shadow-[0_0_35px_rgba(16,185,129,0.6)] transition-all duration-300 shadow-2xl flex flex-col justify-between overflow-hidden group min-h-[210px] cursor-pointer ${
+        isLightMode 
+          ? "bg-white/90 border-blue-500/30 text-slate-900 shadow-xl" 
+          : "bg-zinc-950/80 border-blue-500/30 text-white"
+      }`}
     >
       {/* Background Course Image Photo - Bright & Crystal Clear */}
       {course.bgImage && (
@@ -2544,12 +2558,20 @@ export default function App() {
           className="absolute inset-0 w-full h-full object-cover opacity-55 group-hover:opacity-85 transition-opacity duration-300 pointer-events-none filter brightness-105 contrast-110"
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/65 to-zinc-950/20 group-hover:from-emerald-950/85 group-hover:to-transparent pointer-events-none" />
+      <div className={`absolute inset-0 pointer-events-none ${
+        isLightMode 
+          ? "bg-gradient-to-t from-white via-white/60 to-transparent group-hover:from-emerald-950/80" 
+          : "bg-gradient-to-t from-zinc-950 via-zinc-950/65 to-zinc-950/20 group-hover:from-emerald-950/85 group-hover:to-transparent"
+      }`} />
 
       {/* CLEAN CARD CONTENT: SHORT TITLE + FULL FORM ONLY */}
       <div className="relative z-10 space-y-2">
         <div className="flex items-center justify-between gap-2 mb-2">
-          <span className="text-[11px] font-semibold text-zinc-100 group-hover:text-white uppercase tracking-wider truncate bg-black/50 px-2.5 py-0.5 rounded-full border border-white/20 backdrop-blur-md shadow-sm">
+          <span className={`text-[11px] font-semibold uppercase tracking-wider truncate px-2.5 py-0.5 rounded-full border shadow-sm backdrop-blur-md ${
+            isLightMode 
+              ? "bg-slate-900/80 text-white border-slate-700" 
+              : "text-zinc-100 bg-black/50 border-white/20"
+          }`}>
             {course.category}
           </span>
           <span className="text-[11px] font-bold text-blue-200 bg-blue-950/90 group-hover:bg-emerald-950 group-hover:text-emerald-200 group-hover:border-emerald-400 px-3 py-0.5 rounded-full border border-blue-500/50 shadow-md">
@@ -2557,18 +2579,22 @@ export default function App() {
           </span>
         </div>
 
-        <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white transition-colors leading-tight group-hover:text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]">
+        <h3 className={`text-xl sm:text-2xl font-black tracking-tight transition-colors leading-tight group-hover:text-white ${
+          isLightMode ? "text-slate-900 drop-shadow-[0_1px_5px_rgba(255,255,255,0.9)]" : "text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)]"
+        }`}>
           {course.title}
         </h3>
 
         {course.fullTitle && (
-          <p className="text-xs font-semibold text-blue-200 group-hover:text-emerald-100 transition-colors drop-shadow-md bg-black/40 px-2 py-0.5 rounded-md inline-block border border-white/10 backdrop-blur-sm">
+          <p className={`text-xs font-semibold group-hover:text-emerald-100 transition-colors drop-shadow-md px-2 py-0.5 rounded-md inline-block border backdrop-blur-sm ${
+            isLightMode ? "bg-white/70 text-blue-800 border-blue-200" : "bg-black/40 text-blue-200 border-white/10"
+          }`}>
             ({course.fullTitle})
           </p>
         )}
       </div>
 
-      {/* CARD FOOTER - DURATION REMOVED AS REQUESTED */}
+      {/* CARD FOOTER */}
       <div className="relative z-10 pt-4 mt-4 border-t border-zinc-800/80 group-hover:border-emerald-400/40 flex items-center justify-end text-xs transition-colors">
         <button 
           onClick={(e) => {
@@ -2586,10 +2612,14 @@ export default function App() {
   );
 
   return (
-    <div className="relative w-full min-h-screen bg-black text-white selection:bg-blue-600/40 selection:text-blue-200 overflow-x-hidden flex flex-col justify-between">
+    <div className={`relative w-full min-h-screen transition-colors duration-300 overflow-x-hidden flex flex-col justify-between ${
+      isLightMode 
+        ? "bg-slate-50 text-slate-900 selection:bg-blue-200 selection:text-blue-900" 
+        : "bg-black text-white selection:bg-blue-600/40 selection:text-blue-200"
+    }`}>
       
       {/* Dynamic 3D WebGL Particle Canvas Background */}
-      <ParticleCanvas scrollProgress={scrollProgress} />
+      <ParticleCanvas scrollProgress={scrollProgress} isLightMode={isLightMode} />
 
       {/* Floating Glassmorphic Top Navigation Bar */}
       <NavigationBar 
@@ -2599,11 +2629,21 @@ export default function App() {
           setIsApplyModalOpen(true);
           setApplySubmitted(false);
         }}
+        isLightMode={isLightMode}
+        onToggleTheme={() => setIsLightMode(prev => !prev)}
       />
 
       {/* Ambient Lighting / Reading Overlays */}
-      <div className="fixed inset-0 pointer-events-none z-1 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
-      <div className="fixed inset-0 pointer-events-none z-1 bg-[radial-gradient(circle_at_center,transparent_30%,#000000_90%)] opacity-85" />
+      <div className={`fixed inset-0 pointer-events-none z-1 transition-opacity duration-300 ${
+        isLightMode 
+          ? "bg-gradient-to-b from-white/90 via-slate-100/40 to-slate-200/90 opacity-70" 
+          : "bg-gradient-to-b from-black via-transparent to-black opacity-80"
+      }`} />
+      <div className={`fixed inset-0 pointer-events-none z-1 transition-opacity duration-300 ${
+        isLightMode 
+          ? "bg-[radial-gradient(circle_at_center,transparent_30%,#e2e8f0_90%)] opacity-70" 
+          : "bg-[radial-gradient(circle_at_center,transparent_30%,#000000_90%)] opacity-85"
+      }`} />
 
       {/* DYNAMIC RIGHT HAND SIDE FLOATING SOCIAL MEDIA DOCK */}
       <div className="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-3.5">

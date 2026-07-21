@@ -2,18 +2,22 @@ import { useEffect, useRef, useState } from "react";
 
 interface ParticleCanvasProps {
   scrollProgress: number;
+  isLightMode?: boolean;
 }
 
-export default function ParticleCanvas({ scrollProgress }: ParticleCanvasProps) {
+export default function ParticleCanvas({ scrollProgress, isLightMode = false }: ParticleCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [glSupported, setGlSupported] = useState(true);
 
   // Mouse coordinate tracking (mapped to [-1, 1])
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0, active: false });
 
-  // Use refs to pass the scroll progress into the WebGL animation loop safely
+  // Use refs to pass scroll progress and light mode into WebGL loop
   const scrollRef = useRef(scrollProgress);
   scrollRef.current = scrollProgress;
+
+  const isLightRef = useRef(isLightMode);
+  isLightRef.current = isLightMode;
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {

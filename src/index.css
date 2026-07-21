@@ -22,37 +22,27 @@
   background: rgba(59, 130, 246, 0.6);
 }
 
-:root {
-  color-scheme: dark !important;
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-
 html {
-  color-scheme: dark !important;
-  background-color: #000000 !important;
-  color: #ffffff !important;
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
   scroll-behavior: smooth;
 }
 
 body {
-  color-scheme: dark !important;
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: #000000;
+  color: #ffffff;
   overflow-x: hidden;
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root, html, body {
-    color-scheme: dark !important;
-    background-color: #000000 !important;
-    color: #ffffff !important;
-  }
+body.light-mode {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
 }
+
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
