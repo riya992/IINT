@@ -14,13 +14,11 @@ import {
 
 import galLiveLab from "../assets/images/gal_adarsh_lab_live_1785303202656.jpg";
 import galSeminarHall from "../assets/images/gal_adarsh_seminar_1785303224034.jpg";
-import galStudentsExam from "../assets/images/gal_adarsh_exam_1785303245002.jpg";
 import galComputerLab from "../assets/images/gal_adarsh_lab2_1785303276099.jpg";
 import galFireExit from "../assets/images/gal_adarsh_corridor_1785303290752.jpg";
-import galSmartClassroom from "../assets/images/gal_adarsh_class2_1785303308763.jpg";
 import galSeminarAlt from "../assets/images/gal_adarsh_seminar_alt.jpg";
-import galClassAlt from "../assets/images/gal_adarsh_class_alt.jpg";
 import galLabAlt from "../assets/images/gal_adarsh_lab_alt.jpg";
+import galGraduatedStudents from "../assets/images/gal_iint_graduated_students.jpg";
 
 export interface GalleryPhoto {
   id: string;
@@ -49,14 +47,6 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
     description: "Our spacious seminar hall equipped with ceiling-mounted projector and smart screen for digital presentations and theory lectures."
   },
   {
-    id: "gal-3",
-    title: "Students During Exam / Class Notes",
-    category: "Smart Classrooms",
-    categoryKey: "classrooms",
-    imageUrl: galStudentsExam,
-    description: "Students engaged in writing class notes and exam papers in our well-lit classroom — focused, disciplined, and ready to learn."
-  },
-  {
     id: "gal-5",
     title: "Main Computer Lab — Coding Session",
     category: "Computer Labs",
@@ -73,14 +63,6 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
     description: "Well-lit institute corridor with clearly marked Fire Exit signs and Counselling Office door — ensuring safety and student support accessibility."
   },
   {
-    id: "gal-7",
-    title: "EduBridge Workshop — Employment Session",
-    category: "Smart Classrooms",
-    categoryKey: "classrooms",
-    imageUrl: galSmartClassroom,
-    description: "Students attending an EduBridge4Employment workshop session, actively taking notes in our spacious classroom."
-  },
-  {
     id: "gal-9",
     title: "Smart Classroom — Presentation & Theory",
     category: "Smart Classrooms",
@@ -89,20 +71,20 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
     description: "Students attending a digital theory lecture in our projector-enabled smart classroom."
   },
   {
-    id: "gal-10",
-    title: "Interactive Class Session",
-    category: "Smart Classrooms",
-    categoryKey: "classrooms",
-    imageUrl: galClassAlt,
-    description: "Students taking notes and participating in interactive academic discussions."
-  },
-  {
     id: "gal-11",
     title: "Computer Laboratory — Practical Practice",
     category: "Computer Labs",
     categoryKey: "labs",
     imageUrl: galLabAlt,
     description: "Students working on programming assignments and lab practices in our modern computer facility."
+  },
+  {
+    id: "gal-12",
+    title: "Graduated Students — Certificate Ceremony",
+    category: "Infrastructure",
+    categoryKey: "infrastructure",
+    imageUrl: galGraduatedStudents,
+    description: "IINT Computer Centre graduated students celebrating on stage with certificates — a proud moment of achievement and success."
   }
 ];
 

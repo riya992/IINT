@@ -42,7 +42,7 @@ export default function NavigationBar({
       className="fixed top-2 sm:top-4 left-0 right-0 z-50 px-2 sm:px-6 max-w-7xl mx-auto w-full"
     >
       {/* Mobile Top Bar (Clean Logo + Mobile Menu Toggle) */}
-      <div className="flex sm:hidden items-center justify-between w-full px-2.5 py-1.5 bg-blue-950/90 backdrop-blur-xl border border-blue-600/50 rounded-2xl shadow-2xl relative">
+      <div className="flex sm:hidden items-center justify-between w-full px-2.5 py-1.5 bg-white border border-zinc-200 rounded-2xl shadow-md relative">
         <div 
           onClick={() => handleScrollTo("home")} 
           className="flex items-center gap-1.5 cursor-pointer"
@@ -52,7 +52,7 @@ export default function NavigationBar({
 
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="w-9 h-9 rounded-xl bg-blue-900 border border-blue-500/50 text-white flex items-center justify-center cursor-pointer active:scale-95 shadow-md shrink-0"
+          className="w-9 h-9 rounded-xl bg-zinc-100 border border-zinc-300 text-zinc-700 flex items-center justify-center cursor-pointer active:scale-95 shadow-sm shrink-0"
           aria-label="Toggle Navigation Menu"
         >
           {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -65,11 +65,11 @@ export default function NavigationBar({
               initial={{ opacity: 0, y: -10, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              className="absolute top-13 left-0 right-0 bg-blue-950/95 border border-blue-500/60 rounded-2xl p-3.5 shadow-2xl backdrop-blur-2xl flex flex-col gap-2.5 z-50"
+              className="absolute top-13 left-0 right-0 bg-white border border-zinc-200 rounded-2xl p-3.5 shadow-xl flex flex-col gap-2.5 z-50"
             >
-              <div className="flex items-center justify-between pb-2 border-b border-blue-800/80 px-1">
+              <div className="flex items-center justify-between pb-2 border-b border-zinc-200 px-1">
                 <IINTLogo size="sm" showTagline={true} />
-                <span className="text-[10px] text-cyan-300 font-bold bg-blue-900/80 px-2 py-0.5 rounded-full border border-cyan-400/40">
+                <span className="text-[10px] text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
                   Official Portal
                 </span>
               </div>
@@ -84,7 +84,7 @@ export default function NavigationBar({
                     className={`px-3 py-2 text-xs font-bold rounded-xl text-left transition-all ${
                       activeSection === item.id 
                         ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md"
-                        : "bg-blue-900/60 text-zinc-200 hover:text-white hover:bg-blue-800/80"
+                        : "bg-zinc-50 text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100 border border-zinc-200"
                     }`}
                   >
                     {item.label}
@@ -107,7 +107,7 @@ export default function NavigationBar({
       </div>
 
       {/* Desktop Navigation Bar */}
-      <div className="hidden sm:flex items-center justify-between gap-4 w-full">
+      <div className="hidden sm:flex items-center justify-between gap-4 w-full px-3 py-2 bg-white border border-zinc-200 rounded-2xl shadow-md">
         {/* Official IINT Logo at Top Left Corner */}
         <div 
           onClick={() => handleScrollTo("home")}
@@ -117,7 +117,7 @@ export default function NavigationBar({
         </div>
 
         {/* Navigation Links Floating Container */}
-        <div className="flex items-center gap-1 sm:gap-3 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-blue-950/90 backdrop-blur-xl border border-blue-600/50 shadow-[0_4px_25px_rgba(0,160,233,0.25)] shrink-0">
+        <div className="flex items-center gap-1 sm:gap-3 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-zinc-50 border border-zinc-200 shrink-0">
           <nav className="flex items-center gap-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
@@ -128,7 +128,7 @@ export default function NavigationBar({
                   className={`relative px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-sans transition-all rounded-full cursor-pointer select-none whitespace-nowrap ${
                     isActive 
                       ? "text-white font-bold" 
-                      : "text-zinc-200 hover:text-white hover:bg-blue-800/50"
+                      : "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100"
                   }`}
                 >
                   {isActive && (

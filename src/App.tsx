@@ -48,7 +48,7 @@ import RightFloatingDock from "./components/RightFloatingDock";
 import { CourseDetailModal } from "./components/CourseDetailModal";
 import QueryAIAssistant from "./components/QueryAIAssistant";
 import { getCourseBgImage } from "./lib/courseImages";
-import { submitToGoogleSheet } from "./lib/googleSheetApi";
+import { submitStudentEnquiry } from "./lib/googleSheetApi";
 
 // Authentic IINT & Adarsh Education Course List
 const COURSES = [
@@ -1047,6 +1047,8 @@ export default function App() {
   const [applyForm, setApplyForm] = useState({ name: "", phone: "", email: "", state: "Haryana", city: "", course: COURSES[0].title });
   const [applySubmitted, setApplySubmitted] = useState(false);
   const [isApplySubmitting, setIsApplySubmitting] = useState(false);
+  const [applyError, setApplyError] = useState("");
+  const [applySuccessData, setApplySuccessData] = useState({ name: "", phone: "", email: "", state: "Haryana", city: "", course: COURSES[0].title });
 
   const handleViewCategory = (streamId: string) => {
     setActiveCourseStream(streamId);
@@ -1658,25 +1660,27 @@ export default function App() {
                 <form 
                   onSubmit={async (e) => {
                     e.preventDefault();
+                    setApplyError("");
                     setIsApplySubmitting(true);
 
-                    const sent = await submitToGoogleSheet({
-                      formType: "enquiry",
+                    const result = await submitStudentEnquiry({
                       name: applyForm.name,
-                      email: applyForm.email,
-                      phone: applyForm.phone,
+                      course: applyForm.course,
                       state: applyForm.state,
                       city: applyForm.city,
-                      course: applyForm.course,
+                      email: applyForm.email,
+                      phone: applyForm.phone,
                     });
 
                     setIsApplySubmitting(false);
 
-                    if (!sent) {
-                      alert("Could not reach the server. Please try again or call the campus helpline.");
+                    if (!result.success) {
+                      setApplyError(result.error || "Submission failed. Please try again.");
                       return;
                     }
 
+                    setApplySuccessData({ ...applyForm });
+                    setApplyForm({ name: "", phone: "", email: "", state: "Haryana", city: "", course: COURSES[0].title });
                     setApplySubmitted(true);
                   }}
                   className="space-y-3.5"
@@ -1776,6 +1780,9 @@ export default function App() {
                   </div>
 
                   <div className="pt-3">
+                    {applyError && (
+                      <p className="text-xs text-red-500 text-center mb-3">{applyError}</p>
+                    )}
                     <button
                       type="submit"
                       disabled={isApplySubmitting}
@@ -1793,17 +1800,18 @@ export default function App() {
                   </div>
                   <h4 className="text-lg font-bold text-zinc-900 dark:text-white">Admission Enquiry Submitted!</h4>
                   <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed max-w-sm mx-auto font-light">
-                    Thank you, <span className="text-emerald-600 dark:text-emerald-400 font-bold">{applyForm.name}</span>! Your admission enquiry for <span className="text-zinc-900 dark:text-white font-bold">{applyForm.course}</span> from <span className="text-emerald-600 dark:text-emerald-400 font-bold">{applyForm.city}, {applyForm.state}</span> has been logged.
+                    Thank you, <span className="text-emerald-600 dark:text-emerald-400 font-bold">{applySuccessData.name}</span>! Your admission enquiry for <span className="text-zinc-900 dark:text-white font-bold">{applySuccessData.course}</span> from <span className="text-emerald-600 dark:text-emerald-400 font-bold">{applySuccessData.city}, {applySuccessData.state}</span> has been logged.
                   </p>
                   <p className="text-xs text-zinc-500 max-w-xs mx-auto">
-                    Our admission counselor will call you at <span className="text-emerald-600 dark:text-emerald-400 font-medium">{applyForm.phone}</span> within 24 hours to assist with seat reservation and documentation.
+                    Our admission counselor will call you at <span className="text-emerald-600 dark:text-emerald-400 font-medium">{applySuccessData.phone}</span> within 24 hours to assist with seat reservation and documentation.
                   </p>
                   <div className="pt-4">
                     <button
                       onClick={() => {
                         setIsApplyModalOpen(false);
                         setApplySubmitted(false);
-                        setApplyForm(prev => ({ ...prev, name: "", phone: "", email: "", city: "" }));
+                        setApplyError("");
+                        setApplyForm({ name: "", phone: "", email: "", state: "Haryana", city: "", course: COURSES[0].title });
                       }}
                       className="px-6 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-semibold border border-zinc-800 transition-all cursor-pointer"
                     >
