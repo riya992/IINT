@@ -1,0 +1,6 @@
+{
+  "name": "IINT Computer Education",
+  "description": "Premium interactive student portal and course catalog for IINT (Indian Institute of Networking & Technology), a Unit of Adarsh and Welfare Education Society.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
