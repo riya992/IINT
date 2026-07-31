@@ -2,6 +2,8 @@ import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Phone, Mail, MapPin, Send, CheckCircle2, ShieldAlert, Clock } from "lucide-react";
 import { submitToGoogleSheet } from "../lib/googleSheetApi";
+import { saveWhatsAppEnquiry } from "../lib/whatsapp";
+import { IINT_BRANCHES, getGoogleMapsDirectionsUrl, getGoogleMapsEmbedUrl, getTelLink } from "../lib/locations";
 
 interface ContactSectionProps {
   isFullPage?: boolean;
@@ -55,6 +57,15 @@ export default function ContactSection({ isFullPage = false }: ContactSectionPro
       return;
     }
 
+    saveWhatsAppEnquiry({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      state: formData.state,
+      message: formData.message,
+      course: formData.subject,
+    });
+
     setIsSubmitted(true);
     setTimeout(() => {
       setFormData({ name: "", email: "", phone: "", state: "Haryana", subject: "Admission", message: "" });
@@ -107,7 +118,13 @@ export default function ContactSection({ isFullPage = false }: ContactSectionPro
                 </div>
                 <div>
                   <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold">Helpline Numbers</span>
-                  <span className="text-white text-xs sm:text-sm font-black block mt-0.5">070110 16060, 9255593976, 8222973338</span>
+                  <span className="text-white text-xs sm:text-sm font-black block mt-0.5">
+                    <a href="tel:+917011016060" className="hover:text-emerald-400 transition-colors">7011016060</a>
+                    {", "}
+                    <a href="tel:+919255593976" className="hover:text-emerald-400 transition-colors">9255593976</a>
+                    {", "}
+                    <a href="tel:+918222973338" className="hover:text-emerald-400 transition-colors">8222973338</a>
+                  </span>
                 </div>
               </div>
 
@@ -121,132 +138,44 @@ export default function ContactSection({ isFullPage = false }: ContactSectionPro
                 </div>
               </div>
 
-              {/* Head Branch Rohini */}
-              <div className="p-4 rounded-2xl bg-blue-950/20 backdrop-blur-md border border-blue-500/30 flex gap-3.5 items-start hover:border-blue-400 transition-all">
-                <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 shrink-0 mt-0.5">
-                  <MapPin size={16} />
-                </div>
-                <div className="space-y-1 w-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-sans text-blue-400 uppercase tracking-wide font-extrabold">Head Branch (Rohini)</span>
-                    <a 
-                      href="https://g.co/kgs/7kcNyT" 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="text-[10px] text-blue-300 hover:underline font-sans bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30"
+              {IINT_BRANCHES.map((branch) => (
+                <div
+                  key={branch.id}
+                  className="p-4 rounded-2xl bg-blue-950/20 backdrop-blur-md border border-blue-500/30 flex gap-3.5 items-start hover:border-blue-400 transition-all group"
+                >
+                  <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 shrink-0 mt-0.5">
+                    <MapPin size={16} />
+                  </div>
+                  <div className="space-y-1 w-full">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-sans text-blue-400 uppercase tracking-wide font-extrabold">{branch.name}</span>
+                      <a
+                        href={getGoogleMapsDirectionsUrl(branch.address)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[10px] text-blue-300 font-sans bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30 shrink-0 hover:text-white"
+                      >
+                        Directions ↗
+                      </a>
+                    </div>
+                    <a
+                      href={getGoogleMapsDirectionsUrl(branch.address)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-white text-xs sm:text-sm block leading-relaxed font-sans font-medium hover:text-blue-100 transition-colors"
                     >
-                      Google Map ↗
+                      {branch.address}
+                    </a>
+                    <a
+                      href={getTelLink(branch.phone)}
+                      className="text-xs text-blue-300 font-sans font-bold flex items-center gap-1 pt-0.5 hover:text-emerald-400 transition-colors w-fit"
+                    >
+                      <Phone size={12} />
+                      <span>{branch.phone}</span>
                     </a>
                   </div>
-                  <span className="text-white text-xs sm:text-sm block leading-relaxed font-sans font-medium">
-                    3rd Floor, C - 9/7, above Liberty Showroom, opp. Metro Pillar - 396, Pocket 9, Sector 7, Rohini, Delhi, 110085
-                  </span>
-                  <div className="text-xs text-blue-300 font-sans font-bold flex items-center gap-1 pt-0.5">
-                    <Phone size={12} />
-                    <span>Phone: 070110 16060</span>
-                  </div>
                 </div>
-              </div>
-
-              {/* Head Branch Narela */}
-              <div className="p-4 rounded-2xl bg-blue-950/20 backdrop-blur-md border border-blue-500/30 flex gap-3.5 items-start hover:border-blue-400 transition-all">
-                <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 shrink-0 mt-0.5">
-                  <MapPin size={16} />
-                </div>
-                <div className="space-y-1 w-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-sans text-blue-400 uppercase tracking-wide font-extrabold">Head Branch (Narela)</span>
-                    <a 
-                      href="https://maps.google.com/?q=IINT+Adarsh+Computer+Education+Narela+Delhi" 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="text-[10px] text-blue-300 hover:underline font-sans bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30"
-                    >
-                      Google Map ↗
-                    </a>
-                  </div>
-                  <span className="text-white text-xs sm:text-sm block leading-relaxed font-sans font-medium">IINT Adarsh Computer Education, 1st Floor, Near RK Sweets, Safiabad Road, Narela, Delhi 110040</span>
-                  <div className="text-xs text-blue-300 font-sans font-bold flex items-center gap-1 pt-0.5">
-                    <Phone size={12} />
-                    <span>Phone: +91 92126 21301</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Branch 1 */}
-              <div className="p-4 rounded-2xl bg-blue-950/20 backdrop-blur-md border border-blue-500/30 flex gap-3.5 items-start hover:border-blue-400 transition-all">
-                <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 shrink-0 mt-0.5">
-                  <MapPin size={16} />
-                </div>
-                <div className="space-y-1 w-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-sans text-blue-400 uppercase tracking-wide font-extrabold">Branch 1 (Murthal Road)</span>
-                    <a 
-                      href="https://maps.google.com/?q=IINT+Computer+Education+Murthal+Road+Sonipat" 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="text-[10px] text-blue-300 hover:underline font-sans bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30"
-                    >
-                      Google Map ↗
-                    </a>
-                  </div>
-                  <span className="text-white text-xs sm:text-sm block leading-relaxed font-sans font-medium">Opposite GVM College, Near GGSSS School, Murthal Road, Sonepat, Haryana</span>
-                  <div className="text-xs text-blue-300 font-sans font-bold flex items-center gap-1 pt-0.5">
-                    <Phone size={12} />
-                    <span>Phone: +91 92555 93976</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Branch 2 */}
-              <div className="p-4 rounded-2xl bg-blue-950/20 backdrop-blur-md border border-blue-500/30 flex gap-3.5 items-start hover:border-blue-400 transition-all">
-                <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 shrink-0 mt-0.5">
-                  <MapPin size={16} />
-                </div>
-                <div className="space-y-1 w-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-sans text-blue-400 uppercase tracking-wide font-extrabold">Branch 2 (Model Town)</span>
-                    <a 
-                      href="https://maps.google.com/?q=IINT+Computer+Education+Model+Town+Sonipat" 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="text-[10px] text-blue-300 hover:underline font-sans bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30"
-                    >
-                      Google Map ↗
-                    </a>
-                  </div>
-                  <span className="text-white text-xs sm:text-sm block leading-relaxed font-sans font-medium">Behind R.K. Sweets, Near Kachey Quarter, Model Town, Subhash Chowk, Sonepat, Haryana</span>
-                  <div className="text-xs text-blue-300 font-sans font-bold flex items-center gap-1 pt-0.5">
-                    <Phone size={12} />
-                    <span>Phone: +91 82229 73338</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Branch 3 (Bawana) */}
-              <div className="p-4 rounded-2xl bg-blue-950/20 backdrop-blur-md border border-blue-500/30 flex gap-3.5 items-start hover:border-blue-400 transition-all">
-                <div className="p-2.5 bg-blue-500/10 rounded-xl text-blue-400 border border-blue-500/20 shrink-0 mt-0.5">
-                  <MapPin size={16} />
-                </div>
-                <div className="space-y-1 w-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-sans text-blue-400 uppercase tracking-wide font-extrabold">Branch 3 (Bawana)</span>
-                    <a 
-                      href="https://maps.google.com/?q=IINT+Computer+Center+Jaipal+Tower+Bawana+Delhi" 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="text-[10px] text-blue-300 hover:underline font-sans bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30"
-                    >
-                      Google Map ↗
-                    </a>
-                  </div>
-                  <span className="text-white text-xs sm:text-sm block leading-relaxed font-sans font-medium">IINT Computer Center, 2nd Floor, Jaipal Tower, Main Auchandi Road, Bawana, Delhi</span>
-                  <div className="text-xs text-blue-300 font-sans font-bold flex items-center gap-1 pt-0.5">
-                    <Phone size={12} />
-                    <span>Phone: +91 98910 65660</span>
-                  </div>
-                </div>
-              </div>
+              ))}
 
               <div className="p-4 rounded-2xl bg-zinc-950/40 backdrop-blur-md border border-zinc-900 flex gap-3.5 items-center">
                 <div className="p-2.5 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/15 shrink-0">
@@ -262,16 +191,30 @@ export default function ContactSection({ isFullPage = false }: ContactSectionPro
 
           {/* Head Branch Rohini Interactive Map */}
           <div className="relative rounded-3xl overflow-hidden border border-zinc-900 h-48 sm:h-64 shadow-2xl bg-zinc-950 mt-4 group">
-            <iframe 
-              src="https://maps.google.com/maps?q=3rd+Floor,+C+-+9/7,+above+Liberty+Showroom,+opp.+Metro+Pillar+-+396,+Pocket+9,+Sector+7,+Rohini,+Delhi,+110085&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-              className="w-full h-full border-0 brightness-[0.75] contrast-[1.15] saturate-[0.8] group-hover:brightness-[0.85] transition-all duration-300"
-              allowFullScreen={false} 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-[10px] font-sans font-extrabold text-blue-400 border border-blue-500/30 shadow-md">
-              📍 Head Branch — Rohini, Delhi (Sector 7)
-            </div>
+            <a
+              href={getGoogleMapsDirectionsUrl(IINT_BRANCHES[0].address)}
+              target="_blank"
+              rel="noreferrer"
+              className="block w-full h-full"
+              title="Open directions to Head Branch Rohini"
+            >
+              <iframe 
+                src={getGoogleMapsEmbedUrl(IINT_BRANCHES[0].address)}
+                className="w-full h-full border-0 brightness-[0.75] contrast-[1.15] saturate-[0.8] group-hover:brightness-[0.85] transition-all duration-300 pointer-events-none"
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="IINT Head Branch Rohini Map"
+              />
+            </a>
+            <a
+              href={getGoogleMapsDirectionsUrl(IINT_BRANCHES[0].address)}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute top-3 left-3 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-[10px] font-sans font-extrabold text-blue-400 border border-blue-500/30 shadow-md hover:bg-blue-950/90 transition-colors"
+            >
+              📍 Head Branch — Rohini, Delhi (Tap for Directions)
+            </a>
           </div>
         </div>
 

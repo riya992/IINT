@@ -54,7 +54,7 @@ export default function QueryAIAssistant() {
 
     // Generate intelligent AI response based on Adarsh Institute facts
     setTimeout(() => {
-      let botReply = "Thank you for your query! Our admission helplines at 070110 16060, +91 92126 21301, 9255593976, 8222973338, and +91 98910 65660 are available to assist you.";
+      let botReply = "Thank you for your query! Our admission helplines at 7011016060, +91 92126 21301, 9255593976, 8222973338, and +91 98910 65660 are available to assist you.";
       const lower = query.toLowerCase();
 
       if (lower.includes("timing") || lower.includes("batch") || lower.includes("time") || lower.includes("open") || lower.includes("hours")) {
@@ -64,11 +64,11 @@ export default function QueryAIAssistant() {
       } else if (lower.includes("govt") || lower.includes("valid") || lower.includes("job") || lower.includes("certificate") || lower.includes("recognition")) {
         botReply = "✅ Government Recognition: Yes, 100% valid! Adarsh Welfare and Education Society is registered with the Govt of India (ISO 9001:2015). Our diplomas/certificates are recognized for Govt job registrations, banking, and top private sector companies.";
       } else if (lower.includes("fee") || lower.includes("cost") || lower.includes("price") || lower.includes("discount")) {
-        botReply = "💳 Fee Structure: Course fees are highly affordable with flexible monthly installment options and merit concessions. Please fill out our 'Apply Now' form or call 070110 16060 / 9255593976 for exact fee breakups and current scholarship offers!";
+        botReply = "💳 Fee Structure: Course fees are highly affordable with flexible monthly installment options and merit concessions. Please fill out our 'Apply Now' form or call 7011016060 / 9255593976 for exact fee breakups and current scholarship offers!";
       } else if (lower.includes("apply") || lower.includes("admission") || lower.includes("register") || lower.includes("join")) {
         botReply = "📝 Admissions: You can apply directly online using the 'Apply Now' button at the top, or visit any of our Sonepat, Narela & Bawana Campuses directly between 9 AM and 7 PM.";
       } else if (lower.includes("location") || lower.includes("address") || lower.includes("where") || lower.includes("rohini") || lower.includes("sonepat") || lower.includes("sonipat") || lower.includes("head") || lower.includes("branch") || lower.includes("narela") || lower.includes("bawana")) {
-        botReply = "📍 Campus Addresses:\n• Head Branch (Rohini): 3rd Floor, C - 9/7, above Liberty Showroom, opp. Metro Pillar - 396, Pocket 9, Sector 7, Rohini, Delhi, 110085 (Phone: 070110 16060 | Map: https://g.co/kgs/7kcNyT)\n• Head Branch (Narela): IINT Adarsh Computer Education, 1st Floor, Near RK Sweets, Safiabad Road, Narela, Delhi 110040 (Phone: +91 92126 21301)\n• Branch 1 (Murthal Road): Opposite GVM College, Near GGSSS School, Murthal Road, Sonepat (Phone: 9255593976)\n• Branch 2 (Model Town): Behind R.K. Sweets, Near Kachey Quarter, Model Town, Sonepat (Phone: 8222973338)\n• Branch 3: IINT Computer Center, 2nd Floor, Jaipal Tower, Main Auchandi Road, Bawana, Delhi (Phone: +91 98910 65660)";
+        botReply = "📍 Campus Addresses:\n• Head Branch (Rohini): 3rd Floor, C - 9/7, above Liberty Showroom, opp. Metro Pillar - 396, Pocket 9, Sector 7, Rohini, Delhi, 110085 (Phone: 7011016060 | Map: https://g.co/kgs/7kcNyT)\n• Head Branch (Narela): IINT Adarsh Computer Education, 1st Floor, Near RK Sweets, Safiabad Road, Narela, Delhi 110040 (Phone: +91 92126 21301)\n• Branch 1 (Murthal Road): Opposite GVM College, Near GGSSS School, Murthal Road, Sonepat (Phone: 9255593976)\n• Branch 2 (Model Town): Behind R.K. Sweets, Near Kachey Quarter, Model Town, Sonepat (Phone: 8222973338)\n• Branch 3: IINT Computer Center, 2nd Floor, Jaipal Tower, Main Auchandi Road, Bawana, Delhi (Phone: +91 98910 65660)";
       }
 
       const botMsg: Message = {

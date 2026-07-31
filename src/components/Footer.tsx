@@ -1,6 +1,9 @@
 import { MouseEvent } from "react";
 import { MapPin, Phone, Mail, Globe, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
 import IINTLogo from "./IINTLogo";
+import { IINT_BRANCHES, getGoogleMapsDirectionsUrl, getTelLink } from "../lib/locations";
+import { WHATSAPP_GROUP_URL, openWhatsAppGroupWithEnquiry, IINT_WEBSITE_URL, IINT_WEBSITE_DISPLAY } from "../lib/whatsapp";
+import { downloadIINTBrochure } from "../lib/downloadBrochure";
 
 interface FooterProps {
   onNavigate?: (pageId: string) => void;
@@ -26,7 +29,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="lg:col-span-4 space-y-5">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <IINTLogo size="md" showTagline={true} />
+              <IINTLogo size="md" />
             </div>
 
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light">
@@ -45,11 +48,15 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <Instagram size={15} />
               </a>
               <a
-                href="https://wa.me/919255593976"
+                href={WHATSAPP_GROUP_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  void openWhatsAppGroupWithEnquiry();
+                }}
                 className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 hover:bg-emerald-950/30 text-zinc-400 hover:text-emerald-400 flex items-center justify-center transition-all cursor-pointer"
-                title="WhatsApp Message"
+                title="Join IINT WhatsApp Group"
               >
                 <MessageCircle size={15} />
               </a>
@@ -63,11 +70,11 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <Facebook size={15} />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@skillEducation-md8pj"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-red-500/50 hover:bg-red-950/30 text-zinc-400 hover:text-red-400 flex items-center justify-center transition-all cursor-pointer"
-                title="YouTube Channel"
+                title="YouTube — Skill Education Channel"
               >
                 <Youtube size={15} />
               </a>
@@ -81,120 +88,42 @@ export default function Footer({ onNavigate }: FooterProps) {
             </h4>
 
             <div className="space-y-3.5 text-xs">
-              {/* Head Branch Rohini */}
-              <a 
-                href="https://g.co/kgs/7kcNyT" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex gap-2.5 items-start p-2.5 rounded-xl hover:bg-blue-900/30 transition-all border border-blue-500/30 hover:border-blue-400 cursor-pointer group bg-blue-950/20"
-                title="Click to open Head Branch Rohini on Google Maps"
-              >
-                <MapPin size={15} className="text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                <div className="space-y-0.5 w-full">
-                  <span className="text-[11px] font-sans text-blue-400 uppercase font-bold flex items-center justify-between">
-                    <span>Head Branch (Rohini)</span>
-                    <span className="text-[10px] text-blue-300 font-medium">🗺️ Map</span>
-                  </span>
-                  <p className="text-zinc-200 font-sans font-medium text-xs leading-snug group-hover:text-white transition-colors">
-                    3rd Floor, C - 9/7, above Liberty Showroom, opp. Metro Pillar - 396, Pocket 9, Sector 7, Rohini, Delhi, 110085
-                  </p>
-                  <p className="text-xs font-sans text-blue-300 font-bold">
-                    📞 070110 16060
-                  </p>
+              {IINT_BRANCHES.map((branch) => (
+                <div
+                  key={branch.id}
+                  className="flex gap-2.5 items-start p-2.5 rounded-xl hover:bg-blue-900/30 transition-all border border-blue-500/30 hover:border-blue-400 group bg-blue-950/20"
+                >
+                  <MapPin size={15} className="text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                  <div className="space-y-0.5 w-full">
+                    <span className="text-[11px] font-sans text-blue-400 uppercase font-bold flex items-center justify-between">
+                      <span>{branch.name}</span>
+                      <a
+                        href={getGoogleMapsDirectionsUrl(branch.address)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[10px] text-blue-300 font-medium hover:text-blue-200"
+                        title={`Directions to ${branch.name}`}
+                      >
+                        🗺️ Directions
+                      </a>
+                    </span>
+                    <a
+                      href={getGoogleMapsDirectionsUrl(branch.address)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-zinc-200 font-sans font-medium text-xs leading-snug group-hover:text-white transition-colors block"
+                    >
+                      {branch.address}
+                    </a>
+                    <a
+                      href={getTelLink(branch.phone)}
+                      className="text-xs font-sans text-blue-300 font-bold hover:text-emerald-400 transition-colors inline-block"
+                    >
+                      📞 {branch.phone}
+                    </a>
+                  </div>
                 </div>
-              </a>
-
-              {/* Head Branch Narela */}
-              <a 
-                href="https://maps.google.com/?q=IINT+Adarsh+Computer+Education+Narela+Delhi" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex gap-2.5 items-start p-2.5 rounded-xl hover:bg-blue-900/30 transition-all border border-blue-500/30 hover:border-blue-400 cursor-pointer group bg-blue-950/20"
-                title="Click to open Head Branch Narela on Google Maps"
-              >
-                <MapPin size={15} className="text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                <div className="space-y-0.5 w-full">
-                  <span className="text-[11px] font-sans text-blue-400 uppercase font-bold flex items-center justify-between">
-                    <span>Head Branch (Narela)</span>
-                    <span className="text-[10px] text-blue-300 font-medium">🗺️ Map</span>
-                  </span>
-                  <p className="text-zinc-200 font-sans font-medium text-xs leading-snug group-hover:text-white transition-colors">
-                    IINT Adarsh Computer Education, 1st Floor, Near RK Sweets, Safiabad Road, Narela, Delhi 110040
-                  </p>
-                  <p className="text-xs font-sans text-blue-300 font-bold">
-                    📞 +91 92126 21301
-                  </p>
-                </div>
-              </a>
-
-              {/* Branch 1 */}
-              <a 
-                href="https://maps.google.com/?q=IINT+Computer+Education+Murthal+Road+Sonipat" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex gap-2.5 items-start p-2.5 rounded-xl hover:bg-blue-900/30 transition-all border border-blue-500/30 hover:border-blue-400 cursor-pointer group bg-blue-950/20"
-                title="Click to open Branch 1 location on Google Maps"
-              >
-                <MapPin size={15} className="text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                <div className="space-y-0.5 w-full">
-                  <span className="text-[11px] font-sans text-blue-400 uppercase font-bold flex items-center justify-between">
-                    <span>Branch 1 (Murthal Road)</span>
-                    <span className="text-[10px] text-blue-300 font-medium">🗺️ Map</span>
-                  </span>
-                  <p className="text-zinc-200 font-sans font-medium text-xs leading-snug group-hover:text-white transition-colors">
-                    Opposite GVM College, Near GGSSS School, Murthal Road, Sonepat, Haryana
-                  </p>
-                  <p className="text-xs font-sans text-blue-300 font-bold">
-                    📞 +91 92555 93976
-                  </p>
-                </div>
-              </a>
-
-              {/* Branch 2 */}
-              <a 
-                href="https://maps.google.com/?q=IINT+Computer+Education+Model+Town+Sonipat" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex gap-2.5 items-start p-2.5 rounded-xl hover:bg-blue-900/30 transition-all border border-blue-500/30 hover:border-blue-400 cursor-pointer group bg-blue-950/20"
-                title="Click to open Branch 2 location on Google Maps"
-              >
-                <MapPin size={15} className="text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                <div className="space-y-0.5 w-full">
-                  <span className="text-[11px] font-sans text-blue-400 uppercase font-bold flex items-center justify-between">
-                    <span>Branch 2 (Model Town)</span>
-                    <span className="text-[10px] text-blue-300 font-medium">🗺️ Map</span>
-                  </span>
-                  <p className="text-zinc-200 font-sans font-medium text-xs leading-snug group-hover:text-white transition-colors">
-                    Behind R.K. Sweets, Near Kachey Quarter, Model Town, Subhash Chowk, Sonepat, Haryana
-                  </p>
-                  <p className="text-xs font-sans text-blue-300 font-bold">
-                    📞 +91 82229 73338
-                  </p>
-                </div>
-              </a>
-
-              {/* Branch 3 (Bawana) */}
-              <a 
-                href="https://maps.google.com/?q=IINT+Computer+Center+Jaipal+Tower+Bawana+Delhi" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex gap-2.5 items-start p-2.5 rounded-xl hover:bg-blue-900/30 transition-all border border-blue-500/30 hover:border-blue-400 cursor-pointer group bg-blue-950/20"
-                title="Click to open Branch 3 Bawana on Google Maps"
-              >
-                <MapPin size={15} className="text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                <div className="space-y-0.5 w-full">
-                  <span className="text-[11px] font-sans text-blue-400 uppercase font-bold flex items-center justify-between">
-                    <span>Branch 3 (Bawana)</span>
-                    <span className="text-[10px] text-blue-300 font-medium">🗺️ Map</span>
-                  </span>
-                  <p className="text-zinc-200 font-sans font-medium text-xs leading-snug group-hover:text-white transition-colors">
-                    IINT Computer Center, 2nd Floor, Jaipal Tower, Main Auchandi Road, Bawana, Delhi
-                  </p>
-                  <p className="text-xs font-sans text-blue-300 font-bold">
-                    📞 +91 98910 65660
-                  </p>
-                </div>
-              </a>
+              ))}
 
               {/* Email */}
               <a 
@@ -208,13 +137,14 @@ export default function Footer({ onNavigate }: FooterProps) {
 
               {/* Web */}
               <a 
-                href="https://www.iinteducation.com" 
+                href={IINT_WEBSITE_URL} 
                 target="_blank" 
                 rel="noreferrer" 
                 className="flex gap-2.5 items-center px-2 hover:text-emerald-400 transition-colors group cursor-pointer"
+                title="Visit IINT Official Website"
               >
                 <Globe size={15} className="text-emerald-400 shrink-0 group-hover:scale-110 transition-transform" />
-                <p className="text-zinc-300 font-sans text-[11px] group-hover:text-emerald-300">www.iinteducation.com</p>
+                <p className="text-zinc-300 font-sans text-[11px] group-hover:text-emerald-300">{IINT_WEBSITE_DISPLAY}</p>
               </a>
             </div>
           </div>
@@ -234,7 +164,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <div className="space-y-2.5 text-xs text-zinc-300 font-sans">
               <a href="tel:+917011016060" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
                 <Phone size={13} className="text-white shrink-0" />
-                <span className="font-semibold text-white text-xs">070110 16060 (Rohini)</span>
+                <span className="font-semibold text-white text-xs">7011016060 (Rohini)</span>
               </a>
               <a href="tel:+919212621301" className="flex items-center gap-2 hover:text-emerald-400 transition-colors">
                 <Phone size={13} className="text-white shrink-0" />
@@ -303,13 +233,13 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </a>
               </li>
               <li>
-                <a 
-                  href="#brochures" 
-                  onClick={(e) => handleNavClick(e, "brochures")} 
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer group"
+                <button
+                  type="button"
+                  onClick={() => void downloadIINTBrochure()}
+                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer group text-left"
                 >
-                  <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">›</span> Download Brochure (JPG)
-                </a>
+                  <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">›</span> Download Brochure (PNG)
+                </button>
               </li>
               <li>
                 <a 

@@ -18,7 +18,7 @@ import galComputerLab from "../assets/images/gal_adarsh_lab2_1785303276099.jpg";
 import galFireExit from "../assets/images/gal_adarsh_corridor_1785303290752.jpg";
 import galSeminarAlt from "../assets/images/gal_adarsh_seminar_alt.jpg";
 import galLabAlt from "../assets/images/gal_adarsh_lab_alt.jpg";
-import galGraduatedStudents from "../assets/images/gal_iint_graduated_students.jpg";
+import galCertificateCeremony from "../assets/images/gal_iint_certificate_ceremony.png";
 
 export interface GalleryPhoto {
   id: string;
@@ -80,11 +80,11 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
   },
   {
     id: "gal-12",
-    title: "Graduated Students — Certificate Ceremony",
+    title: "Certificate Ceremony — IINT Computer Centre",
     category: "Infrastructure",
     categoryKey: "infrastructure",
-    imageUrl: galGraduatedStudents,
-    description: "IINT Computer Centre graduated students celebrating on stage with certificates — a proud moment of achievement and success."
+    imageUrl: galCertificateCeremony,
+    description: "IINT Computer Centre students on stage with certificates — a proud celebration of skills, training, and achievement."
   }
 ];
 

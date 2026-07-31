@@ -42,13 +42,13 @@ import HomeStudentReviews from "./components/HomeStudentReviews";
 import HomeFAQPreview from "./components/HomeFAQPreview";
 import ContactSection from "./components/ContactSection";
 import EligibilityCriteria from "./components/EligibilityCriteria";
-import BrochureSection from "./components/BrochureSection";
 import GallerySection from "./components/GallerySection";
 import RightFloatingDock from "./components/RightFloatingDock";
 import { CourseDetailModal } from "./components/CourseDetailModal";
 import QueryAIAssistant from "./components/QueryAIAssistant";
 import { getCourseBgImage } from "./lib/courseImages";
 import { submitStudentEnquiry } from "./lib/googleSheetApi";
+import { saveWhatsAppEnquiry } from "./lib/whatsapp";
 
 // Authentic IINT & Adarsh Education Course List
 const COURSES = [
@@ -1009,10 +1009,6 @@ const COURSE_GROUPS = [
   {
     category: "Postgraduate (PG) Programmes",
     courses: COURSES.filter(c => c.stream === "pg-programmes")
-  },
-  {
-    category: "Teacher Training Programmes",
-    courses: COURSES.filter(c => c.stream === "teacher-training")
   }
 ];
 
@@ -1100,6 +1096,18 @@ export default function App() {
     setIsApplyModalOpen(true);
   };
 
+  useEffect(() => {
+    if (applyForm.name || applyForm.phone || applyForm.email || applyForm.city) {
+      saveWhatsAppEnquiry({
+        name: applyForm.name,
+        phone: applyForm.phone,
+        email: applyForm.email,
+        state: applyForm.state,
+        city: applyForm.city,
+        course: applyForm.course,
+      });
+    }
+  }, [applyForm]);
 
 
   // Filtered courses list
@@ -1572,22 +1580,7 @@ export default function App() {
             </motion.div>
           )}
 
-          {/* 6. BROCHURES VIEW */}
-          {currentPage === "brochures" && (
-            <motion.div
-              key="brochures"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="w-full pt-24"
-            >
-              <BrochureSection onApplyNow={() => setIsApplyModalOpen(true)} />
-              <Footer onNavigate={setCurrentPage} />
-            </motion.div>
-          )}
-
-          {/* 7. GALLERY VIEW */}
+          {/* 6. GALLERY VIEW */}
           {currentPage === "gallery" && (
             <motion.div
               key="gallery"
@@ -1680,6 +1673,14 @@ export default function App() {
                     }
 
                     setApplySuccessData({ ...applyForm });
+                    saveWhatsAppEnquiry({
+                      name: applyForm.name,
+                      phone: applyForm.phone,
+                      email: applyForm.email,
+                      state: applyForm.state,
+                      city: applyForm.city,
+                      course: applyForm.course,
+                    });
                     setApplyForm({ name: "", phone: "", email: "", state: "Haryana", city: "", course: COURSES[0].title });
                     setApplySubmitted(true);
                   }}
@@ -1826,7 +1827,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Right Floating Quick Action Dock & AI Assistant Widget */}
-      <RightFloatingDock onOpenBrochureModal={() => setCurrentPage("brochures")} />
+      <RightFloatingDock />
       <QueryAIAssistant />
 
     </div>

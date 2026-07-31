@@ -326,13 +326,20 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
           <p className="text-xs text-zinc-300 font-light text-center sm:text-left">
             Ready to take the next step? Fill out the online registration form or call our support desk to finalize admissions.
           </p>
-          <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto justify-center">
+          <div className="flex flex-wrap items-center gap-2 shrink-0 w-full sm:w-auto justify-center">
             <a
-              href="tel:+919255593976"
-              className="px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs text-zinc-200 font-mono transition-all flex items-center gap-1.5 cursor-pointer"
+              href="tel:+917011016060"
+              className="px-3 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs text-zinc-200 font-mono transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <Phone size={13} />
-              Call Support
+              7011016060
+            </a>
+            <a
+              href="tel:+919255593976"
+              className="px-3 py-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs text-zinc-200 font-mono transition-all flex items-center gap-1.5 cursor-pointer"
+            >
+              <Phone size={13} />
+              9255593976
             </a>
             <button
               onClick={() => {

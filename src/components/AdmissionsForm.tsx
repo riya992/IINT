@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Send, FileText, CheckCircle2, User, Mail, Sparkles, Book, ArrowRight, ShieldCheck, Trash2, Edit, X, Phone, MapPin } from "lucide-react";
 import { InquiryFormInput, SavedApplication } from "../types";
 import { submitToGoogleSheet } from "../lib/googleSheetApi";
+import { saveWhatsAppEnquiry } from "../lib/whatsapp";
 
 interface AdmissionsFormProps {
   prefilledArchetype: string;
@@ -101,6 +102,16 @@ export default function AdmissionsForm({
       alert("Could not reach the server. Please try again or call the campus helpline.");
       return;
     }
+
+    saveWhatsAppEnquiry({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      state: formData.state,
+      city: formData.city,
+      course: formData.program,
+      message: formData.vision,
+    });
 
     const newApp: SavedApplication = {
       id: `AE-${Math.floor(1000 + Math.random() * 9000)}`,

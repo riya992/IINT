@@ -153,12 +153,23 @@ export default function FAQSection() {
           <h4 className="text-sm font-bold text-white tracking-tight">Have a custom requirement?</h4>
           <p className="text-xs text-zinc-500 font-light mt-0.5">Need customized schedules or corporate enterprise licensing?</p>
         </div>
-        <a
-          href="tel:+919255593976"
-          className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white text-xs font-bold border border-emerald-500/30 transition-all active:scale-95 cursor-pointer flex items-center gap-2 shrink-0 shadow-lg"
-        >
-          📞 Talk to Counselor
-        </a>
+        <div className="flex flex-col items-center sm:items-end gap-2 shrink-0">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">Talk to Counselor</span>
+          <div className="flex flex-col sm:flex-row items-center gap-2">
+            <a
+              href="tel:+917011016060"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white text-xs font-bold border border-emerald-500/30 transition-all active:scale-95 cursor-pointer flex items-center gap-2 shadow-lg"
+            >
+              📞 7011016060
+            </a>
+            <a
+              href="tel:+919255593976"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white text-xs font-bold border border-emerald-500/30 transition-all active:scale-95 cursor-pointer flex items-center gap-2 shadow-lg"
+            >
+              📞 9255593976
+            </a>
+          </div>
+        </div>
       </div>
 
     </section>
