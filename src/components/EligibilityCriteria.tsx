@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { BookOpen, Search } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { getCourseBgImage } from "../lib/courseImages";
 
 interface ProgramEligibility {
@@ -67,7 +66,7 @@ const SECTIONS = [
     id: "pg-programmes",
     title: "Postgraduate (PG) Programmes",
     badge: "Master Degree & MBA",
-    description: "High-tier academic master degree programs (MCA, MBA, MBA Aviation, MBA Finance/HR/Marketing/Operations, M.Com, MA, MSc IT, MSW).",
+    description: "High-tier academic distance learning programs (MCA, MBA, MBA Aviation, MBA Finance/HR/Marketing/Operations, M.Com, MA, MSc IT, MSW).",
     category: "Postgraduate (PG) Programmes",
     color: "from-violet-500/10 to-purple-500/10 border-violet-500/25 text-violet-400"
   },
@@ -94,8 +93,6 @@ export default function EligibilityCriteria({
   courses = [],
   initialCategory
 }: EligibilityCriteriaProps) {
-  const [searchTerm, setSearchTerm] = useState("");
-
   const getCategoryForCourse = (c: any): ProgramEligibility["category"] => {
     if (c.stream === "teacher-training" || c.category === "Teacher Training Programmes") {
       return "Teacher Training";
@@ -146,9 +143,7 @@ export default function EligibilityCriteria({
     return "All";
   };
 
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    getMappedCategory(initialCategory)
-  );
+  const selectedCategory = getMappedCategory(initialCategory);
 
   const allPrograms: ProgramEligibility[] = (courses || []).map((c: any) => ({
     id: c.id,
@@ -169,71 +164,30 @@ export default function EligibilityCriteria({
   };
 
   const filteredPrograms = allPrograms.filter((p) => {
-    const matchesSearch =
-      p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.eligibility.toLowerCase().includes(searchTerm.toLowerCase());
-
     if (initialCategory === "digital-marketing-ai") {
-      return p.id === "digital-marketing-ai" && matchesSearch;
+      return p.id === "digital-marketing-ai";
     }
     if (initialCategory === "data-analytics") {
-      return p.id === "data-analytics" && matchesSearch;
+      return p.id === "data-analytics";
     }
 
     if (selectedCategory !== "All") {
-      return p.category === selectedCategory && matchesSearch;
+      return p.category === selectedCategory;
     }
 
-    return matchesSearch;
+    return true;
   });
 
   const activeSections = SECTIONS.filter((s) => {
     if (s.id === "all") return false;
-    if (initialCategory === "digital-marketing-ai") return s.id === "digital-marketing-ai" || s.id === "computer-diplomas";
-    if (initialCategory === "data-analytics") return s.id === "data-analytics" || s.id === "computer-diplomas";
+    if (initialCategory === "digital-marketing-ai") return s.id === "digital-marketing-ai";
+    if (initialCategory === "data-analytics") return s.id === "data-analytics";
     if (selectedCategory === "All") return true;
     return s.category === selectedCategory;
   });
 
   return (
-    <section id="eligibility-programmes" className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 border-t border-zinc-900/60">
-      
-      {/* Search and Category Filter Bar */}
-      <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-zinc-950/80 p-4 rounded-2xl border border-zinc-800 backdrop-blur-md">
-        <div className="relative w-full md:w-80">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
-          <input
-            type="text"
-            placeholder="Search courses, codes, eligibility..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-zinc-900/90 border border-zinc-700/80 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all"
-          />
-        </div>
-
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-          {SECTIONS.map((sec) => {
-            const isActive = selectedCategory === sec.category;
-            return (
-              <button
-                key={sec.id}
-                onClick={() => setSelectedCategory(sec.category)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 ${
-                  isActive
-                    ? "bg-emerald-500 text-black font-extrabold shadow-lg shadow-emerald-500/20"
-                    : "bg-zinc-900 text-zinc-300 hover:text-white hover:bg-zinc-800 border border-zinc-800"
-                }`}
-              >
-                {sec.title}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
+    <section id="eligibility-programmes" className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 pt-3 sm:pt-4 pb-12 sm:pb-20">
       {/* Dynamic Sections Grid */}
       <div className="space-y-14">
         {activeSections.map((sect) => {

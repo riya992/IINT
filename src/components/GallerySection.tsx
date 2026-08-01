@@ -19,6 +19,12 @@ import galFireExit from "../assets/images/gal_adarsh_corridor_1785303290752.jpg"
 import galSeminarAlt from "../assets/images/gal_adarsh_seminar_alt.jpg";
 import galLabAlt from "../assets/images/gal_adarsh_lab_alt.jpg";
 import galCertificateCeremony from "../assets/images/gal_iint_certificate_ceremony.png";
+import vidhyanjaliSession from "../assets/images/vidhyanjali_session_ggsss_delhi.jpeg";
+import emcSession from "../assets/images/emc_session_ggsss_sonipat.jpeg";
+import ojtSession from "../assets/images/ojt_session_ggsss_delhi.jpeg";
+import careerCounselling from "../assets/images/career_counselling_ggsss_delhi.jpeg";
+import skillSession from "../assets/images/skill_session_ggsss_delhi.jpeg";
+import entrepreneurSession from "../assets/images/entrepreneur_session_ggsss_delhi.jpeg";
 
 export interface GalleryPhoto {
   id: string;
@@ -85,6 +91,54 @@ const GALLERY_PHOTOS: GalleryPhoto[] = [
     categoryKey: "infrastructure",
     imageUrl: galCertificateCeremony,
     description: "IINT Computer Centre students on stage with certificates — a proud celebration of skills, training, and achievement."
+  },
+  {
+    id: "gal-13",
+    title: "Vidhyanjali Session (GGSSS - Delhi)",
+    category: "Smart Classrooms",
+    categoryKey: "classrooms",
+    imageUrl: vidhyanjaliSession,
+    description: "Interactive classroom session with GGSSS Delhi students, focused on learning, participation, and career awareness."
+  },
+  {
+    id: "gal-14",
+    title: "Emc Session (GGSSS - Sonipat)",
+    category: "Smart Classrooms",
+    categoryKey: "classrooms",
+    imageUrl: emcSession,
+    description: "Outdoor student engagement session at GGSSS Sonipat, encouraging awareness, participation, and guided learning."
+  },
+  {
+    id: "gal-15",
+    title: "OJT Session (GGSSS - Delhi)",
+    category: "Smart Classrooms",
+    categoryKey: "classrooms",
+    imageUrl: ojtSession,
+    description: "On-job training session with GGSSS Delhi students, using projector-based learning for practical exposure."
+  },
+  {
+    id: "gal-16",
+    title: "Career Counselling (GGSSS - Delhi)",
+    category: "Smart Classrooms",
+    categoryKey: "classrooms",
+    imageUrl: careerCounselling,
+    description: "Career counselling session guiding GGSSS Delhi students on future pathways, skill choices, and professional goals."
+  },
+  {
+    id: "gal-17",
+    title: "Skill Session (GGSSS - Delhi)",
+    category: "Smart Classrooms",
+    categoryKey: "classrooms",
+    imageUrl: skillSession,
+    description: "Skill development classroom session with GGSSS Delhi students, focused on practical learning and confidence building."
+  },
+  {
+    id: "gal-18",
+    title: "Entrepreneur Session (GGSSS - Delhi)",
+    category: "Smart Classrooms",
+    categoryKey: "classrooms",
+    imageUrl: entrepreneurSession,
+    description: "Entrepreneurship awareness session with GGSSS Delhi students, encouraging ideas, leadership, and career readiness."
   }
 ];
 

@@ -1386,9 +1386,9 @@ export default function App() {
                   </div>
                 ) : (
                   /* Category Detail Sub-Page View with Previous Button & Subcategory Drill-Down */
-                  <div className="space-y-6">
+                  <div className="space-y-3">
                     {/* Top Navigation Row with Previous Button */}
-                    <div className="flex flex-wrap items-center justify-between gap-4 pt-4 pb-2 border-b border-zinc-900">
+                    <div className="flex flex-wrap items-center justify-between gap-4 pt-3 pb-2 border-b border-zinc-900">
                       <button
                         id="btn-back-to-categories"
                         onClick={() => {
@@ -1430,7 +1430,10 @@ export default function App() {
                           {/* Card 1: Diploma Programmes */}
                           <div 
                             id="card-sub-diploma"
-                            onClick={() => setSelectedCourseCategory("diploma-programmes")}
+                            onClick={() => {
+                              setSelectedCourseCategory("diploma-programmes");
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
                             className="p-8 rounded-3xl bg-zinc-950 border border-zinc-700/70 hover:border-amber-400 transition-all duration-300 cursor-pointer group flex flex-col justify-between shadow-2xl relative overflow-hidden min-h-[220px]"
                           >
                             <img 
@@ -1458,7 +1461,10 @@ export default function App() {
                           {/* Card 2: Undergraduate (UG) Programmes */}
                           <div 
                             id="card-sub-ug"
-                            onClick={() => setSelectedCourseCategory("ug-programmes")}
+                            onClick={() => {
+                              setSelectedCourseCategory("ug-programmes");
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
                             className="p-8 rounded-3xl bg-zinc-950 border border-zinc-700/70 hover:border-blue-400 transition-all duration-300 cursor-pointer group flex flex-col justify-between shadow-2xl relative overflow-hidden min-h-[220px]"
                           >
                             <img 
@@ -1486,7 +1492,10 @@ export default function App() {
                           {/* Card 3: Postgraduate (PG) Programmes */}
                           <div 
                             id="card-sub-pg"
-                            onClick={() => setSelectedCourseCategory("pg-programmes")}
+                            onClick={() => {
+                              setSelectedCourseCategory("pg-programmes");
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }}
                             className="p-8 rounded-3xl bg-zinc-950 border border-zinc-700/70 hover:border-violet-400 transition-all duration-300 cursor-pointer group flex flex-col justify-between shadow-2xl relative overflow-hidden min-h-[220px]"
                           >
                             <img 
@@ -1663,7 +1672,7 @@ export default function App() {
                       city: applyForm.city,
                       email: applyForm.email,
                       phone: applyForm.phone,
-                    });
+                    }, "admission");
 
                     setIsApplySubmitting(false);
 

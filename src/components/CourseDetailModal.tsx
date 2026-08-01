@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 export interface CourseDetailType {
+  id?: string;
   code: string;
   title: string;
   category?: string;
@@ -40,6 +41,107 @@ export interface CourseDetailType {
   performanceMarketing?: string[];
 }
 
+const COURSE_CAREERS: Record<string, string[]> = {
+  "digital-marketing-ai": ["Performance Marketing Lead", "Digital Marketing Strategist", "SEO Specialist", "Agency Owner", "Social Media Manager", "AI Content Creator"],
+  "data-analytics": ["Data Analyst", "Power BI Developer", "Business Intelligence Analyst", "SQL Reporting Executive", "MIS Analyst", "Python Analytics Specialist"],
+  "office-automation": ["Office Assistant", "Data Entry Operator", "Front Desk Executive", "Computer Operator", "Admin Assistant", "Back Office Executive"],
+  "dtp": ["DTP Operator", "Graphic Designer", "Print Layout Artist", "CorelDraw Designer", "Photoshop Editor", "Digital Print Executive"],
+  "languages": ["Junior Programmer", "Software Trainee", "Python Developer", "Java Developer", "Coding Tutor", "Application Support Executive"],
+  "web-designing": ["Web Designer", "Frontend Developer", "HTML CSS Developer", "Website Maintenance Executive", "UI Developer", "Freelance Web Creator"],
+  "english-speaking": ["Customer Support Executive", "Telecaller", "Reception Executive", "Sales Associate", "Interview-ready Fresher", "Public Speaking Coordinator"],
+  "advance-excel": ["MIS Executive", "Excel Reporting Analyst", "Data Entry Supervisor", "Accounts Assistant", "HR Reporting Assistant", "Sales Operations Executive"],
+  "sql": ["SQL Developer", "Database Assistant", "Backend Support Executive", "Data Operations Executive", "Reporting Analyst", "Database Tester"],
+  "dca": ["Computer Operator", "Office Assistant", "Data Entry Operator", "Clerk", "E-Governance Operator", "Admin Support Executive"],
+  "adca": ["Computer Faculty", "Office Executive", "DTP Operator", "Tally Assistant", "Web Support Executive", "Computer Lab Assistant"],
+  "accounting": ["Tally Accountant", "GST Billing Executive", "Accounts Assistant", "Tax Assistant", "Bookkeeping Executive", "Payroll Assistant"],
+  "hardware-networking": ["Hardware Technician", "Network Support Engineer", "System Support Executive", "Desktop Support Technician", "IT Helpdesk Executive", "LAN Technician"],
+  "pgdca-distance": ["IT Coordinator", "Computer Teacher", "Office Automation Specialist", "Database Assistant", "System Support Executive", "Project Assistant"],
+  "bed": ["TGT Teacher", "PGT Teacher", "School Educator", "Academic Coordinator", "Education Counsellor", "Curriculum Assistant"],
+  "deled": ["Primary Teacher", "PRT Teacher", "Nursery Teacher", "Elementary Educator", "Teaching Assistant", "School Activity Coordinator"],
+  "med": ["Teacher Educator", "Education Researcher", "Academic Administrator", "Principal Track", "Curriculum Planner", "B.Ed College Lecturer"],
+  "bca-univ": ["Software Developer", "Web Developer", "IT Support Executive", "Database Assistant", "App Developer Trainee", "System Analyst Trainee"],
+  "mca-univ": ["Software Engineer", "Full Stack Developer", "Database Administrator", "Systems Analyst", "Cloud Support Engineer", "IT Project Coordinator"],
+  "bba-univ": ["Management Trainee", "Business Development Executive", "Operations Executive", "HR Assistant", "Marketing Executive", "Startup Coordinator"],
+  "bba-aviation": ["Airport Ground Staff", "Airline Operations Executive", "Cabin Crew Coordinator", "Airport Customer Service", "Cargo Operations Assistant", "Travel Desk Executive"],
+  "mba-univ": ["Business Manager", "Management Consultant", "Operations Manager", "HR Manager", "Marketing Manager", "Business Analyst"],
+  "mba-aviation": ["Airport Operations Manager", "Airline Station Manager", "Aviation Customer Service Manager", "Cargo Manager", "Ground Handling Manager", "Airline Admin Executive"],
+  "mba-finance": ["Finance Manager", "Investment Analyst", "Credit Analyst", "Accounts Manager", "Portfolio Advisor", "Financial Planning Executive"],
+  "mba-hr": ["HR Manager", "Talent Acquisition Specialist", "Training Coordinator", "Payroll Manager", "HR Business Partner", "Employee Relations Executive"],
+  "mba-marketing": ["Marketing Manager", "Brand Manager", "Digital Sales Manager", "Market Research Analyst", "Retail Manager", "Business Development Manager"],
+  "mba-operations": ["Operations Manager", "Supply Chain Manager", "Logistics Planner", "Production Coordinator", "Quality Manager", "Procurement Executive"],
+  "bcom-univ": ["Accountant", "Tax Assistant", "Banking Executive", "Audit Assistant", "Finance Executive", "Commerce Teacher Trainee"],
+  "bcom-hons": ["Financial Analyst", "CA Article Assistant", "Investment Assistant", "Corporate Accounts Executive", "Tax Consultant Assistant", "Audit Associate"],
+  "ba-univ": ["Civil Services Aspirant", "Content Writer", "Social Sector Executive", "Administrative Assistant", "Public Relations Assistant", "Teaching Pathway"],
+  "ba-hons": ["Research Assistant", "Content Editor", "Journalism Trainee", "Academic Writer", "Publishing Assistant", "Postgraduate Studies Pathway"],
+  "blib-univ": ["Librarian", "Assistant Librarian", "Digital Archivist", "Library Cataloguer", "Information Assistant", "School Library Incharge"],
+  "mcom-univ": ["Accounts Manager", "Finance Lecturer", "Audit Executive", "Tax Consultant", "Banking Officer", "UGC NET Commerce Aspirant"],
+  "ma-education": ["Education Coordinator", "Curriculum Designer", "School Administrator", "Academic Counsellor", "Education Research Assistant", "Teacher Trainer"],
+  "ma-english": ["English Lecturer", "Content Editor", "Copywriter", "Translator", "Academic Researcher", "Communication Trainer"],
+  "ma-hindi": ["Hindi Lecturer", "Translator", "Content Writer", "Official Language Assistant", "Hindi Editor", "Research Scholar"],
+  "ma-history": ["History Lecturer", "Archivist", "Museum Assistant", "Research Assistant", "Civil Services Aspirant", "Heritage Coordinator"],
+  "ma-political-science": ["Political Analyst", "Public Administration Assistant", "Civil Services Aspirant", "Policy Researcher", "NGO Coordinator", "Lecturer"],
+  "ma-sociology": ["Social Researcher", "NGO Program Officer", "Community Development Executive", "CSR Coordinator", "Survey Research Assistant", "Lecturer"],
+  "ma-economics": ["Economic Analyst", "Research Associate", "Banking Officer", "Policy Assistant", "Data Research Executive", "IES/Competitive Exam Aspirant"],
+  "msc-it": ["IT Manager", "Network Engineer", "Cloud Support Engineer", "Software Developer", "Database Administrator", "Cybersecurity Analyst"],
+  "msw": ["Social Worker", "NGO Manager", "CSR Executive", "Community Organizer", "Counsellor", "Welfare Officer"],
+  "poly-me": ["Junior Engineer Mechanical", "CAD Technician", "Production Supervisor", "Maintenance Technician", "CNC Operator", "Quality Inspector"],
+  "poly-civil": ["Junior Engineer Civil", "Site Supervisor", "Surveyor", "AutoCAD Draftsman", "Quantity Estimator", "Construction Assistant"],
+  "poly-cse": ["Junior Software Developer", "IT Support Engineer", "Network Assistant", "Web Developer Trainee", "Database Assistant", "System Administrator Trainee"],
+  "dpharma": ["Registered Pharmacist", "Hospital Pharmacy Assistant", "Medical Store Owner", "Pharma Sales Executive", "Dispensing Pharmacist", "Drug Store Manager"],
+  "poly-ee": ["Junior Engineer Electrical", "Electrical Technician", "Substation Assistant", "Maintenance Engineer", "Power Plant Technician", "Panel Wiring Supervisor"],
+  "dmlt": ["Lab Technician", "Pathology Lab Assistant", "Phlebotomist", "Diagnostic Centre Executive", "Blood Bank Assistant", "Medical Lab Supervisor"]
+};
+
+const cleanSyllabusFocus = (item?: string) => {
+  if (!item) return "";
+  return item
+    .replace(/^Module\s+\d+\s*[-–]\s*/i, "")
+    .replace(/^Semester\s+[\d\s&]+:\s*/i, "")
+    .replace(/^Year\s+\d+:\s*/i, "")
+    .split(":")[0]
+    .trim();
+};
+
+const getCourseCareers = (course: CourseDetailType) => {
+  if (course.careerPath) return course.careerPath.split(",").map((c) => c.trim()).filter(Boolean);
+  const key = course.id || "";
+  return COURSE_CAREERS[key] || COURSE_CAREERS[course.code] || ["Course Specialist", "Assistant Executive", "Trainee Professional", "Coordinator", "Freelancer", "Entrepreneur"];
+};
+
+const getObjectiveBullets = (course: CourseDetailType, careerList: string[]) => {
+  const focus = (course.syllabus || []).map(cleanSyllabusFocus).filter(Boolean).slice(0, 3);
+  if (focus.length >= 3) {
+    return [
+      `Master ${focus[0]} with guided theory and practice.`,
+      `Build job-ready ability in ${focus[1]}.`,
+      `Apply ${focus[2]} through assignments, projects, and practical evaluation.`
+    ];
+  }
+
+  return [
+    course.highlight || `Build focused capability for ${course.title}.`,
+    `Prepare for roles like ${careerList.slice(0, 2).join(" and ")}.`,
+    "Develop practical confidence through guided classroom and lab-based learning."
+  ];
+};
+
+const getHighlightCards = (course: CourseDetailType, careerList: string[]) => {
+  const focus = (course.syllabus || []).map(cleanSyllabusFocus).filter(Boolean);
+  const titles = [
+    course.highlight,
+    focus[0] ? `Focused training in ${focus[0]}.` : undefined,
+    focus[1] ? `Practical coverage of ${focus[1]}.` : undefined,
+    focus[2] ? `Applied learning around ${focus[2]}.` : undefined,
+    course.certification ? `${course.certification} qualification pathway.` : undefined,
+    `Career track for ${careerList.slice(0, 2).join(" and ")} roles.`,
+    course.duration ? `${course.duration} structured learning plan.` : undefined,
+    "Regular assignments, doubt support, and guided evaluation."
+  ].filter(Boolean) as string[];
+
+  const icons = [Building, BookOpen, Sparkles, Users, Award, Wrench, ShieldCheck, Calendar];
+  return titles.slice(0, 8).map((title, idx) => ({ icon: icons[idx] || CheckCircle2, title }));
+};
+
 interface CourseDetailModalProps {
   course: CourseDetailType | null;
   onClose: () => void;
@@ -55,6 +157,10 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
 
   if (!course) return null;
 
+  const careerList = getCourseCareers(course);
+  const objectiveBullets = getObjectiveBullets(course, careerList);
+  const highlights = getHighlightCards(course, careerList);
+
   // Standard FAQs matching adarsheducation.in
   const faqs = [
     {
@@ -67,27 +173,8 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
     },
     {
       q: "What career options are available after completion?",
-      a: course.careerPath 
-        ? `Graduates can pursue roles such as: ${course.careerPath}. Also valid for Govt Employment Exchange registration.`
-        : "Graduates can work in software engineering, web designing, data analytics, corporate accounting, IT support, and government office roles."
+      a: `Graduates can pursue roles such as: ${careerList.join(", ")}. Also valid for Govt Employment Exchange registration where applicable.`
     }
-  ];
-
-  // Map career opportunities into array pills
-  const careerList = course.careerPath 
-    ? course.careerPath.split(',').map(c => c.trim())
-    : ["Software Developer", "Web Developer", "Data Analyst", "UI/UX Designer", "Cloud Support Engineer", "IT Systems Analyst"];
-
-  // Highlights 8 boxes matching adarsheducation.in
-  const highlights = [
-    { icon: Building, title: "Industry-focused curriculum aligned with current market needs." },
-    { icon: BookOpen, title: "Practical learning modules with regular hands-on sessions." },
-    { icon: Sparkles, title: "Professional skill development focusing on tools and frameworks." },
-    { icon: Users, title: "Personality development classes and interview preparation." },
-    { icon: Award, title: "Live projects and case studies for real-world validation." },
-    { icon: Wrench, title: "Dedicated internship support and industrial placement assistance." },
-    { icon: ShieldCheck, title: "Modern, state-of-the-art computer and technical laboratory facilities." },
-    { icon: Calendar, title: "Highly experienced faculty members with core domain expertise." },
   ];
 
   return (
@@ -204,18 +291,12 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
               </h3>
             </div>
             <ul className="space-y-3 text-xs text-zinc-300 font-light">
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Structured data structures, programming logs & web scripts design</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Database administrators management and queries execution</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Standard digital office suites and system file operations automation</span>
-              </li>
+              {objectiveBullets.map((objective, idx) => (
+                <li key={idx} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span>{objective}</span>
+                </li>
+              ))}
             </ul>
           </div>
 

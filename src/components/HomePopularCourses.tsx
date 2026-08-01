@@ -74,12 +74,12 @@ export default function HomePopularCourses({
     },
     {
       id: "distance-learning",
-      title: "Degree Programs",
+      title: "Distance/Learning",
       description: "Flexible, self-paced degree options supported by online resources, assignments, and online exam modes.",
       icon: Layers,
       iconColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
       glowColor: "group-hover:shadow-[0_0_35px_rgba(16,185,129,0.15)] group-hover:border-emerald-500/40",
-      badge: "Degree & Diploma"
+      badge: "Distance Learning"
     },
     {
       id: "digital-marketing-ai",
@@ -185,4 +185,3 @@ export default function HomePopularCourses({
     </section>
   );
 }
-

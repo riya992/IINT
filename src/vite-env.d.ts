@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_GOOGLE_SHEET_URL: string;
+  readonly VITE_ENQUIRY_API_TOKEN: string;
   readonly GEMINI_API_KEY: string;
   readonly APP_URL: string;
 }

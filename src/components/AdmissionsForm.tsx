@@ -46,7 +46,7 @@ export default function AdmissionsForm({
     "DTP & Graphic Designing",
     "Hardware & Networking",
     "B.Ed / D.El.Ed Teacher Training",
-    "BCA / MCA Degree Program",
+    "BCA / MCA Distance/Learning",
     "BBA / MBA Business Management",
     "Spoken English & Personality Development",
   ];

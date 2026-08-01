@@ -33,7 +33,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             </div>
 
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light">
-              IINT Computer Education is Delhi & Haryana's premier academy for practical vocational computer diplomas, Digital Marketing & AI, Data Analytics & Power BI, financial accounting (Tally Prime with GST), software coding, graphic design, hardware networking, teacher training, and university degree programs. Certified ISO 9001:2015.
+              IINT Computer Education is Delhi & Haryana's premier academy for practical vocational computer diplomas, Digital Marketing & AI, Data Analytics & Power BI, financial accounting (Tally Prime with GST), software coding, graphic design, hardware networking, teacher training, and distance learning programs. Certified ISO 9001:2015.
             </p>
 
             {/* Social Icons */}
@@ -250,15 +250,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                   <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">›</span> FAQ & Help Desk
                 </a>
               </li>
-              <li>
-                <a 
-                  href="#contact" 
-                  onClick={(e) => handleNavClick(e, "contact")} 
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer group"
-                >
-                  <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">›</span> Contact Us
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -274,6 +265,4 @@ export default function Footer({ onNavigate }: FooterProps) {
     </footer>
   );
 }
-
-
 
