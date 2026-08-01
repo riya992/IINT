@@ -6,6 +6,22 @@
  * Copy the /exec URL into .env as VITE_GOOGLE_SHEET_URL
  */
 
+var PREFERRED_COLUMN_ORDER = [
+  "formType",
+  "name",
+  "phone",
+  "email",
+  "state",
+  "city",
+  "course",
+  "program",
+  "subject",
+  "message",
+  "vision",
+  "archetype",
+  "submittedAt",
+];
+
 function parsePayload_(e) {
   if (!e) return {};
 
@@ -14,8 +30,8 @@ function parsePayload_(e) {
   }
 
   if (e.postData && e.postData.contents) {
-    const type = (e.postData.type || "").toLowerCase();
-    const body = e.postData.contents;
+    var type = (e.postData.type || "").toLowerCase();
+    var body = e.postData.contents;
 
     if (type.indexOf("application/json") !== -1 || body.trim().charAt(0) === "{") {
       try {
@@ -25,12 +41,12 @@ function parsePayload_(e) {
       }
     }
 
-    const out = {};
+    var out = {};
     body.split("&").forEach(function (pair) {
-      const idx = pair.indexOf("=");
+      var idx = pair.indexOf("=");
       if (idx === -1) return;
-      const key = decodeURIComponent(pair.slice(0, idx).replace(/\+/g, " "));
-      const val = decodeURIComponent(pair.slice(idx + 1).replace(/\+/g, " "));
+      var key = decodeURIComponent(pair.slice(0, idx).replace(/\+/g, " "));
+      var val = decodeURIComponent(pair.slice(idx + 1).replace(/\+/g, " "));
       out[key] = val;
     });
     return out;
@@ -39,34 +55,63 @@ function parsePayload_(e) {
   return {};
 }
 
-function saveToSheet_(p) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+function getExistingHeaders_(sheet) {
+  var lastCol = sheet.getLastColumn();
+  if (lastCol === 0) return [];
 
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow([
-      "Form Type",
-      "Name",
-      "Phone",
-      "Email",
-      "State",
-      "City",
-      "Course",
-      "Message",
-      "Submitted At",
-    ]);
+  var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  return headers
+    .map(function (h) {
+      return String(h || "").trim();
+    })
+    .filter(function (h) {
+      return h.length > 0;
+    });
+}
+
+function mergeHeaders_(existingHeaders, payloadKeys) {
+  var headers = existingHeaders.slice();
+  var seen = {};
+
+  headers.forEach(function (h) {
+    seen[h] = true;
+  });
+
+  PREFERRED_COLUMN_ORDER.forEach(function (key) {
+    if (payloadKeys.indexOf(key) !== -1 && !seen[key]) {
+      headers.push(key);
+      seen[key] = true;
+    }
+  });
+
+  payloadKeys.forEach(function (key) {
+    if (!seen[key]) {
+      headers.push(key);
+      seen[key] = true;
+    }
+  });
+
+  return headers;
+}
+
+function saveToSheet_(p) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var payloadKeys = Object.keys(p);
+  var existingHeaders = getExistingHeaders_(sheet);
+  var headers = mergeHeaders_(existingHeaders, payloadKeys);
+
+  if (existingHeaders.length === 0) {
+    sheet.appendRow(headers);
+  } else if (headers.length > existingHeaders.length) {
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
   }
 
-  sheet.appendRow([
-    p.formType || "enquiry",
-    p.name || "",
-    p.phone || "",
-    p.email || "",
-    p.state || "",
-    p.city || "",
-    p.course || p.program || p.subject || "",
-    p.message || p.vision || "",
-    p.submittedAt || new Date().toISOString(),
-  ]);
+  var row = headers.map(function (header) {
+    var value = p[header];
+    return value === undefined || value === null ? "" : String(value);
+  });
+
+  sheet.appendRow(row);
 }
 
 function jsonResponse_(data) {
@@ -77,7 +122,7 @@ function jsonResponse_(data) {
 
 function handleSubmit_(e) {
   try {
-    const p = parsePayload_(e);
+    var p = parsePayload_(e);
     saveToSheet_(p);
     return jsonResponse_({ success: true });
   } catch (err) {

@@ -47,7 +47,7 @@ import RightFloatingDock from "./components/RightFloatingDock";
 import { CourseDetailModal } from "./components/CourseDetailModal";
 import QueryAIAssistant from "./components/QueryAIAssistant";
 import { getCourseBgImage } from "./lib/courseImages";
-import { submitStudentEnquiry } from "./lib/googleSheetApi";
+import { submitStudentEnquiry, runLocalSheetTestOnce } from "./lib/googleSheetApi";
 import { saveWhatsAppEnquiry } from "./lib/whatsapp";
 
 // Authentic IINT & Adarsh Education Course List
@@ -1030,6 +1030,10 @@ export default function App() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    runLocalSheetTestOnce();
+  }, []);
+
   // Tabs and Prefill values
   const [activeCourseStream, setActiveCourseStream] = useState("all");
   const [selectedCourseCategory, setSelectedCourseCategory] = useState<string | null>(null);
@@ -1656,7 +1660,7 @@ export default function App() {
                     setApplyError("");
                     setIsApplySubmitting(true);
 
-                    const result = await submitStudentEnquiry({
+                    void submitStudentEnquiry({
                       name: applyForm.name,
                       course: applyForm.course,
                       state: applyForm.state,
@@ -1664,13 +1668,6 @@ export default function App() {
                       email: applyForm.email,
                       phone: applyForm.phone,
                     });
-
-                    setIsApplySubmitting(false);
-
-                    if (!result.success) {
-                      setApplyError(result.error || "Submission failed. Please try again.");
-                      return;
-                    }
 
                     setApplySuccessData({ ...applyForm });
                     saveWhatsAppEnquiry({
@@ -1683,6 +1680,7 @@ export default function App() {
                     });
                     setApplyForm({ name: "", phone: "", email: "", state: "Haryana", city: "", course: COURSES[0].title });
                     setApplySubmitted(true);
+                    setIsApplySubmitting(false);
                   }}
                   className="space-y-3.5"
                 >

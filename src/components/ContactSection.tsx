@@ -40,7 +40,7 @@ export default function ContactSection({ isFullPage = false }: ContactSectionPro
 
     setIsSubmitting(true);
 
-    const sent = await submitToGoogleSheet({
+    void submitToGoogleSheet({
       formType: "contact",
       name: formData.name,
       email: formData.email,
@@ -49,13 +49,6 @@ export default function ContactSection({ isFullPage = false }: ContactSectionPro
       subject: formData.subject,
       message: formData.message,
     });
-
-    setIsSubmitting(false);
-
-    if (!sent) {
-      alert("Could not reach the server. Please try again or call the campus helpline.");
-      return;
-    }
 
     saveWhatsAppEnquiry({
       name: formData.name,
@@ -67,6 +60,7 @@ export default function ContactSection({ isFullPage = false }: ContactSectionPro
     });
 
     setIsSubmitted(true);
+    setIsSubmitting(false);
     setTimeout(() => {
       setFormData({ name: "", email: "", phone: "", state: "Haryana", subject: "Admission", message: "" });
       setIsSubmitted(false);

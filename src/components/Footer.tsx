@@ -250,15 +250,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                   <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">›</span> FAQ & Help Desk
                 </a>
               </li>
-              <li>
-                <a 
-                  href="#contact" 
-                  onClick={(e) => handleNavClick(e, "contact")} 
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 cursor-pointer group"
-                >
-                  <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform">›</span> Contact Us
-                </a>
-              </li>
             </ul>
           </div>
 

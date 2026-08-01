@@ -134,22 +134,6 @@ export default function EligibilityCriteria({
     return "Computer Operator, Office Executive, IT Specialist, Freelancer";
   };
 
-  const getMappedCategory = (catId?: string | null): string => {
-    if (!catId) return "All";
-    if (catId === "computer-education") return "Computer & IT Diplomas";
-    if (catId === "regular-courses" || catId === "diploma-programmes") return "Diploma Programmes";
-    if (catId === "ug-programmes" || catId === "distance-learning") return "Undergraduate (UG) Programmes";
-    if (catId === "pg-programmes") return "Postgraduate (PG) Programmes";
-    if (catId === "teacher-training") return "Teacher Training";
-    if (catId === "digital-marketing-ai") return "Digital Marketing + AI";
-    if (catId === "data-analytics") return "Data Analytics";
-    return "All";
-  };
-
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    getMappedCategory(initialCategory)
-  );
-
   const allPrograms: ProgramEligibility[] = (courses || []).map((c: any) => ({
     id: c.id,
     code: c.code || c.id?.toUpperCase() || "IINT",
@@ -182,10 +166,6 @@ export default function EligibilityCriteria({
       return p.id === "data-analytics" && matchesSearch;
     }
 
-    if (selectedCategory !== "All") {
-      return p.category === selectedCategory && matchesSearch;
-    }
-
     return matchesSearch;
   });
 
@@ -193,16 +173,15 @@ export default function EligibilityCriteria({
     if (s.id === "all") return false;
     if (initialCategory === "digital-marketing-ai") return s.id === "digital-marketing-ai" || s.id === "computer-diplomas";
     if (initialCategory === "data-analytics") return s.id === "data-analytics" || s.id === "computer-diplomas";
-    if (selectedCategory === "All") return true;
-    return s.category === selectedCategory;
+    return true;
   });
 
   return (
     <section id="eligibility-programmes" className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20 border-t border-zinc-900/60">
       
-      {/* Search and Category Filter Bar */}
+      {/* Search Bar */}
       <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-zinc-950/80 p-4 rounded-2xl border border-zinc-800 backdrop-blur-md">
-        <div className="relative w-full md:w-80">
+        <div className="relative w-full md:max-w-md">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
           <input
             type="text"
@@ -211,26 +190,6 @@ export default function EligibilityCriteria({
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-2.5 bg-zinc-900/90 border border-zinc-700/80 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all"
           />
-        </div>
-
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-          {SECTIONS.map((sec) => {
-            const isActive = selectedCategory === sec.category;
-            return (
-              <button
-                key={sec.id}
-                onClick={() => setSelectedCategory(sec.category)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 ${
-                  isActive
-                    ? "bg-emerald-500 text-black font-extrabold shadow-lg shadow-emerald-500/20"
-                    : "bg-zinc-900 text-zinc-300 hover:text-white hover:bg-zinc-800 border border-zinc-800"
-                }`}
-              >
-                {sec.title}
-              </button>
-            );
-          })}
         </div>
       </div>
 

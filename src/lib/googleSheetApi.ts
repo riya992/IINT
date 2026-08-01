@@ -1,5 +1,5 @@
 const DEFAULT_GAS_URL =
-  "https://script.google.com/macros/s/AKfycbxPFpQFK4MuoO-LK7QcT6LB3EKkNe-L2PMpUC2lHrW8YxIm6w9XScXl_SdGNoIDo8rb/exec";
+  "https://script.google.com/macros/s/AKfycby0fqdJ0UH5I2zRCwbh2v3wKUYrdNcv6USrVTGiHjAhC_ahnt0RNvLMU4YVhMAMyZrZ/exec";
 
 function getGoogleSheetUrl(): string {
   const raw = import.meta.env.VITE_GOOGLE_SHEET_URL as string | undefined;
@@ -59,70 +59,14 @@ function buildPayload(
   };
 }
 
-function ensureHiddenFrame(): HTMLIFrameElement {
-  let iframe = document.getElementById("iint-gas-frame") as HTMLIFrameElement | null;
-  if (!iframe) {
-    iframe = document.createElement("iframe");
-    iframe.name = "iint-gas-frame";
-    iframe.id = "iint-gas-frame";
-    iframe.style.display = "none";
-    iframe.setAttribute("aria-hidden", "true");
-    document.body.appendChild(iframe);
-  }
-  return iframe;
-}
-
-function submitViaHiddenForm(
-  url: string,
-  payload: Record<string, string>,
-  method: "GET" | "POST"
-): Promise<void> {
-  return new Promise((resolve) => {
-    ensureHiddenFrame();
-
-    const form = document.createElement("form");
-    form.method = method;
-    form.action = method === "GET" ? `${url}?${new URLSearchParams(payload).toString()}` : url;
-    form.target = "iint-gas-frame";
-    form.style.display = "none";
-    form.acceptCharset = "UTF-8";
-
-    if (method === "POST") {
-      Object.entries(payload).forEach(([key, value]) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = value;
-        form.appendChild(input);
-      });
-    }
-
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-
-    window.setTimeout(() => resolve(), 2200);
-  });
-}
-
-function submitViaImageBeacon(url: string, payload: Record<string, string>): Promise<void> {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.referrerPolicy = "no-referrer";
-    img.src = `${url}?${new URLSearchParams(payload).toString()}&_t=${Date.now()}`;
-    img.onload = () => resolve();
-    img.onerror = () => resolve();
-    window.setTimeout(() => resolve(), 1500);
-  });
-}
-
-async function submitViaFetchNoCors(
+async function sendToGoogleSheet(
   url: string,
   payload: Record<string, string>
 ): Promise<void> {
   await fetch(url, {
     method: "POST",
     mode: "no-cors",
+    keepalive: true,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
@@ -130,16 +74,10 @@ async function submitViaFetchNoCors(
   });
 }
 
-async function submitViaJsonNoCors(
-  url: string,
-  payload: Record<string, string>
-): Promise<void> {
-  await fetch(url, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify(payload),
-  });
+function sendBeaconFallback(url: string, payload: Record<string, string>): void {
+  const img = new Image();
+  img.referrerPolicy = "no-referrer";
+  img.src = `${url}?${new URLSearchParams(payload).toString()}&_t=${Date.now()}`;
 }
 
 export async function submitStudentEnquiry(
@@ -153,21 +91,10 @@ export async function submitStudentEnquiry(
 
   const fields = buildPayload(data, formType);
 
-  // Try every reliable GAS pattern (GET works when doGet exists; POST when doPost exists)
-  const attempts: Array<() => Promise<void>> = [
-    () => submitViaHiddenForm(url, fields, "GET"),
-    () => submitViaHiddenForm(url, fields, "POST"),
-    () => submitViaImageBeacon(url, fields),
-    () => submitViaFetchNoCors(url, fields),
-    () => submitViaJsonNoCors(url, fields),
-  ];
-
-  for (const attempt of attempts) {
-    try {
-      await attempt();
-    } catch {
-      // Continue to next method
-    }
+  try {
+    await sendToGoogleSheet(url, fields);
+  } catch {
+    sendBeaconFallback(url, fields);
   }
 
   return { success: true };
@@ -188,4 +115,29 @@ export async function submitToGoogleSheet(data: SheetSubmission): Promise<boolea
   );
 
   return result.success;
+}
+
+/** Dev-only: sends one test row to verify Google Sheet connection. */
+export async function submitLocalSheetTestRow(): Promise<SubmitResult> {
+  return submitStudentEnquiry(
+    {
+      name: "Localhost Test Row",
+      course: "Sheet Connection Check",
+      state: "Haryana",
+      city: "Sonepat",
+      email: "test@iint.local",
+      phone: "9999999999",
+    },
+    "enquiry"
+  );
+}
+
+export function runLocalSheetTestOnce(): void {
+  if (!import.meta.env.DEV) return;
+  if (sessionStorage.getItem("iint_sheet_test_sent") === "1") return;
+
+  sessionStorage.setItem("iint_sheet_test_sent", "1");
+  void submitLocalSheetTestRow().then(() => {
+    console.info("[IINT] Local sheet test row sent — check your Google Sheet.");
+  });
 }

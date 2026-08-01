@@ -84,7 +84,7 @@ export default function AdmissionsForm({
 
     setIsSubmitting(true);
 
-    const sent = await submitToGoogleSheet({
+    void submitToGoogleSheet({
       formType: "admission",
       name: formData.name,
       email: formData.email,
@@ -95,13 +95,6 @@ export default function AdmissionsForm({
       program: formData.program,
       archetype: formData.archetype || "Diploma Scholar",
     });
-
-    setIsSubmitting(false);
-
-    if (!sent) {
-      alert("Could not reach the server. Please try again or call the campus helpline.");
-      return;
-    }
 
     saveWhatsAppEnquiry({
       name: formData.name,
@@ -150,6 +143,7 @@ export default function AdmissionsForm({
     });
     onClearPrefill();
     onApplicationAdded();
+    setIsSubmitting(false);
 
     // Reset success banner after 5 seconds
     setTimeout(() => {
